@@ -14,10 +14,11 @@ import './App.css'
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
 const company = {
-  phone: '+7 (912) 286-71-11',
-  office: '+7 (347) 246-39-13',
-  email: 'info@bashmineral.ru',
-  address:
+  phone: '+7 (903) 310-01-25',
+  office: '+7 (347) 298-01-25',
+  email: 'dispetcherbmr@yandex.ru',
+  officeAddress: '450081, Республика Башкортостан, город Уфа, ул. Уфимское шоссе, д. 43',
+  productionAddress:
     'Республика Башкортостан, Иглинский район, с.п. Красновосходский сельсовет, территория Башминералресурс, здание 5',
   map: 'https://yandex.ru/maps/org/bashmineralresurs/40841570634/?ll=57.116105%2C55.006176&z=12.56',
 }
@@ -26,8 +27,8 @@ const products = {
   manganese: {
     id: 'manganese',
     eyebrow: 'Продукт 01',
-    title: 'Марганцовистый известняк',
-    subtitle: 'Базовое сырьё для металлургической переработки',
+    title: 'Марганцовистый флюсующий известняк',
+    subtitle: 'Комплексная марганцовистая флюсующая добавка для металлургического производства',
     intro:
       'Осадочная горная порода с природным содержанием марганца и кальция. После дробления и рассева материал подготавливается под согласованную технологическую задачу.',
     hero: 'content/flux-material.webp',
@@ -124,13 +125,7 @@ type Product = (typeof products)[keyof typeof products]
 function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <span className={`logo${compact ? ' logo--compact' : ''}`}>
-      <img src={asset('logo-bashmineral-transparent.png')} alt="" />
-      {!compact && (
-        <span>
-          <strong>БашМинералРесурс</strong>
-          <small>Горнодобывающее предприятие</small>
-        </span>
-      )}
+      <img src={asset('brand/bashmineralresurs-original.png')} alt="Башминералресурс" />
     </span>
   )
 }
@@ -148,13 +143,13 @@ function Header() {
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
       <nav className={open ? 'isOpen' : ''} aria-label="Основная навигация">
-        <a href="#top" onClick={close}>О компании</a>
-        <a href="#/gypsum" onClick={close}>Гипсовый камень и гипсоангидрит</a>
-        <a href="#/manganese" onClick={close}>Марганцовистый известняк</a>
+        <a href="#history" onClick={close}><span>О компании</span></a>
+        <a href="#/gypsum" onClick={close}><span>Камень гипсовый и</span><span>гипсоангидритовый</span></a>
+        <a href="#/manganese" onClick={close}><span>Марганцовистый</span><span>флюсующий известняк</span></a>
         <a href="#contacts" onClick={close}>Контакты</a>
       </nav>
       <div className="headerContacts">
-        <a href="tel:+79122867111"><Phone size={17} />{company.phone}</a>
+        <a href="tel:+79033100125"><Phone size={17} />{company.phone}</a>
         <a href={`mailto:${company.email}`}><Mail size={17} /><span>{company.email}</span></a>
       </div>
     </header>
@@ -184,64 +179,68 @@ function HomePage() {
           <div className="heroShade" />
           <div className="heroBody">
             <p className="heroKicker">Республика Башкортостан · Иглинский район</p>
-            <h1>БашМинералРесурс</h1>
+            <h1>Башминералресурс</h1>
             <div className="heroLower">
               <p className="heroStatement">Предприятие по добыче камня гипсового и марганцовистого известняка</p>
               <div className="heroActions">
-                <a className="button button--gold" href="#company">О предприятии <ArrowRight size={18} /></a>
+                <a className="button button--gold" href="#history">О предприятии <ArrowRight size={18} /></a>
                 <a className="button button--glass" href="#products">Продукция</a>
               </div>
             </div>
           </div>
           <div className="heroFacts" aria-label="Ключевые сведения о предприятии">
-            <article><span>Запасы</span><strong>35 млн т</strong><small>балансовые</small></article>
-            <article><span>Перспектива</span><strong>&gt; 140 млн т</strong><small>перспективные запасы</small></article>
-            <article><span>Качество</span><strong>Лаборатория</strong><small>испытания каждой партии</small></article>
+            <article><span>Балансовые запасы</span><strong>40 млн т</strong><small>подтверждённые запасы</small></article>
+            <article><span>Разведанные запасы</span><strong>150 млн т</strong><small>по данным геологоразведки</small></article>
+            <article><span>Перспективные запасы</span><strong>300 млн т</strong><small>потенциал месторождений</small></article>
             <article><span>Логистика</span><strong>Авто + ЖД</strong><small>отгрузка с площадки</small></article>
           </div>
-          <a className="heroScroll" href="#company"><span>Листайте ниже</span><ChevronDown size={18} /></a>
-        </section>
-
-        <section className="section companySection" id="company">
-          <div className="companyIntro">
-            <SectionHeading
-              eyebrow="О компании"
-              title={<>Полный производственный цикл на одной площадке</>}
-              text="Добыча, подготовка минерального сырья, лабораторный контроль и отгрузка объединены в единый производственный контур."
-            />
-            <div className="companyMeta">
-              <div><strong>до 2045 года</strong><span>действует право пользования недрами</span></div>
-              <div><strong>7,7 км</strong><span>железнодорожная ветка до станции Аша</span></div>
-              <div><strong>17 единиц</strong><span>карьерной и вспомогательной техники</span></div>
-            </div>
-          </div>
-          <figure className="companyImage companyImage--main">
-            <img src={asset('content/home-loaders.webp')} alt="Карьерная техника БашМинералРесурс" />
-            <figcaption>Карьерная и погрузочная техника предприятия</figcaption>
-          </figure>
-          <figure className="companyImage companyImage--secondary">
-            <img src={asset('content/home-laboratory.webp')} alt="Лабораторные испытания сырья" />
-            <figcaption>Химико-аналитическая лаборатория</figcaption>
-          </figure>
+          <a className="heroScroll" href="#history"><span>Листайте ниже</span><ChevronDown size={18} /></a>
         </section>
 
         <section className="section historySection" id="history">
-          <SectionHeading eyebrow="История" title={<>Почти век изучения<br />и освоения недр</>} />
+          <SectionHeading
+            eyebrow="История компании"
+            title={<>От геологической разведки<br />к современному производству</>}
+            text="История предприятия начинается с изучения месторождений в середине прошлого века и продолжается промышленной разработкой двух сырьевых направлений."
+          />
           <ol className="timeline">
-            <li><span>1931</span><div><h3>Начало геологических работ</h3><p>На территории Республики Башкортостан открыты залежи марганцевых руд.</p></div></li>
-            <li><span>1940–1987</span><div><h3>Разведка месторождений</h3><p>Исследованы Ржановский, Центральный, Северный и Ново-Северный участки.</p></div></li>
-            <li><span>2000</span><div><h3>Промышленная разработка</h3><p>Получена лицензия на Тюлько-Тюбинский и Северный участки, начались опытные поставки.</p></div></li>
-            <li><span>2012–2019</span><div><h3>Современное предприятие</h3><p>Создано ООО «БашМинералРесурс», модернизирован производственный комплекс и запущена железнодорожная ветка.</p></div></li>
-            <li><span>Сегодня</span><div><h3>Два сырьевых направления</h3><p>Предприятие добывает и подготавливает сырьё для металлургической, цементной и строительной промышленности.</p></div></li>
+            <li><span>1931</span><div><h3>Первые сведения о марганцевых рудах</h3><p>Появились первые упоминания о нахождении марганцевых руд на территории Республики Башкортостан.</p></div></li>
+            <li><span>1940–1944</span><div><h3>Разведка ключевых участков</h3><p>Исследованы Ржановский и Центральный участки, затем более крупные Северный и Ново-Северный.</p></div></li>
+            <li><span>1952–1953</span><div><h3>Расширение поисковых работ</h3><p>Работы охватили Тюлько-Тюбинский, Михайловский, Трехгранный и Сарвинский участки общей площадью более 170 км².</p></div></li>
+            <li><span>1967–1987</span><div><h3>Исследования для металлургии</h3><p>Изучалась возможность замены обычного известняка оксидными марганцевыми рудами для внесения марганца в сталеплавильную ванну.</p></div></li>
+            <li><span>1993–1997</span><div><h3>Возобновление изучения месторождений</h3><p>После паузы исследования продолжились в составе подразделения крупной нефтедобывающей компании.</p></div></li>
+            <li><span>2000</span><div><h3>Получение лицензии</h3><p>Началась разработка Тюлько-Тюбинского участка по добыче гипсового камня и Северного участка по добыче марганцевых руд.</p></div></li>
+            <li><span>2000–2011</span><div><h3>Первые промышленные поставки</h3><p>Проводились экспериментальные отгрузки марганцевой руды на металлургические заводы и гипсового камня на цементные предприятия.</p></div></li>
+            <li><span>2012</span><div><h3>Создание Башминералресурс</h3><p>Зарегистрировано ООО «Башминералресурс». Началась промышленная разработка карьера и совершенствование технологий переработки.</p></div></li>
+            <li><span>2015</span><div><h3>Подтверждение промышленного эффекта</h3><p>Совместно с одним из крупнейших металлургических комбинатов России проведены испытания марганецсодержащей продукции и получены положительные выводы.</p></div></li>
+            <li><span>Сегодня</span><div><h3>Два продуктовых направления</h3><p>Предприятие поставляет гипсовый и гипсоангидритовый камень для цементных и строительных производств, а также марганцовистый флюсующий известняк для металлургии.</p></div></li>
           </ol>
+        </section>
+
+        <section className="companyTodaySection" id="company">
+          <div className="section companyTodayHeading">
+            <SectionHeading
+              eyebrow="Предприятие сегодня"
+              title="Производственный комплекс полного цикла"
+              text="Добыча, дробление, промывка, лабораторный контроль и отгрузка сосредоточены на одной промышленной площадке."
+            />
+          </div>
+          <div className="section companyCapabilityGrid">
+            <article><img src={asset('content/gypsum-quarry.webp')} alt="Карьер предприятия" /><div><strong>72 км²</strong><span>земельный отвод · лицензия на добычу до 2045 года</span></div></article>
+            <article><img src={asset('content/home-loaders.webp')} alt="Тяжёлая карьерная техника" /><div><strong>Более 30 единиц</strong><span>тяжёлой карьерной и вспомогательной техники</span></div></article>
+            <article><img src={asset('content/gypsum-processing.webp')} alt="Дробильно-сортировочный комплекс" /><div><strong>ДСК 200 и ДСУ</strong><span>дробление гипсового камня — более 120 т/ч, известняка — более 100 т/ч</span></div></article>
+            <article><img src={asset('content/flux-sorting.webp')} alt="Моечный комплекс" /><div><strong>Более 40 т/ч</strong><span>мощность комплекса для промывки марганцовистого известняка</span></div></article>
+            <article><img src={asset('content/home-laboratory.webp')} alt="Химико-аналитическая лаборатория" /><div><strong>Собственная лаборатория</strong><span>контроль качества продукции на каждом этапе производства</span></div></article>
+            <article><img src={asset('content/home-rail.webp')} alt="Железнодорожный участок" /><div><strong>Более 3000 т/сутки</strong><span>отгрузка готовой продукции автомобильным и железнодорожным транспортом</span></div></article>
+          </div>
         </section>
 
         <section className="productsSection" id="products">
           <div className="section productsHeading">
             <SectionHeading
               eyebrow="Продукция"
-              title="Выберите сырьё под вашу задачу"
-              text="Откройте нужную страницу: там собраны свойства продукта, варианты применения, подготовка партии, контроль качества и условия отгрузки."
+              title="Наша продукция"
+              text="Два направления минерального сырья для металлургических, цементных и строительных предприятий."
               inverse
             />
           </div>
@@ -252,7 +251,7 @@ function HomePage() {
               <span className="productChoiceIndex">01</span>
               <span className="productChoiceText">
                 <small>Для металлургических производств</small>
-                <strong>Марганцовистый известняк</strong>
+                <strong>Марганцовистый флюсующий известняк</strong>
                 <p>Состав, применение в агломерации и окатышах, подготовка партии и лабораторный контроль.</p>
                 <span>Характеристики и применение <ArrowRight size={18} /></span>
               </span>
@@ -304,7 +303,7 @@ function ProductPage({ product }: { product: Product }) {
           <div className="productHeroShade" />
           <div className="productHeroCopy">
             <a className="backLink" href="#top"><ArrowLeft size={17} /> Главная страница</a>
-            <p className="productBrand">БашМинералРесурс</p>
+            <p className="productBrand">Башминералресурс</p>
             <p className="eyebrow">{product.eyebrow}</p>
             <h1>{product.title}</h1>
             <p>{product.subtitle}</p>
@@ -322,6 +321,20 @@ function ProductPage({ product }: { product: Product }) {
             {product.specs.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
           </dl>
         </section>
+
+        {product.id === 'gypsum' && (
+          <section className="section gypsumOriginSection" id="geology">
+            <SectionHeading
+              eyebrow="Месторождение"
+              title="Геология и природное сырьё"
+              text="Тюлько-Тюбинское месторождение разрабатывается открытым способом. Камень из забоя направляется на дробление и подготовку под требования конкретного производства."
+            />
+            <div className="gypsumOriginGrid">
+              <figure><img src={asset('content/gypsum-quarry.webp')} alt="Тюлько-Тюбинское месторождение" /><figcaption><strong>Геология месторождения</strong><span>Открытая разработка участка</span></figcaption></figure>
+              <figure><img src={asset('content/gypsum-stone.webp')} alt="Гипсовый и гипсоангидритовый камень в забое" /><figcaption><strong>Камень в забое</strong><span>Гипсовое и гипсоангидритовое сырьё</span></figcaption></figure>
+            </div>
+          </section>
+        )}
 
         {product.testingHistory.length > 0 && (
           <section className="testingHistorySection" id="testing-history">
@@ -374,6 +387,7 @@ function ProductPage({ product }: { product: Product }) {
                 <div><dt>Номер и дата партии</dt><dd>заполняются при отгрузке</dd></div>
               </dl>
               <p>Финальные значения и сканы документов размещаются после согласования специалистами предприятия.</p>
+              {product.id === 'gypsum' && <p className="passportCapability"><strong>Подготовка под требования заказчика.</strong> Предприятие может выполнять шихтовку и усреднение качества сырья под согласованные показатели клиента.</p>}
             </div>
           </div>
         </section>
@@ -407,6 +421,15 @@ function ProductPage({ product }: { product: Product }) {
           </div>
         </section>
 
+        {product.id === 'gypsum' && (
+          <section className="sampleSection">
+            <div className="section sampleInner">
+              <div><p className="eyebrow">Лабораторные испытания</p><h2>Запросите пробу камня</h2><p>Подготовим образцы гипсового и гипсоангидритового камня для проверки в лаборатории вашего предприятия.</p></div>
+              <div className="sampleActions"><a className="button button--gold" href="tel:+79033100125">Позвонить <ArrowRight size={18} /></a><a className="button button--glass" href={`mailto:${company.email}`}>Написать на почту</a></div>
+            </div>
+          </section>
+        )}
+
         <ContactSection compact />
       </main>
       <Footer />
@@ -421,9 +444,11 @@ function ContactSection({ compact = false }: { compact?: boolean }) {
       <div className="section contactInner">
         <SectionHeading eyebrow="Контакты" title={<>Обсудить продукт<br />и условия поставки</>} text="Свяжитесь напрямую: уточним задачу, состав документов, необходимую фракцию и схему отгрузки." inverse />
         <div className="contactList">
-          <a href="tel:+79122867111"><span><Phone size={20} /></span><small>Основной телефон</small><strong>{company.phone}</strong></a>
+          <a href="tel:+79033100125"><span><Phone size={20} /></span><small>Мобильный телефон</small><strong>{company.phone}</strong></a>
+          <a href="tel:+73472980125"><span><Phone size={20} /></span><small>Офисный телефон</small><strong>{company.office}</strong></a>
           <a href={`mailto:${company.email}`}><span><Mail size={20} /></span><small>Электронная почта</small><strong>{company.email}</strong></a>
-          <a href={company.map} target="_blank" rel="noreferrer"><span><MapPin size={20} /></span><small>Производственная площадка</small><strong>{company.address}</strong></a>
+          <a href="https://yandex.ru/maps/?text=Уфа%2C%20Уфимское%20шоссе%2C%2043" target="_blank" rel="noreferrer"><span><MapPin size={20} /></span><small>Офис</small><strong>{company.officeAddress}</strong></a>
+          <a href={company.map} target="_blank" rel="noreferrer"><span><MapPin size={20} /></span><small>Производственная площадка</small><strong>{company.productionAddress}</strong></a>
         </div>
       </div>
     </section>
@@ -434,9 +459,9 @@ function Footer() {
   return (
     <footer className="siteFooter">
       <Logo />
-      <div><small>Продукция</small><a href="#/manganese">Марганцовистый известняк</a><a href="#/gypsum">Гипсовый и гипсоангидритовый камень</a></div>
+      <div><small>Продукция</small><a href="#/manganese">Марганцовистый флюсующий известняк</a><a href="#/gypsum">Гипсовый и гипсоангидритовый камень</a></div>
       <div><small>Предприятие</small><a href="#company">О компании</a><a href="#history">История</a><a href="#contacts">Контакты</a></div>
-      <div><small>Связь</small><a href="tel:+79122867111">{company.phone}</a><a href={`mailto:${company.email}`}>{company.email}</a><span>ООО «БашМинералРесурс»</span></div>
+      <div><small>Связь</small><a href="tel:+79033100125">{company.phone}</a><a href="tel:+73472980125">{company.office}</a><a href={`mailto:${company.email}`}>{company.email}</a><span>ООО «Башминералресурс»</span></div>
     </footer>
   )
 }

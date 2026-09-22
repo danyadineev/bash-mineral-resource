@@ -72,11 +72,11 @@ a {
   top: 18px;
   left: 50%;
   display: grid;
-  grid-template-columns: 265px 1fr auto;
+  grid-template-columns: 180px 1fr auto;
   align-items: center;
   width: min(1500px, calc(100vw - 48px));
-  min-height: 72px;
-  padding: 10px 14px 10px 18px;
+  min-height: 82px;
+  padding: 8px 14px 8px 10px;
   color: #fff;
   background: rgba(16, 40, 60, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.13);
@@ -92,35 +92,20 @@ a {
 }
 
 .logo {
-  gap: 12px;
+  justify-content: center;
+  padding: 4px 7px;
+  background: #fff;
 }
 
 .logo img {
-  width: 62px;
-  height: 46px;
+  width: 126px;
+  height: 62px;
   object-fit: contain;
 }
 
-.logo > span {
-  display: grid;
-  gap: 2px;
-}
-
-.logo strong {
-  font-size: 15px;
-  letter-spacing: -0.02em;
-}
-
-.logo small {
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .logo--compact img {
-  width: 58px;
-  height: 44px;
+  width: 112px;
+  height: 56px;
 }
 
 .siteHeader nav {
@@ -133,7 +118,11 @@ a {
 
 .siteHeader nav a {
   position: relative;
+  display: grid;
+  align-content: center;
+  gap: 2px;
   padding: 12px 0;
+  line-height: 1.12;
   white-space: nowrap;
 }
 
@@ -513,6 +502,71 @@ a {
   margin: 0;
   color: var(--muted);
   line-height: 1.6;
+}
+
+.companyTodaySection {
+  padding-block: 130px 145px;
+  background: #e8e7e2;
+}
+
+.companyTodayHeading {
+  margin-bottom: 64px;
+}
+
+.companyCapabilityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.companyCapabilityGrid article {
+  position: relative;
+  min-height: 390px;
+  overflow: hidden;
+  color: #fff;
+  background: var(--navy);
+}
+
+.companyCapabilityGrid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+
+.companyCapabilityGrid article::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(0deg, rgba(5, 18, 28, 0.96), rgba(5, 18, 28, 0.06) 72%);
+}
+
+.companyCapabilityGrid article:hover img {
+  transform: scale(1.025);
+}
+
+.companyCapabilityGrid article > div {
+  position: absolute;
+  z-index: 1;
+  right: 26px;
+  bottom: 25px;
+  left: 26px;
+  display: grid;
+  gap: 8px;
+}
+
+.companyCapabilityGrid strong {
+  color: var(--gold-soft);
+  font-size: clamp(22px, 2vw, 32px);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.companyCapabilityGrid span {
+  max-width: 410px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .productsSection {
@@ -979,6 +1033,11 @@ a {
   background: #071721;
 }
 
+.siteFooter > .logo {
+  align-self: start;
+  justify-self: start;
+}
+
 .siteFooter > div {
   display: grid;
   align-content: start;
@@ -1096,6 +1155,52 @@ a {
   grid-template-columns: 0.83fr 1fr;
   gap: 10vw;
   padding-block: 140px;
+}
+
+.gypsumOriginSection {
+  scroll-margin-top: 110px;
+  padding-bottom: 145px;
+}
+
+.gypsumOriginGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 64px;
+}
+
+.gypsumOriginGrid figure {
+  position: relative;
+  min-height: 470px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.gypsumOriginGrid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gypsumOriginGrid figcaption {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  display: grid;
+  gap: 5px;
+  padding: 18px 20px;
+  color: #fff;
+  background: rgba(16, 40, 60, 0.9);
+}
+
+.gypsumOriginGrid figcaption strong {
+  font-size: 20px;
+}
+
+.gypsumOriginGrid figcaption span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 13px;
 }
 
 .testingHistorySection {
@@ -1278,7 +1383,8 @@ a {
 }
 
 .passportTop .logo img {
-  filter: brightness(0) saturate(100%) invert(14%) sepia(17%) saturate(2020%) hue-rotate(164deg) brightness(92%);
+  width: 112px;
+  height: 56px;
 }
 
 .passportTop > span {
@@ -1314,6 +1420,12 @@ a {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
+}
+
+.passportSheet .passportCapability {
+  padding-top: 22px;
+  border-top: 2px solid var(--gold);
+  color: var(--ink);
 }
 
 .productConsumersSection {
@@ -1417,6 +1529,38 @@ a {
   object-fit: cover;
 }
 
+.sampleSection {
+  color: #fff;
+  background: var(--navy-2);
+}
+
+.sampleInner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 70px;
+  padding-block: 92px;
+}
+
+.sampleInner h2 {
+  margin: 0;
+  font-size: clamp(38px, 4.5vw, 70px);
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.sampleInner p:last-child {
+  max-width: 760px;
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.55;
+}
+
+.sampleActions {
+  display: flex;
+  gap: 12px;
+}
+
 .contactSection--compact .contactInner {
   padding-block: 110px;
 }
@@ -1427,12 +1571,16 @@ a {
   }
 
   .siteHeader {
-    grid-template-columns: 235px 1fr auto;
+    grid-template-columns: 160px 1fr auto;
   }
 
-  .logo small,
   .headerContacts a:last-child span {
     display: none;
+  }
+
+  .logo img {
+    width: 112px;
+    height: 56px;
   }
 
   .siteHeader nav {
@@ -1455,6 +1603,10 @@ a {
 
   .companySection {
     grid-template-columns: 0.95fr 0.72fr 0.38fr;
+  }
+
+  .companyCapabilityGrid article {
+    min-height: 340px;
   }
 
   .processCard {
@@ -1559,6 +1711,10 @@ a {
     margin: 0;
   }
 
+  .companyCapabilityGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .historySection,
   .consumersInner,
   .testingHistoryInner,
@@ -1566,7 +1722,8 @@ a {
   .productOverview,
   .productUseInner,
   .passportInner,
-  .contactInner {
+  .contactInner,
+  .sampleInner {
     grid-template-columns: 1fr;
     gap: 64px;
   }
@@ -1621,16 +1778,12 @@ a {
   }
 
   .logo {
-    gap: 8px;
+    padding: 3px 5px;
   }
 
   .logo img {
-    width: 50px;
-    height: 38px;
-  }
-
-  .logo strong {
-    font-size: 12px;
+    width: 92px;
+    height: 46px;
   }
 
   .headerContacts a:last-child,
@@ -1765,6 +1918,34 @@ a {
   .companyImage--main,
   .companyImage--secondary {
     min-height: 340px;
+  }
+
+  .companyTodaySection {
+    padding-block: 90px;
+  }
+
+  .companyTodayHeading {
+    margin-bottom: 44px;
+  }
+
+  .companyCapabilityGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .companyCapabilityGrid article {
+    min-height: 340px;
+  }
+
+  .gypsumOriginGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .gypsumOriginGrid figure {
+    min-height: 340px;
+  }
+
+  .sampleActions {
+    flex-wrap: wrap;
   }
 
   .timeline li {
