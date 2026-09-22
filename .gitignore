@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.vite/
+playwright-report/
+test-results/
+*.log
+.env
+.env.*
+!.env.example
+
+# Local project notes and QA artifacts
+AGENTS.md
+design-qa.md
+SITE-DATA-QUESTIONS.md
