@@ -210,7 +210,7 @@ a {
   z-index: 2;
   align-self: end;
   width: var(--section);
-  margin: 0 auto 145px;
+  margin: 0 auto 76px;
 }
 
 .heroKicker,
@@ -354,7 +354,7 @@ a {
 .greetingCopy h2,
 .productOverviewIntro h2 {
   margin: 0;
-  font-size: clamp(46px, 5vw, 82px);
+  font-size: clamp(32px, 3.1vw, 50px);
   font-weight: 690;
   letter-spacing: -0.055em;
   line-height: 0.98;
@@ -456,8 +456,8 @@ a {
 
 .historySection {
   display: grid;
-  grid-template-columns: 0.72fr 1fr;
-  gap: 10vw;
+  grid-template-columns: 0.4fr 1fr;
+  gap: 70px;
   padding-block: 130px 150px;
   border-top: 1px solid var(--line);
 }
@@ -476,10 +476,9 @@ a {
 
 .timeline li {
   display: grid;
-  grid-template-columns: 130px 1fr;
-  min-height: 150px;
+  grid-template-columns: 125px 1fr;
   gap: 28px;
-  padding: 30px 0;
+  padding: 22px 0;
   border-top: 1px solid var(--line);
 }
 
@@ -499,6 +498,7 @@ a {
 }
 
 .timeline p {
+  white-space: pre-line;
   margin: 0;
   color: var(--muted);
   line-height: 1.6;
@@ -515,19 +515,21 @@ a {
 
 .companyCapabilityGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .companyCapabilityGrid article {
   position: relative;
-  min-height: 390px;
+  min-height: 350px;
   overflow: hidden;
   color: #fff;
   background: var(--navy);
 }
 
 .companyCapabilityGrid img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -548,16 +550,16 @@ a {
 .companyCapabilityGrid article > div {
   position: absolute;
   z-index: 1;
-  right: 26px;
-  bottom: 25px;
-  left: 26px;
+  right: 20px;
+  bottom: 22px;
+  left: 20px;
   display: grid;
   gap: 8px;
 }
 
 .companyCapabilityGrid strong {
   color: var(--gold-soft);
-  font-size: clamp(22px, 2vw, 32px);
+  font-size: clamp(20px, 1.6vw, 25px);
   letter-spacing: -0.035em;
   line-height: 1.05;
 }
@@ -1072,7 +1074,7 @@ a {
 .productHero {
   position: relative;
   display: grid;
-  min-height: 760px;
+  min-height: 660px;
   overflow: hidden;
   align-items: end;
   color: #fff;
@@ -1126,7 +1128,7 @@ a {
 .productHero h1 {
   max-width: 1000px;
   margin: 0;
-  font-size: clamp(58px, 7vw, 116px);
+  font-size: clamp(40px, 4.4vw, 72px);
   font-weight: 700;
   letter-spacing: -0.065em;
   line-height: 0.94;
@@ -1544,7 +1546,7 @@ a {
 
 .sampleInner h2 {
   margin: 0;
-  font-size: clamp(38px, 4.5vw, 70px);
+  font-size: clamp(32px, 3.1vw, 50px);
   letter-spacing: -0.055em;
   line-height: 1;
 }
@@ -1659,7 +1661,7 @@ a {
   }
 
   .heroBody {
-    margin-bottom: 190px;
+    margin-bottom: 76px;
   }
 
   .hero h1 {
@@ -1812,7 +1814,7 @@ a {
   }
 
   .heroBody {
-    margin: 0 auto 175px;
+    margin: 0 auto 64px;
   }
 
   .heroKicker {
@@ -1870,7 +1872,7 @@ a {
   .greetingCopy h2,
   .productOverviewIntro h2 {
     max-width: 100%;
-    font-size: clamp(34px, 10vw, 46px);
+    font-size: clamp(30px, 8vw, 38px);
     overflow-wrap: anywhere;
   }
 
@@ -2140,6 +2142,85 @@ a {
     align-items: flex-start;
     gap: 20px;
   }
+}
+
+.companyCapabilityGrid h3 {
+  margin: 0 0 6px;
+  color: #fff;
+  font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 600;
+  line-height: 1.18;
+}
+
+.companyCapabilityGrid span { color: #fff; }
+.timeline > li > span { overflow-wrap: anywhere; }
+.gypsumApplications { padding-block: 96px; }
+.applicationLinks { display: flex; gap: 16px; margin-top: 34px; }
+.applicationLinks button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  padding: 22px;
+  text-align: left;
+  color: var(--navy);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-bottom: 3px solid var(--gold);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+.applicationLinks button:hover { background: #fff; }
+.applicationLinks button span { color: #996000; font-size: 12px; }
+.applicationLinks button svg { margin-left: auto; flex-shrink: 0; }
+.gypsumIntroduction { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
+.gypsumIntroduction p { margin: 0 0 20px; line-height: 1.65; color: var(--muted); }
+.gypsumIntroduction > div:first-child p { color: var(--ink); font-size: 19px; }
+.gypsumApplication { padding-block: 90px; color: #fff; background: var(--navy); scroll-margin-top: 110px; }
+.gypsumApplication--dry-mixes { background: var(--navy-2); border-top: 1px solid #ffffff22; }
+.applicationHeader { display: grid; grid-template-columns: 70px 1fr; gap: 20px; margin-bottom: 48px; }
+.applicationNumber { color: var(--gold-soft); font-size: 46px; letter-spacing: -.05em; line-height: 1; }
+.applicationHeader .sectionLead { max-width: 850px; }
+.applicationDetail { display: grid; grid-template-columns: 1fr 0.85fr; gap: 64px; align-items: start; }
+.applicationDetail h3 { margin: 0 0 24px; font-size: 24px; line-height: 1.25; }
+.applicationBenefits ul { margin: 0 0 32px; padding: 0; list-style: none; }
+.applicationBenefits li { position: relative; padding: 0 0 18px 24px; line-height: 1.6; color: #ffffffce; }
+.applicationBenefits li::before { content: ''; position: absolute; top: 10px; left: 0; width: 6px; height: 6px; background: var(--gold); }
+.applicationBenefits figure { position: relative; margin: 0; }
+.applicationBenefits img { display: block; width: 100%; height: 250px; object-fit: cover; }
+.applicationBenefits figcaption { padding: 12px 0; color: #ffffffab; font-size: 12px; }
+.applicationPassport { padding: 32px; color: var(--ink); background: var(--paper); border-top: 3px solid var(--gold); }
+.applicationPassport .eyebrow { color: #966000; font-size: 10px; }
+.applicationPassport dl { margin: 0; }
+.applicationPassport dl > div { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding: 17px 0; border-top: 1px solid var(--line); }
+.applicationPassport dt { font-size: 13px; color: var(--muted); }
+.applicationPassport dd { margin: 0; font-size: 14px; font-weight: 600; }
+.applicationPassport > p:not(.eyebrow) { font-size: 13px; line-height: 1.6; color: var(--muted); }
+.applicationPassport > a { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; font-weight: 650; }
+.gypsumProcess .productProcessList { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 44px; }
+.gypsumProcess .productProcessList article { display: flex; flex-direction: column; min-height: 0; }
+.gypsumProcess .productProcessList img { height: 210px; }
+.gypsumProcess .productProcessList article > div { padding: 24px; align-self: stretch; }
+.gypsumProcess .productProcessList h3 { font-size: 22px; }
+
+@media (max-width: 1100px) {
+  .companyCapabilityGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gypsumProcess .productProcessList { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .applicationDetail, .gypsumIntroduction { gap: 32px; }
+}
+@media (max-width: 700px) {
+  .companyCapabilityGrid { grid-template-columns: 1fr; }
+  .applicationLinks { flex-direction: column; }
+  .gypsumApplications, .gypsumApplication { padding-block: 64px; }
+  .gypsumIntroduction, .applicationDetail { grid-template-columns: 1fr; }
+  .gypsumIntroduction > div:first-child p { font-size: 17px; }
+  .applicationHeader { grid-template-columns: 36px 1fr; gap: 12px; }
+  .applicationNumber { font-size: 28px; }
+  .applicationPassport { padding: 24px 20px; }
+  .applicationPassport dl > div { grid-template-columns: 1fr; gap: 7px; }
+  .gypsumProcess .productProcessList { grid-template-columns: 1fr; }
+  .gypsumProcess .productProcessList img { height: 240px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

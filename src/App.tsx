@@ -10,6 +10,7 @@ import {
   X,
 } from 'lucide-react'
 import './App.css'
+import { capabilities, history } from './septemberContent'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
@@ -31,7 +32,7 @@ const products = {
     subtitle: 'Комплексная марганцовистая флюсующая добавка для металлургического производства',
     intro:
       'Осадочная горная порода с природным содержанием марганца и кальция. После дробления и рассева материал подготавливается под согласованную технологическую задачу.',
-    hero: 'content/flux-material.webp',
+    hero: 'content/sep27-manganese.webp',
     accent: 'Три стадии дробления и рассева на ДСК',
     specs: [
       ['Базовый продукт', 'Марганцовистый известняк фракции 0–6 мм'],
@@ -54,16 +55,16 @@ const products = {
       ['Текущий этап', 'Материалы по действующим поставкам и дальнейшим вариантам внедрения готовятся к публикации.'],
     ],
     process: [
-      ['01', 'Добыча', 'Открытая разработка карьеров Северный и Ново-Северный.', 'content/flux-material.webp'],
-      ['02', 'Дробление', 'Три стадии дробления и рассева на дробильно-сортировочном комплексе.', 'content/flux-processing.webp'],
-      ['03', 'Контроль качества', 'Лабораторные испытания состава, фракции и влажности конкретной партии.', 'content/flux-laboratory.webp'],
-      ['04', 'Отгрузка', 'Паспорт партии и отправка автомобильным или железнодорожным транспортом.', 'content/flux-shipping.webp'],
+      ['01', 'Добыча', 'Открытая разработка карьеров Северный и Ново-Северный.', 'content/sep27-manganese-mining.webp'],
+      ['02', 'Дробление', 'Три стадии дробления и рассева на дробильно-сортировочном комплексе.', 'content/sep27-manganese-crushing.webp'],
+      ['03', 'Контроль качества', 'Лабораторные испытания состава, фракции и влажности конкретной партии.', 'content/sep27-manganese-quality.webp'],
+      ['04', 'Отгрузка', 'Паспорт партии и отправка автомобильным или железнодорожным транспортом.', 'content/sep27-manganese-shipping.webp'],
     ],
     gallery: [
-      ['Исходный материал', 'content/flux-material.webp'],
-      ['Подготовленный материал', 'content/flux-stockpile.webp'],
-      ['Дробильно-сортировочный комплекс', 'content/flux-processing.webp'],
-      ['Производственная площадка', 'content/flux-complex.webp'],
+      ['Подготовленный материал', 'content/sep27-manganese.webp'],
+      ['Добыча сырья', 'content/sep27-manganese-mining.webp'],
+      ['Дробильно-сортировочный комплекс', 'content/sep27-manganese-crushing.webp'],
+      ['Отгрузка партии', 'content/sep27-manganese-shipping.webp'],
     ],
     consumers: [
       ['Действующий потребитель', 'ЕВРАЗ-ВГОК — поставки марганцовистого известняка для металлургического направления.'],
@@ -82,7 +83,7 @@ const products = {
     subtitle: 'Сырьё для цементных и строительных производств',
     intro:
       'Камень Тюлько-Тюбинского месторождения для цементных заводов, производителей сухих смесей, гипсовых вяжущих и изделий.',
-    hero: 'content/gypsum-stone.webp',
+    hero: 'content/sep27-gypsum.webp',
     accent: 'Высокое природное качество и белизна камня',
     specs: [
       ['Месторождение', 'Тюлько-Тюбинское'],
@@ -101,10 +102,10 @@ const products = {
     usesTitle: 'Направления применения продукта',
     testingHistory: [],
     process: [
-      ['01', 'Добыча', 'Открытая разработка Тюлько-Тюбинского месторождения.', 'content/gypsum-quarry.webp'],
-      ['02', 'Подготовка', 'Дробление и подготовка материала под согласованную фракцию.', 'content/gypsum-processing.webp'],
-      ['03', 'Контроль качества', 'Лабораторная проверка показателей и оформление протокола.', 'content/gypsum-laboratory.webp'],
-      ['04', 'Отгрузка', 'Погрузка подготовленной партии на автомобильный или железнодорожный транспорт.', 'content/gypsum-shipping.webp'],
+      ['01', 'Добыча', 'Открытая разработка Тюлько-Тюбинского месторождения.', 'content/sep27-gypsum-mining.webp'],
+      ['02', 'Дробление', 'Дробление и подготовка материала под согласованную фракцию.', 'content/sep27-gypsum-crushing.webp'],
+      ['03', 'Контроль качества', 'Лабораторная проверка показателей и оформление протокола.', 'content/sep27-gypsum-quality.webp'],
+      ['04', 'Отгрузка', 'Погрузка подготовленной партии на автомобильный или железнодорожный транспорт.', 'content/sep27-gypsum-shipping.webp'],
     ],
     gallery: [
       ['Тюлько-Тюбинское месторождение', 'content/gypsum-quarry.webp'],
@@ -172,9 +173,9 @@ function HomePage() {
       <Header />
       <main>
         <section className="hero" id="top">
-          <video className="heroMedia" autoPlay muted loop playsInline preload="metadata" poster={asset('hero-drone-poster.webp')} aria-hidden="true">
-            <source src={asset('hero-drone.mp4')} type="video/mp4" media="(min-width: 720px)" />
-            <source src={asset('hero-drone-mobile.mp4')} type="video/mp4" />
+          <video className="heroMedia" autoPlay muted loop playsInline preload="metadata" poster={asset('hero-september-poster.webp')} aria-hidden="true">
+            <source src={asset('hero-september.mp4')} type="video/mp4" media="(min-width: 720px)" />
+            <source src={asset('hero-september-mobile.mp4')} type="video/mp4" />
           </video>
           <div className="heroShade" />
           <div className="heroBody">
@@ -188,12 +189,6 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="heroFacts" aria-label="Ключевые сведения о предприятии">
-            <article><span>Балансовые запасы</span><strong>40 млн т</strong><small>подтверждённые запасы</small></article>
-            <article><span>Разведанные запасы</span><strong>150 млн т</strong><small>по данным геологоразведки</small></article>
-            <article><span>Перспективные запасы</span><strong>300 млн т</strong><small>потенциал месторождений</small></article>
-            <article><span>Логистика</span><strong>Авто + ЖД</strong><small>отгрузка с площадки</small></article>
-          </div>
           <a className="heroScroll" href="#history"><span>Листайте ниже</span><ChevronDown size={18} /></a>
         </section>
 
@@ -204,16 +199,7 @@ function HomePage() {
             text="История предприятия начинается с изучения месторождений в середине прошлого века и продолжается промышленной разработкой двух сырьевых направлений."
           />
           <ol className="timeline">
-            <li><span>1931</span><div><h3>Первые сведения о марганцевых рудах</h3><p>Появились первые упоминания о нахождении марганцевых руд на территории Республики Башкортостан.</p></div></li>
-            <li><span>1940–1944</span><div><h3>Разведка ключевых участков</h3><p>Исследованы Ржановский и Центральный участки, затем более крупные Северный и Ново-Северный.</p></div></li>
-            <li><span>1952–1953</span><div><h3>Расширение поисковых работ</h3><p>Работы охватили Тюлько-Тюбинский, Михайловский, Трехгранный и Сарвинский участки общей площадью более 170 км².</p></div></li>
-            <li><span>1967–1987</span><div><h3>Исследования для металлургии</h3><p>Изучалась возможность замены обычного известняка оксидными марганцевыми рудами для внесения марганца в сталеплавильную ванну.</p></div></li>
-            <li><span>1993–1997</span><div><h3>Возобновление изучения месторождений</h3><p>После паузы исследования продолжились в составе подразделения крупной нефтедобывающей компании.</p></div></li>
-            <li><span>2000</span><div><h3>Получение лицензии</h3><p>Началась разработка Тюлько-Тюбинского участка по добыче гипсового камня и Северного участка по добыче марганцевых руд.</p></div></li>
-            <li><span>2000–2011</span><div><h3>Первые промышленные поставки</h3><p>Проводились экспериментальные отгрузки марганцевой руды на металлургические заводы и гипсового камня на цементные предприятия.</p></div></li>
-            <li><span>2012</span><div><h3>Создание Башминералресурс</h3><p>Зарегистрировано ООО «Башминералресурс». Началась промышленная разработка карьера и совершенствование технологий переработки.</p></div></li>
-            <li><span>2015</span><div><h3>Подтверждение промышленного эффекта</h3><p>Совместно с одним из крупнейших металлургических комбинатов России проведены испытания марганецсодержащей продукции и получены положительные выводы.</p></div></li>
-            <li><span>Сегодня</span><div><h3>Два продуктовых направления</h3><p>Предприятие поставляет гипсовый и гипсоангидритовый камень для цементных и строительных производств, а также марганцовистый флюсующий известняк для металлургии.</p></div></li>
+            {history.map(([year, text]) => <li key={year}><span>{year}</span><p>{text}</p></li>)}
           </ol>
         </section>
 
@@ -226,12 +212,12 @@ function HomePage() {
             />
           </div>
           <div className="section companyCapabilityGrid">
-            <article><img src={asset('content/gypsum-quarry.webp')} alt="Карьер предприятия" /><div><strong>72 км²</strong><span>земельный отвод · лицензия на добычу до 2045 года</span></div></article>
-            <article><img src={asset('content/home-loaders.webp')} alt="Тяжёлая карьерная техника" /><div><strong>Более 30 единиц</strong><span>тяжёлой карьерной и вспомогательной техники</span></div></article>
-            <article><img src={asset('content/gypsum-processing.webp')} alt="Дробильно-сортировочный комплекс" /><div><strong>ДСК 200 и ДСУ</strong><span>дробление гипсового камня — более 120 т/ч, известняка — более 100 т/ч</span></div></article>
-            <article><img src={asset('content/flux-sorting.webp')} alt="Моечный комплекс" /><div><strong>Более 40 т/ч</strong><span>мощность комплекса для промывки марганцовистого известняка</span></div></article>
-            <article><img src={asset('content/home-laboratory.webp')} alt="Химико-аналитическая лаборатория" /><div><strong>Собственная лаборатория</strong><span>контроль качества продукции на каждом этапе производства</span></div></article>
-            <article><img src={asset('content/home-rail.webp')} alt="Железнодорожный участок" /><div><strong>Более 3000 т/сутки</strong><span>отгрузка готовой продукции автомобильным и железнодорожным транспортом</span></div></article>
+            {capabilities.map(({ title, image, metric, text }) => (
+              <article key={title}>
+                <img src={asset(`content/sep27-${image}.webp`)} alt={title} loading="lazy" />
+                <div><h3>{title}</h3>{metric && <strong>{metric}</strong>}<span>{text}</span></div>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -246,7 +232,7 @@ function HomePage() {
           </div>
           <div className="productChoiceGrid">
             <a className="productChoice" href="#/manganese">
-              <img src={asset('content/flux-material.webp')} alt="Марганцовистый известняк" />
+              <img src={asset('content/sep27-manganese.webp')} alt="Марганцовистый известняк" loading="lazy" />
               <span className="productChoiceShade" />
               <span className="productChoiceIndex">01</span>
               <span className="productChoiceText">
@@ -257,7 +243,7 @@ function HomePage() {
               </span>
             </a>
             <a className="productChoice" href="#/gypsum">
-              <img src={asset('content/gypsum-stone.webp')} alt="Камень гипсовый и гипсоангидритовый" />
+              <img src={asset('content/sep27-gypsum.webp')} alt="Камень гипсовый и гипсоангидритовый" loading="lazy" />
               <span className="productChoiceShade" />
               <span className="productChoiceIndex">02</span>
               <span className="productChoiceText">
@@ -290,6 +276,66 @@ function HomePage() {
   )
 }
 
+function GypsumContent() {
+  const applications = [
+    {
+      id: 'cement', title: 'Для цементного производства', image: 'gypsum',
+      intro: 'Гипсовый и гипсоангидритовый камень для цементных заводов. Подбираем фракцию и соотношение компонентов под технологические требования вашего производства.',
+      benefits: ['Гипсовый камень 1–2 сорта и гипсоангидритовый камень, превышающий требования к 1 сорту по ГОСТ 4013-2019.', 'Шихтовка с заданным соотношением SO₃ и CaSO₄·2H₂O; контроль состава в собственной лаборатории.', 'Фракции 0–60 и 60–300 мм, а также подготовка материала под согласованные требования заказчика.'],
+      focus: 'SO₃ — серный ангидрит', secondary: 'CaSO₄·2H₂O — двуводный гипс',
+      caption: 'Сырьё для цементных производств',
+    },
+    {
+      id: 'dry-mixes', title: 'Для сухих строительных смесей', image: 'gypsum-mining',
+      intro: 'Природное сырьё высокой белизны для производителей гипсовых вяжущих и сухих строительных смесей. Поможем подобрать камень под требования к качеству готового продукта.',
+      benefits: ['Высокая природная белизна гипсового и гипсоангидритового камня Тюлько-Тюбинского месторождения.', 'Контролируемая шихтовка для стабильного соотношения двуводного гипса и серного ангидрида.', 'Оперативный и выходной лабораторный контроль, согласование фракции под технологию заказчика.'],
+      focus: 'CaSO₄·2H₂O — двуводный гипс', secondary: 'SO₃ — серный ангидрит',
+      caption: 'Тюлько-Тюбинское месторождение',
+    },
+  ]
+  return <>
+    <section className="section gypsumApplications" id="application">
+      <SectionHeading eyebrow="Применение" title="Сырьё под задачи вашего производства" />
+      <div className="applicationLinks" aria-label="Направления применения">
+        {applications.map(({ id, title }, index) => <button type="button" key={id} onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}><span>0{index + 1}</span>{title}<ArrowRight size={19} /></button>)}
+      </div>
+      <div className="gypsumIntroduction">
+        <div>
+          <p>Гипсовый и гипсоангидритовый камень, добываемый на Тюлько-Тюбинском месторождении в гипсовых толщах мощностью до 39,9 метров, отличается одним из самых высоких степеней белизны среди промышленно разрабатываемых открытым способом месторождений на территории Поволжья, Урала, Западной Сибири и Дальнего Востока.</p>
+          <p>По содержанию CaSO<sub>4</sub>·2H<sub>2</sub>O и SO<sub>3</sub> является самым высококачественным сырьем восточнее Урала.</p>
+        </div>
+        <div>
+          <p>В соответствии с ГОСТ 4013-2019 гипсовый камень соответствует 1-2 сорту, а гипсоангидритовый — уверенно превышает требования к 1 сорту.</p>
+          <p>Технологические возможности нашего предприятия позволяют обеспечивать потребителей как продукцией, точно соответствующей всем параметрам ГОСТ 4013-2019 (фракции 0-60 и 60-300 мм), так и подстраиваться под технические нужды конкретных заказчиков в части отклонения от указанных фракций.</p>
+          <p>Собственная физико-химическая лаборатория с четко выстроенными и отлаженными процессами отбора проб, оснащена всем необходимым комплексом современного оборудования для проведения оперативного и выходного контроля качества материала.</p>
+          <p>Возможности лаборатории позволяют также производить контролируемый на производстве процесс шихтовки гипсового и гипсоангидритового камня в заданных пропорциях для получения уникальной и стабильной сырьевой шихты с заданным соотношением серного ангидрита (SO<sub>3</sub>) и двуводного гипса (CaSO<sub>4</sub>·2H<sub>2</sub>O).</p>
+        </div>
+      </div>
+    </section>
+    {applications.map((application, index) => (
+      <section className={`gypsumApplication gypsumApplication--${application.id}`} id={application.id} key={application.id}>
+        <div className="section">
+          <div className="applicationHeader"><span className="applicationNumber">0{index + 1}</span><SectionHeading eyebrow="Направление применения" title={application.title} text={application.intro} inverse /></div>
+          <div className="applicationDetail">
+            <div className="applicationBenefits"><h3>Преимущества для производства</h3><ul>{application.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul><figure><img loading="lazy" src={asset(`content/sep27-${application.image}.webp`)} alt={application.caption} /><figcaption>{application.caption}</figcaption></figure></div>
+            <div className="applicationPassport">
+              <p className="eyebrow">Параметры качества</p><h3>Что подтверждает паспорт партии</h3>
+              <dl><div><dt>{application.focus}</dt><dd>По лабораторному протоколу</dd></div><div><dt>{application.secondary}</dt><dd>По лабораторному протоколу</dd></div><div><dt>Фракция</dt><dd>0–60 / 60–300 мм или по согласованию</dd></div><div><dt>Сорт и соответствие</dt><dd>ГОСТ 4013-2019, по паспорту партии</dd></div><div><dt>Идентификация</dt><dd>Номер и дата отгружаемой партии</dd></div></dl>
+              <p>Фактические значения указываются в документах на конкретную партию. Целевой состав и фракцию согласуем с вашим технологом до поставки.</p>
+              <a href={`mailto:${company.email}?subject=${encodeURIComponent(application.title + ' — запрос характеристик')}`}>Запросить характеристики <ArrowRight size={18} /></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+    <section className="section productProcess gypsumProcess" id="process">
+      <SectionHeading eyebrow="Единый производственный цикл" title="От месторождения до вашей площадки" text="Для обоих направлений — собственная добыча, дробление, лабораторный контроль и отгрузка выбранным видом транспорта." />
+      <div className="productProcessList">{products.gypsum.process.map(([number, title, text, image]) => <article key={number}><img src={asset(image)} alt={title} loading="lazy" /><div><span>{number}</span><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+    </section>
+    <section className="sampleSection"><div className="section sampleInner"><div><p className="eyebrow">Лабораторные испытания</p><h2>Запросите пробу камня</h2><p>Подготовим образцы гипсового и гипсоангидритового камня для проверки в лаборатории вашего предприятия. Сообщите назначение сырья, нужную фракцию и показатели качества.</p></div><div className="sampleActions"><a className="button button--gold" href={`mailto:${company.email}?subject=${encodeURIComponent('Запрос пробы гипсового камня')}`}>Запросить образцы <ArrowRight size={18} /></a><a className="button button--glass" href="tel:+79033100125">Позвонить</a></div></div></section>
+  </>
+}
+
 function ProductPage({ product }: { product: Product }) {
   return (
     <>
@@ -311,6 +357,7 @@ function ProductPage({ product }: { product: Product }) {
           <div className="productHeroAccent">{product.accent}</div>
         </section>
 
+        {product.id === 'gypsum' ? <GypsumContent /> : <>
         <section className="section productOverview" id="product">
           <div className="productOverviewIntro">
             <p className="eyebrow">Описание продукта</p>
@@ -322,19 +369,6 @@ function ProductPage({ product }: { product: Product }) {
           </dl>
         </section>
 
-        {product.id === 'gypsum' && (
-          <section className="section gypsumOriginSection" id="geology">
-            <SectionHeading
-              eyebrow="Месторождение"
-              title="Геология и природное сырьё"
-              text="Тюлько-Тюбинское месторождение разрабатывается открытым способом. Камень из забоя направляется на дробление и подготовку под требования конкретного производства."
-            />
-            <div className="gypsumOriginGrid">
-              <figure><img src={asset('content/gypsum-quarry.webp')} alt="Тюлько-Тюбинское месторождение" /><figcaption><strong>Геология месторождения</strong><span>Открытая разработка участка</span></figcaption></figure>
-              <figure><img src={asset('content/gypsum-stone.webp')} alt="Гипсовый и гипсоангидритовый камень в забое" /><figcaption><strong>Камень в забое</strong><span>Гипсовое и гипсоангидритовое сырьё</span></figcaption></figure>
-            </div>
-          </section>
-        )}
 
         {product.testingHistory.length > 0 && (
           <section className="testingHistorySection" id="testing-history">
@@ -387,7 +421,6 @@ function ProductPage({ product }: { product: Product }) {
                 <div><dt>Номер и дата партии</dt><dd>заполняются при отгрузке</dd></div>
               </dl>
               <p>Финальные значения и сканы документов размещаются после согласования специалистами предприятия.</p>
-              {product.id === 'gypsum' && <p className="passportCapability"><strong>Подготовка под требования заказчика.</strong> Предприятие может выполнять шихтовку и усреднение качества сырья под согласованные показатели клиента.</p>}
             </div>
           </div>
         </section>
@@ -421,15 +454,8 @@ function ProductPage({ product }: { product: Product }) {
           </div>
         </section>
 
-        {product.id === 'gypsum' && (
-          <section className="sampleSection">
-            <div className="section sampleInner">
-              <div><p className="eyebrow">Лабораторные испытания</p><h2>Запросите пробу камня</h2><p>Подготовим образцы гипсового и гипсоангидритового камня для проверки в лаборатории вашего предприятия.</p></div>
-              <div className="sampleActions"><a className="button button--gold" href="tel:+79033100125">Позвонить <ArrowRight size={18} /></a><a className="button button--glass" href={`mailto:${company.email}`}>Написать на почту</a></div>
-            </div>
-          </section>
-        )}
 
+        </>}
         <ContactSection compact />
       </main>
       <Footer />
