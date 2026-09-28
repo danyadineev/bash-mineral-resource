@@ -155,7 +155,7 @@ function Header() {
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
       <nav id="main-navigation" className={open ? 'isOpen' : ''} aria-label="Основная навигация">
-        <a className="headerNavLink" href="#history" onClick={close}><span>История</span><span>компании</span></a>
+        <a className="headerNavLink" href="#history" onClick={close}><span>О</span><span>компании</span></a>
         <a className="headerNavLink" href="#/gypsum" onClick={close}><span>Камень гипсовый и</span><span>гипсоангидритовый</span></a>
         <a className="headerNavLink" href="#/manganese" onClick={close}><span>Марганцовистый</span><span>флюсующий известняк</span></a>
         <a className="headerNavLink" href="#contacts" onClick={close}><span>Контакты</span><span>компании</span></a>
