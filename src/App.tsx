@@ -189,8 +189,8 @@ function HomePage() {
       <Header />
       <main>
         <section className="hero" id="top">
-          <HeroVideo className="heroMedia" desktop={asset('hero-september-stream.mp4')}
-            mobile={asset('hero-september-stream-mobile.mp4')} poster={asset('hero-september-poster.webp')} />
+          <HeroVideo className="heroMedia" desktop={asset('hero-september.mp4')}
+            mobile={asset('hero-september-mobile.mp4')} poster={asset('hero-september-poster.webp')} />
           <div className="heroShade" />
           <div className="heroBody">
             <p className="heroKicker">Республика Башкортостан · Иглинский район</p>
@@ -356,8 +356,8 @@ function ProductPage({ product }: { product: Product }) {
       <Header />
       <main className="productPage">
         <section className={`productHero productHero--${product.id}`} id="top">
-          <HeroVideo className="productHeroMedia" desktop={asset('hero-drone-stream.mp4')}
-            mobile={asset('hero-drone-stream-mobile.mp4')} poster={asset(product.hero)} />
+          <HeroVideo className="productHeroMedia" desktop={asset('hero-drone.mp4')}
+            mobile={asset('hero-drone-mobile.mp4')} poster={asset(product.hero)} />
           <div className="productHeroShade" />
           <div className="productHeroCopy">
             <a className="backLink" href="#top"><ArrowLeft size={17} /> Главная страница</a>

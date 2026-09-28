@@ -22,8 +22,16 @@ export function HeroVideo({ desktop, mobile, poster, className }: HeroVideoProps
     let frameRequest = 0
     let waitingTimer: ReturnType<typeof setTimeout> | undefined
     let announced = false
+    let playRequested = false
     const check = () => {
-      if (!firstFrame || video.paused || video.readyState < 3 || !hasPlaybackBuffer(video.buffered, video.currentTime, video.duration)) return
+      if (video.readyState < 3 || !hasPlaybackBuffer(video.buffered, video.currentTime, video.duration)) return
+      // Build the lead before playing. Otherwise playback behind the loader can
+      // consume bytes as quickly as they arrive, defeating initial prebuffering.
+      if (!playRequested) {
+        playRequested = true
+        void video.play().catch(() => setVisible(false))
+      }
+      if (!firstFrame || video.paused) return
       clearTimeout(waitingTimer)
       setVisible(true)
       if (!announced) {
@@ -33,6 +41,7 @@ export function HeroVideo({ desktop, mobile, poster, className }: HeroVideoProps
     }
     const onFrame = () => { firstFrame = true; check() }
     const onPlaying = () => {
+      playRequested = true
       clearTimeout(waitingTimer)
       if ('requestVideoFrameCallback' in video) frameRequest = video.requestVideoFrameCallback(onFrame)
       else onFrame()
@@ -50,8 +59,7 @@ export function HeroVideo({ desktop, mobile, poster, className }: HeroVideoProps
     video.addEventListener('error', onError)
     const interval = setInterval(check, 250)
     if (!video.paused) onPlaying()
-    // Autoplay can be blocked by browser or power-saving policy. Keep the poster.
-    void video.play().catch(() => {})
+    check()
     return () => {
       clearInterval(interval)
       clearTimeout(waitingTimer)
@@ -66,6 +74,6 @@ export function HeroVideo({ desktop, mobile, poster, className }: HeroVideoProps
   return <>
     <img className={`${className}Poster`} src={poster} alt="" aria-hidden="true" fetchPriority="high" decoding="async" />
     <video ref={videoRef} className={`${className}${visible ? ' is-ready' : ''}`} src={src}
-      autoPlay muted loop playsInline preload="auto" poster={poster} aria-hidden="true" />
+      muted loop playsInline preload="auto" poster={poster} aria-hidden="true" />
   </>
 }
