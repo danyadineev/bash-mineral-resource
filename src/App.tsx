@@ -3,10 +3,15 @@ import {
   ArrowLeft,
   ArrowRight,
   ChevronDown,
+  FlaskConical,
   Mail,
   MapPin,
   Menu,
   Phone,
+  Ruler,
+  ShieldCheck,
+  SlidersHorizontal,
+  Sparkles,
   X,
 } from 'lucide-react'
 import './App.css'
@@ -195,41 +200,7 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <a className="heroScroll" href="#history"><span>Листайте ниже</span><ChevronDown size={18} /></a>
-        </section>
-
-        <section className={`section historySection${historyExpanded ? ' historySection--expanded' : ''}`} id="history">
-          <SectionHeading
-            eyebrow="История компании"
-            title={<>От геологической разведки<br />к современному производству</>}
-            text="От первых геологических исследований — к добыче, переработке и поставкам двух видов минерального сырья."
-          />
-          <div className="historyContent">
-            <ol className="timeline" id="history-timeline">
-              {(historyExpanded ? history : historyPreview).map(([year, text]) => <li key={year}><span>{year}</span><p>{text}</p></li>)}
-            </ol>
-            <button className="historyToggle" type="button" aria-expanded={historyExpanded} aria-controls="history-timeline" onClick={toggleHistory}>
-              <span>{historyExpanded ? 'Свернуть историю' : 'Смотреть историю полностью'}<small>{historyExpanded ? 'К краткому обзору' : 'Все 14 этапов'}</small></span><ChevronDown size={20} />
-            </button>
-          </div>
-        </section>
-
-        <section className="companyTodaySection" id="company">
-          <div className="section companyTodayHeading">
-            <SectionHeading
-              eyebrow="Предприятие сегодня"
-              title="Производственный комплекс полного цикла"
-              text="Добыча, дробление, промывка, лабораторный контроль и отгрузка сосредоточены на одной промышленной площадке."
-            />
-          </div>
-          <div className="section companyCapabilityGrid">
-            {capabilities.map(({ title, image, metric, text }) => (
-              <article key={title}>
-                <img src={asset(`content/sep27-${image}.webp`)} alt={title} loading="lazy" />
-                <div><h3>{title}</h3>{metric && <strong>{metric}</strong>}<span>{text}</span></div>
-              </article>
-            ))}
-          </div>
+          <a className="heroScroll" href="#products"><span>Листайте ниже</span><ChevronDown size={18} /></a>
         </section>
 
         <section className="productsSection" id="products">
@@ -267,6 +238,40 @@ function HomePage() {
           </div>
         </section>
 
+        <section className={`section historySection${historyExpanded ? ' historySection--expanded' : ''}`} id="history">
+          <SectionHeading
+            eyebrow="История компании"
+            title={<>От геологической разведки<br />к современному производству</>}
+            text="От первых геологических исследований — к добыче, переработке и поставкам двух видов минерального сырья."
+          />
+          <div className="historyContent">
+            <ol className="timeline" id="history-timeline">
+              {(historyExpanded ? history : historyPreview).map(([year, text]) => <li key={year}><span>{year}</span><p>{text}</p></li>)}
+            </ol>
+            <button className="historyToggle" type="button" aria-expanded={historyExpanded} aria-controls="history-timeline" onClick={toggleHistory}>
+              <span>{historyExpanded ? 'Свернуть историю' : 'Смотреть историю полностью'}<small>{historyExpanded ? 'К краткому обзору' : 'Все 14 этапов'}</small></span><ChevronDown size={20} />
+            </button>
+          </div>
+        </section>
+
+        <section className="companyTodaySection" id="company">
+          <div className="section companyTodayHeading">
+            <SectionHeading
+              eyebrow="Предприятие сегодня"
+              title="Производственный комплекс полного цикла"
+              text="Добыча, дробление, промывка, лабораторный контроль и отгрузка сосредоточены на одной промышленной площадке."
+            />
+          </div>
+          <div className="section companyCapabilityGrid">
+            {capabilities.map(({ title, image, metric, text }) => (
+              <article key={title}>
+                <img src={asset(`content/sep27-${image}.webp`)} alt={title} loading="lazy" />
+                <div><h3>{title}</h3>{metric && <strong>{metric}</strong>}<span>{text}</span></div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="greetingSection" id="greeting">
           <div className="greetingPortrait">
             <img src={asset('content/director-alexander-banaev.webp')} alt="Александр Банаев, директор ООО «БАШМИНЕРАЛРЕСУРС»" />
@@ -291,17 +296,33 @@ function GypsumContent() {
   const applications = [
     {
       id: 'cement', title: 'Для цементного производства', image: 'gypsum',
-      intro: 'Гипсовый и гипсоангидритовый камень для цементных заводов. Подбираем фракцию и соотношение компонентов под технологические требования вашего производства.',
-      benefits: ['Гипсовый камень 1–2 сорта и гипсоангидритовый камень, превышающий требования к 1 сорту по ГОСТ 4013-2019.', 'Собственный лабораторный контроль состава перед отгрузкой.', 'Фракции 0–60 и 60–300 мм, а также подготовка материала под согласованные требования заказчика.'],
-      quality: 'Согласуем с вашим технологом требуемое соотношение SO₃ и CaSO₄·2H₂O. Контролируемая шихтовка гипсового и гипсоангидритового камня позволяет подобрать сырьё под требования цементного производства. Фактический состав подтверждаем лабораторным протоколом партии.',
+      intro: 'Гипсовый и гипсоангидритовый камень для цементных заводов.',
+      benefits: [
+        { icon: ShieldCheck, title: 'Качество по ГОСТ', text: 'Гипсовый камень — 1–2 сорт. Гипсоангидритовый — выше требований к 1 сорту ГОСТ 4013-2019.' },
+        { icon: FlaskConical, title: 'Лабораторный контроль', text: 'Проверяем состав сырья перед отгрузкой.' },
+        { icon: Ruler, title: 'Нужная фракция', text: '0–60 или 60–300 мм. Другие фракции — по согласованию.' },
+      ],
+      qualitySteps: [
+        ['Согласование', 'Требуемое соотношение SO₃ и CaSO₄·2H₂O.'],
+        ['Шихтовка', 'Подбираем пропорции гипсового и гипсоангидритового камня.'],
+        ['Проверка', 'Подтверждаем состав протоколом партии.'],
+      ],
       focus: 'SO₃ — серный ангидрит', secondary: 'CaSO₄·2H₂O — двуводный гипс',
       caption: 'Сырьё для цементных производств',
     },
     {
       id: 'dry-mixes', title: 'Для сухих строительных смесей', image: 'gypsum-mining',
-      intro: 'Природное сырьё высокой белизны для производителей гипсовых вяжущих и сухих строительных смесей. Поможем подобрать камень под требования к качеству готового продукта.',
-      benefits: ['Высокая природная белизна гипсового и гипсоангидритового камня Тюлько-Тюбинского месторождения.', 'Оперативный и выходной лабораторный контроль сырья.', 'Согласование фракции под технологию производства гипсовых вяжущих и сухих смесей.'],
-      quality: 'Подбираем пропорции гипсового и гипсоангидритового камня под требования к сырью для ваших вяжущих и смесей. Контролируем соотношение двуводного гипса и серного ангидрида в собственной лаборатории; состав и фракцию согласуем до поставки.',
+      intro: 'Природное сырьё высокой белизны для гипсовых вяжущих и сухих строительных смесей.',
+      benefits: [
+        { icon: Sparkles, title: 'Природная белизна', text: 'Гипсовый и гипсоангидритовый камень Тюлько-Тюбинского месторождения.' },
+        { icon: FlaskConical, title: 'Контроль сырья', text: 'Оперативные и выходные лабораторные испытания.' },
+        { icon: Ruler, title: 'Фракция под технологию', text: 'Подбираем размер камня под требования вашего производства.' },
+      ],
+      qualitySteps: [
+        ['Согласование', 'Требования к составу и фракции для ваших вяжущих и смесей.'],
+        ['Шихтовка', 'Подбираем соотношение двуводного гипса и серного ангидрида.'],
+        ['Проверка', 'Контролируем состав и фракцию перед поставкой.'],
+      ],
       focus: 'CaSO₄·2H₂O — двуводный гипс', secondary: 'SO₃ — серный ангидрит',
       caption: 'Тюлько-Тюбинское месторождение',
     },
@@ -311,8 +332,8 @@ function GypsumContent() {
       <section className={`gypsumApplication gypsumApplication--${application.id}`} id={application.id} key={application.id}>
         <div className="section">
           <div className="applicationHeader sectionHeading sectionHeading--inverse"><p className="eyebrow applicationLabel"><span className="applicationNumber">0{index + 1}</span>Направление применения</p><h2>{application.title}</h2><p className="sectionLead">{application.intro}</p></div>
-          <div className="applicationBenefits"><h3>Преимущества нашего продукта</h3><ul>{application.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul></div>
-          <div className="applicationQuality"><h3>Подбор качества под ваше производство</h3><p>{application.quality}</p></div>
+          <div className="applicationBenefits"><h3>Преимущества нашего продукта</h3><ul>{application.benefits.map(({ icon: Icon, title, text }) => <li key={title}><div className="applicationBenefitTitle"><Icon size={22} aria-hidden="true" /><h4>{title}</h4></div><p>{text}</p></li>)}</ul></div>
+          <div className="applicationQuality"><h3><SlidersHorizontal size={23} aria-hidden="true" />Подбор качества под ваше производство</h3><p>Согласуем состав и фракцию с вашим технологом.</p><ol className="applicationQualitySteps">{application.qualitySteps.map(([title, text], step) => <li key={title}><span>0{step + 1}</span><div><h4>{title}</h4><p>{text}</p></div></li>)}</ol></div>
           <div className="applicationDetail">
             <figure className="applicationPhoto"><img loading="lazy" src={asset(`content/sep27-${application.image}.webp`)} alt={application.caption} /><figcaption>{application.caption}</figcaption></figure>
             <div className="applicationPassport">

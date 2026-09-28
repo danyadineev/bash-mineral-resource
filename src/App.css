@@ -121,7 +121,7 @@ a {
 .siteHeader nav {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: clamp(20px, 2vw, 32px);
   font-size: 13px;
   font-weight: 620;
@@ -130,7 +130,7 @@ a {
 .siteHeader nav a {
   position: relative;
   display: grid;
-  align-content: center;
+  align-content: start;
   gap: 2px;
   padding: 14px 0;
   line-height: 1.3;
@@ -2228,23 +2228,34 @@ a {
 .applicationLabel { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
 .applicationNumber { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex-shrink: 0; border: 1px solid #ffffff33; border-radius: 6px; color: var(--gold-soft); font-size: 13px; letter-spacing: 0; }
 .applicationBenefits h3, .applicationQuality h3, .applicationPassport h3 { margin: 0 0 22px; font-size: 24px; line-height: 1.25; }
-.applicationBenefits ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin: 0; padding: 0; list-style: none; }
-.applicationBenefits li { position: relative; padding-left: 22px; line-height: 1.6; color: #ffffffce; }
-.applicationBenefits li::before { content: ''; position: absolute; top: 10px; left: 0; width: 6px; height: 6px; background: var(--gold); }
+.applicationBenefits ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.applicationBenefits li { padding: 22px; border: 1px solid #ffffff20; border-radius: 8px; background: #ffffff04; }
+.applicationBenefitTitle { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.applicationBenefitTitle svg { flex-shrink: 0; color: var(--gold-soft); }
+.applicationBenefitTitle h4 { margin: 0; font-size: 18px; font-weight: 650; line-height: 1.3; }
+.applicationBenefits li > p { margin: 0; color: #ffffffce; font-size: 15px; line-height: 1.6; }
 .applicationQuality { margin-block: 32px 40px; padding-block: 28px; border-block: 1px solid #ffffff22; }
+.applicationQuality h3 { display: flex; align-items: flex-start; gap: 12px; }
+.applicationQuality h3 svg { margin-top: 3px; flex-shrink: 0; color: var(--gold-soft); }
 .applicationQuality p { max-width: 980px; margin: 0; line-height: 1.65; color: #ffffffce; }
-.applicationDetail { display: grid; grid-template-columns: 1fr 0.85fr; gap: 48px; align-items: start; }
-.applicationPhoto { margin: 0; }
-.applicationPhoto img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
-.applicationPhoto figcaption { padding: 12px 0; color: #ffffffab; font-size: 12px; }
-.applicationPassport { padding: 32px; color: var(--ink); background: var(--paper); border-top: 3px solid var(--gold); }
+.applicationQualitySteps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin: 24px 0 0; padding: 0; list-style: none; }
+.applicationQualitySteps li { display: flex; align-items: flex-start; gap: 14px; }
+.applicationQualitySteps li > span { color: var(--gold-soft); font-size: 12px; line-height: 24px; font-weight: 650; }
+.applicationQualitySteps h4 { margin: 0 0 7px; font-size: 17px; font-weight: 600; }
+.applicationQualitySteps p { font-size: 14px; }
+.applicationDetail { display: grid; grid-template-columns: 1fr 0.85fr; gap: 48px; align-items: stretch; }
+.applicationPhoto { position: relative; min-height: 360px; margin: 0; border-radius: 8px; overflow: hidden; }
+.applicationPhoto img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.applicationPhoto figcaption { position: absolute; right: 16px; bottom: 16px; left: 16px; padding: 12px 14px; color: #fff; background: rgba(5,18,28,.76); border-radius: 6px; font-size: 12px; }
+.applicationPassport { display: flex; flex-direction: column; padding: 32px; color: var(--ink); background: var(--paper); border-top: 3px solid var(--gold); border-radius: 8px; overflow: hidden; }
 .applicationPassport .eyebrow { color: #966000; font-size: 10px; }
 .applicationPassport dl { margin: 0; }
 .applicationPassport dl > div { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding: 17px 0; border-top: 1px solid var(--line); }
 .applicationPassport dt { font-size: 13px; color: var(--muted); }
 .applicationPassport dd { margin: 0; font-size: 14px; font-weight: 600; }
 .applicationPassport > p:not(.eyebrow) { font-size: 13px; line-height: 1.6; color: var(--muted); }
-.applicationPassport > a { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; font-weight: 650; }
+.applicationPassport > a { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; font-weight: 650; }
+.applicationPassport > p:not(.eyebrow) { margin-bottom: 24px; }
 .gypsumProcess .sectionHeading h2 { font-size: clamp(28px, 3.2vw, 46px); }
 .gypsumProcess .productProcessList { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 44px; }
 .gypsumProcess .productProcessList article { display: flex; flex-direction: column; min-height: 0; }
@@ -2260,8 +2271,10 @@ a {
 @media (max-width: 700px) {
   .companyCapabilityGrid { grid-template-columns: 1fr; }
   .gypsumApplication { padding-block: 56px; }
-  .applicationBenefits ul, .applicationDetail { grid-template-columns: 1fr; }
+  .applicationBenefits ul, .applicationDetail, .applicationQualitySteps { grid-template-columns: 1fr; }
   .applicationBenefits ul { gap: 16px; }
+  .applicationQualitySteps { gap: 20px; }
+  .applicationPhoto { min-height: 0; aspect-ratio: 4 / 3; }
   .applicationLabel { gap: 12px; font-size: 10px; }
   .applicationPassport { padding: 24px 20px; }
   .applicationPassport dl > div { grid-template-columns: 1fr; gap: 7px; }
