@@ -973,12 +973,13 @@ a {
 }
 
 .greetingSection {
+  --greeting-inset: 28px;
   display: grid;
-  grid-template-columns: clamp(260px, 24vw, 360px) minmax(0, 1fr);
+  grid-template-columns: clamp(330px, min(32vw, calc((100svh - var(--header-clearance) - 2 * var(--greeting-inset)) * 2 / 3)), 430px) minmax(0, 1fr);
   gap: clamp(30px, 3vw, 48px);
   min-height: 100svh;
   align-items: center;
-  padding: calc(var(--header-clearance) + 28px) max(32px, calc((100vw - 1380px) / 2)) 28px;
+  padding: calc(var(--header-clearance) + var(--greeting-inset)) max(32px, calc((100vw - 1380px) / 2)) var(--greeting-inset);
   /* The slide includes its own clear area for the fixed header. */
   scroll-margin-top: calc(-1 * var(--header-clearance));
   color: #fff;
@@ -1042,10 +1043,14 @@ a {
 }
 
 @media (min-width: 1101px) and (min-height: 820px) {
-  .greetingSection { padding-top: calc(var(--header-clearance) + 40px); padding-bottom: 40px; }
+  .greetingSection { --greeting-inset: 40px; }
   .greetingMessage { font-size: 16px; line-height: 1.65; }
   .greetingMessage p + p { margin-top: 12px; }
   .greetingSignature { margin-top: 24px; padding-top: 18px; }
+}
+
+@media (min-width: 1101px) and (max-height: 819px) {
+  .greetingSection { --greeting-inset: 6px; }
 }
 
 .contactSection {
