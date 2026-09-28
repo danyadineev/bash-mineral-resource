@@ -189,8 +189,8 @@ function HomePage() {
       <Header />
       <main>
         <section className="hero" id="top">
-          <HeroVideo className="heroMedia" desktop={asset('hero-september.mp4')}
-            mobile={asset('hero-september-mobile.mp4')} poster={asset('hero-september-poster.webp')} />
+          <HeroVideo className="heroMedia" desktop={asset('hero-september28.mp4')}
+            mobile={asset('hero-september28-mobile.mp4')} poster={asset('hero-september28-poster.webp')} />
           <div className="heroShade" />
           <div className="heroBody">
             <p className="heroKicker">Республика Башкортостан · Иглинский район</p>
