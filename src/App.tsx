@@ -225,10 +225,7 @@ function HomePage() {
             {capabilities.map(({ title, image, metric, text }) => (
               <article key={title}>
                 <img src={asset(`content/sep27-${image}.webp`)} alt={title} loading="lazy" />
-                <div className="companyCapabilityCopy">
-                  <h3>{title}</h3>
-                  <div className="companyCapabilityDetails">{metric && <strong>{metric}</strong>}<span>{text}</span></div>
-                </div>
+                <div><h3>{title}</h3>{metric && <strong>{metric}</strong>}<span>{text}</span></div>
               </article>
             ))}
           </div>
@@ -294,45 +291,31 @@ function GypsumContent() {
     {
       id: 'cement', title: 'Для цементного производства', image: 'gypsum',
       intro: 'Гипсовый и гипсоангидритовый камень для цементных заводов. Подбираем фракцию и соотношение компонентов под технологические требования вашего производства.',
-      benefits: ['Гипсовый камень 1–2 сорта и гипсоангидритовый камень, превышающий требования к 1 сорту по ГОСТ 4013-2019.', 'Шихтовка с заданным соотношением SO₃ и CaSO₄·2H₂O; контроль состава в собственной лаборатории.', 'Фракции 0–60 и 60–300 мм, а также подготовка материала под согласованные требования заказчика.'],
+      benefits: ['Гипсовый камень 1–2 сорта и гипсоангидритовый камень, превышающий требования к 1 сорту по ГОСТ 4013-2019.', 'Собственный лабораторный контроль состава перед отгрузкой.', 'Фракции 0–60 и 60–300 мм, а также подготовка материала под согласованные требования заказчика.'],
+      quality: 'Согласуем с вашим технологом требуемое соотношение SO₃ и CaSO₄·2H₂O. Контролируемая шихтовка гипсового и гипсоангидритового камня позволяет подобрать сырьё под требования цементного производства. Фактический состав подтверждаем лабораторным протоколом партии.',
       focus: 'SO₃ — серный ангидрит', secondary: 'CaSO₄·2H₂O — двуводный гипс',
       caption: 'Сырьё для цементных производств',
     },
     {
       id: 'dry-mixes', title: 'Для сухих строительных смесей', image: 'gypsum-mining',
       intro: 'Природное сырьё высокой белизны для производителей гипсовых вяжущих и сухих строительных смесей. Поможем подобрать камень под требования к качеству готового продукта.',
-      benefits: ['Высокая природная белизна гипсового и гипсоангидритового камня Тюлько-Тюбинского месторождения.', 'Контролируемая шихтовка для стабильного соотношения двуводного гипса и серного ангидрида.', 'Оперативный и выходной лабораторный контроль, согласование фракции под технологию заказчика.'],
+      benefits: ['Высокая природная белизна гипсового и гипсоангидритового камня Тюлько-Тюбинского месторождения.', 'Оперативный и выходной лабораторный контроль сырья.', 'Согласование фракции под технологию производства гипсовых вяжущих и сухих смесей.'],
+      quality: 'Подбираем пропорции гипсового и гипсоангидритового камня под требования к сырью для ваших вяжущих и смесей. Контролируем соотношение двуводного гипса и серного ангидрида в собственной лаборатории; состав и фракцию согласуем до поставки.',
       focus: 'CaSO₄·2H₂O — двуводный гипс', secondary: 'SO₃ — серный ангидрит',
       caption: 'Тюлько-Тюбинское месторождение',
     },
   ]
   return <>
-    <section className="section gypsumApplications" id="application">
-      <SectionHeading eyebrow="Применение" title="Сырьё под задачи вашего производства" />
-      <div className="applicationLinks" aria-label="Направления применения">
-        {applications.map(({ id, title }, index) => <button type="button" key={id} onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}><span>0{index + 1}</span>{title}<ArrowRight size={19} /></button>)}
-      </div>
-      <div className="gypsumIntroduction">
-        <div>
-          <p>Гипсовый и гипсоангидритовый камень, добываемый на Тюлько-Тюбинском месторождении в гипсовых толщах мощностью до 39,9 метров, отличается одним из самых высоких степеней белизны среди промышленно разрабатываемых открытым способом месторождений на территории Поволжья, Урала, Западной Сибири и Дальнего Востока.</p>
-          <p>По содержанию CaSO<sub>4</sub>·2H<sub>2</sub>O и SO<sub>3</sub> является самым высококачественным сырьем восточнее Урала.</p>
-        </div>
-        <div>
-          <p>В соответствии с ГОСТ 4013-2019 гипсовый камень соответствует 1-2 сорту, а гипсоангидритовый — уверенно превышает требования к 1 сорту.</p>
-          <p>Технологические возможности нашего предприятия позволяют обеспечивать потребителей как продукцией, точно соответствующей всем параметрам ГОСТ 4013-2019 (фракции 0-60 и 60-300 мм), так и подстраиваться под технические нужды конкретных заказчиков в части отклонения от указанных фракций.</p>
-          <p>Собственная физико-химическая лаборатория с четко выстроенными и отлаженными процессами отбора проб, оснащена всем необходимым комплексом современного оборудования для проведения оперативного и выходного контроля качества материала.</p>
-          <p>Возможности лаборатории позволяют также производить контролируемый на производстве процесс шихтовки гипсового и гипсоангидритового камня в заданных пропорциях для получения уникальной и стабильной сырьевой шихты с заданным соотношением серного ангидрита (SO<sub>3</sub>) и двуводного гипса (CaSO<sub>4</sub>·2H<sub>2</sub>O).</p>
-        </div>
-      </div>
-    </section>
     {applications.map((application, index) => (
       <section className={`gypsumApplication gypsumApplication--${application.id}`} id={application.id} key={application.id}>
         <div className="section">
-          <div className="applicationHeader"><span className="applicationNumber">0{index + 1}</span><SectionHeading eyebrow="Направление применения" title={application.title} text={application.intro} inverse /></div>
+          <div className="applicationHeader sectionHeading sectionHeading--inverse"><p className="eyebrow applicationLabel"><span className="applicationNumber">0{index + 1}</span>Направление применения</p><h2>{application.title}</h2><p className="sectionLead">{application.intro}</p></div>
+          <div className="applicationBenefits"><h3>Преимущества нашего продукта</h3><ul>{application.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul></div>
+          <div className="applicationQuality"><h3>Подбор качества под ваше производство</h3><p>{application.quality}</p></div>
           <div className="applicationDetail">
-            <div className="applicationBenefits"><h3>Преимущества для производства</h3><ul>{application.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul><figure><img loading="lazy" src={asset(`content/sep27-${application.image}.webp`)} alt={application.caption} /><figcaption>{application.caption}</figcaption></figure></div>
+            <figure className="applicationPhoto"><img loading="lazy" src={asset(`content/sep27-${application.image}.webp`)} alt={application.caption} /><figcaption>{application.caption}</figcaption></figure>
             <div className="applicationPassport">
-              <p className="eyebrow">Параметры качества</p><h3>Что подтверждает паспорт партии</h3>
+              <p className="eyebrow">Показатели по паспорту качества</p><h3>Паспорт партии для {application.id === 'cement' ? 'цементного производства' : 'сухих строительных смесей'}</h3>
               <dl><div><dt>{application.focus}</dt><dd>По лабораторному протоколу</dd></div><div><dt>{application.secondary}</dt><dd>По лабораторному протоколу</dd></div><div><dt>Фракция</dt><dd>0–60 / 60–300 мм или по согласованию</dd></div><div><dt>Сорт и соответствие</dt><dd>ГОСТ 4013-2019, по паспорту партии</dd></div><div><dt>Идентификация</dt><dd>Номер и дата отгружаемой партии</dd></div></dl>
               <p>Фактические значения указываются в документах на конкретную партию. Целевой состав и фракцию согласуем с вашим технологом до поставки.</p>
               <a href={`mailto:${company.email}?subject=${encodeURIComponent(application.title + ' — запрос характеристик')}`}>Запросить характеристики <ArrowRight size={18} /></a>
@@ -342,7 +325,7 @@ function GypsumContent() {
       </section>
     ))}
     <section className="section productProcess gypsumProcess" id="process">
-      <SectionHeading eyebrow="Единый производственный цикл" title="От месторождения до вашей площадки" text="Для обоих направлений — собственная добыча, дробление, лабораторный контроль и отгрузка выбранным видом транспорта." />
+      <SectionHeading eyebrow="Производственный процесс" title="Добыча, дробление и отгрузка" text="Для обоих направлений — собственная добыча, дробление, лабораторный контроль и отгрузка выбранным видом транспорта." />
       <div className="productProcessList">{products.gypsum.process.map(([number, title, text, image]) => <article key={number}><img src={asset(image)} alt={title} loading="lazy" /><div><span>{number}</span><h3>{title}</h3><p>{text}</p></div></article>)}</div>
     </section>
     <section className="sampleSection"><div className="section sampleInner"><div><p className="eyebrow">Лабораторные испытания</p><h2>Запросите пробу камня</h2><p>Подготовим образцы гипсового и гипсоангидритового камня для проверки в лаборатории вашего предприятия. Сообщите назначение сырья, нужную фракцию и показатели качества.</p></div><div className="sampleActions"><a className="button button--gold" href={`mailto:${company.email}?subject=${encodeURIComponent('Запрос пробы гипсового камня')}`}>Запросить образцы <ArrowRight size={18} /></a><a className="button button--glass" href="tel:+79033100125">Позвонить</a></div></div></section>

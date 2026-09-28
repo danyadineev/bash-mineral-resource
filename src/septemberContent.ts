@@ -25,12 +25,12 @@ export const historyPreview = [
 ] as const
 
 export const capabilities = [
-  { title: 'Геология и маркшейдерия', image: 'survey', metric: '72 км²', text: 'Отвод · лицензия до 2045' },
-  { title: 'Карьер', image: 'quarry', metric: '> 30 ед.', text: 'Карьерная и вспомогательная техника' },
+  { title: 'Геологоразведка и маркшейдерия', image: 'survey', metric: '72 км²', text: 'Земельный отвод · лицензия до 2045' },
+  { title: 'Разработка карьера', image: 'quarry', metric: '> 30 ед.', text: 'Тяжёлая карьерная и вспомогательная техника' },
   { title: 'ДСК 200', image: 'dsk', metric: '> 120 т/ч', text: 'Дробление и сортировка гипса' },
-  { title: 'ДСУ и мойка', image: 'washing', metric: '> 100 / > 40 т/ч', text: 'Дробление / мойка известняка' },
-  { title: 'Лаборатория', image: 'laboratory', metric: '', text: 'Свой контроль качества' },
-  { title: 'Ремонтная служба', image: 'maintenance', metric: '', text: 'Обслуживание техники' },
-  { title: 'ЖД-участок', image: 'rail', metric: '> 3000 т/сутки', text: 'Отгрузка: авто + ЖД' },
-  { title: 'Инфраструктура', image: 'infrastructure', metric: '', text: 'Обеспечение производства' },
+  { title: 'ДСУ и моечный комплекс', image: 'washing', metric: '> 100 / > 40 т/ч', text: 'Дробление / промывка марганцовистого известняка' },
+  { title: 'Лаборатория', image: 'laboratory', metric: '', text: 'Собственный контроль качества' },
+  { title: 'Автослесарная служба', image: 'maintenance', metric: '', text: 'Ремонт и обслуживание техники' },
+  { title: 'Железнодорожный участок', image: 'rail', metric: '> 3000 т/сутки', text: 'Отгрузка: авто + ЖД' },
+  { title: 'Инфраструктура', image: 'infrastructure', metric: '', text: 'Объекты обеспечения производства' },
 ] as const

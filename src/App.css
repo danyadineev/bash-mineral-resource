@@ -554,17 +554,15 @@ a {
 .companyCapabilityGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  gap: 16px;
 }
 
 .companyCapabilityGrid article {
   position: relative;
-  container-type: inline-size;
-  height: 350px;
-  min-width: 0;
+  min-height: 350px;
   overflow: hidden;
+  color: #fff;
   background: var(--navy);
-  border-radius: 10px;
 }
 
 .companyCapabilityGrid img {
@@ -573,40 +571,28 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 600ms ease;
 }
 
 .companyCapabilityGrid article::after {
   position: absolute;
   inset: 0;
   content: '';
-  background: linear-gradient(0deg, rgba(5, 18, 28, .95) 0%, rgba(5, 18, 28, .72) 30%, rgba(5, 18, 28, .08) 68%, transparent 100%);
+  background: linear-gradient(0deg, rgba(5, 18, 28, 0.96), rgba(5, 18, 28, 0.06) 72%);
 }
 
-.companyCapabilityCopy {
+.companyCapabilityGrid article:hover img {
+  transform: scale(1.025);
+}
+
+.companyCapabilityGrid article > div {
   position: absolute;
   z-index: 1;
-  right: 22px;
-  bottom: 24px;
-  left: 22px;
+  right: 20px;
+  bottom: 22px;
+  left: 20px;
   display: grid;
-  grid-template-rows: 46px 1fr;
-  gap: 10px;
-  min-height: 116px;
-}
-
-.companyCapabilityGrid h3 {
-  margin: 0;
-  color: #fff;
-  font-size: clamp(19px, 1.45vw, 22px);
-  font-weight: 650;
-  letter-spacing: -.035em;
-  line-height: 1.2;
-}
-
-.companyCapabilityDetails {
-  display: grid;
-  align-content: start;
-  gap: 6px;
+  gap: 8px;
 }
 
 .companyCapabilityGrid strong {
@@ -618,14 +604,19 @@ a {
 
 .companyCapabilityGrid span {
   max-width: 410px;
-  color: #fff;
-  font-size: 13px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
   line-height: 1.45;
 }
 
-@container (min-width: 290px) {
-  .companyCapabilityCopy { grid-template-rows: 28px 1fr; min-height: 98px; }
+.companyCapabilityGrid h3 {
+  margin: 0 0 6px;
+  color: #fff;
+  font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 600;
+  line-height: 1.18;
 }
+.companyCapabilityGrid span { color: #fff; }
 
 .productsSection {
   padding-block: 110px;
@@ -1998,8 +1989,6 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .companyCapabilityGrid article { height: 340px; }
-  .companyCapabilityGrid h3 { font-size: 22px; }
 
   .gypsumOriginGrid {
     grid-template-columns: 1fr;
@@ -2210,42 +2199,23 @@ a {
 }
 
 .timeline > li > span { overflow-wrap: anywhere; }
-.gypsumApplications { padding-block: 96px; }
-.applicationLinks { display: flex; gap: 16px; margin-top: 34px; }
-.applicationLinks button {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-  padding: 22px;
-  text-align: left;
-  color: var(--navy);
-  background: transparent;
-  border: 1px solid var(--line);
-  border-bottom: 3px solid var(--gold);
-  font: inherit;
-  font-weight: 650;
-  cursor: pointer;
-}
-.applicationLinks button:hover { background: #fff; }
-.applicationLinks button span { color: #996000; font-size: 12px; }
-.applicationLinks button svg { margin-left: auto; flex-shrink: 0; }
-.gypsumIntroduction { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
-.gypsumIntroduction p { margin: 0 0 20px; line-height: 1.65; color: var(--muted); }
-.gypsumIntroduction > div:first-child p { color: var(--ink); font-size: 19px; }
-.gypsumApplication { padding-block: 90px; color: #fff; background: var(--navy); scroll-margin-top: 110px; }
+.gypsumApplication { padding-block: 80px; color: #fff; background: var(--navy); scroll-margin-top: 110px; }
 .gypsumApplication--dry-mixes { background: var(--navy-2); border-top: 1px solid #ffffff22; }
-.applicationHeader { display: grid; grid-template-columns: 70px 1fr; gap: 20px; margin-bottom: 48px; }
-.applicationNumber { color: var(--gold-soft); font-size: 46px; letter-spacing: -.05em; line-height: 1; }
-.applicationHeader .sectionLead { max-width: 850px; }
-.applicationDetail { display: grid; grid-template-columns: 1fr 0.85fr; gap: 64px; align-items: start; }
-.applicationDetail h3 { margin: 0 0 24px; font-size: 24px; line-height: 1.25; }
-.applicationBenefits ul { margin: 0 0 32px; padding: 0; list-style: none; }
-.applicationBenefits li { position: relative; padding: 0 0 18px 24px; line-height: 1.6; color: #ffffffce; }
+.applicationHeader { margin-bottom: 40px; }
+.applicationHeader h2 { max-width: 1080px; font-size: clamp(28px, 3.2vw, 46px); line-height: 1.15; }
+.applicationHeader .sectionLead { max-width: 850px; margin-top: 24px; }
+.applicationLabel { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.applicationNumber { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex-shrink: 0; border: 1px solid #ffffff33; border-radius: 6px; color: var(--gold-soft); font-size: 13px; letter-spacing: 0; }
+.applicationBenefits h3, .applicationQuality h3, .applicationPassport h3 { margin: 0 0 22px; font-size: 24px; line-height: 1.25; }
+.applicationBenefits ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin: 0; padding: 0; list-style: none; }
+.applicationBenefits li { position: relative; padding-left: 22px; line-height: 1.6; color: #ffffffce; }
 .applicationBenefits li::before { content: ''; position: absolute; top: 10px; left: 0; width: 6px; height: 6px; background: var(--gold); }
-.applicationBenefits figure { position: relative; margin: 0; }
-.applicationBenefits img { display: block; width: 100%; height: 250px; object-fit: cover; }
-.applicationBenefits figcaption { padding: 12px 0; color: #ffffffab; font-size: 12px; }
+.applicationQuality { margin-block: 32px 40px; padding-block: 28px; border-block: 1px solid #ffffff22; }
+.applicationQuality p { max-width: 980px; margin: 0; line-height: 1.65; color: #ffffffce; }
+.applicationDetail { display: grid; grid-template-columns: 1fr 0.85fr; gap: 48px; align-items: start; }
+.applicationPhoto { margin: 0; }
+.applicationPhoto img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
+.applicationPhoto figcaption { padding: 12px 0; color: #ffffffab; font-size: 12px; }
 .applicationPassport { padding: 32px; color: var(--ink); background: var(--paper); border-top: 3px solid var(--gold); }
 .applicationPassport .eyebrow { color: #966000; font-size: 10px; }
 .applicationPassport dl { margin: 0; }
@@ -2254,6 +2224,7 @@ a {
 .applicationPassport dd { margin: 0; font-size: 14px; font-weight: 600; }
 .applicationPassport > p:not(.eyebrow) { font-size: 13px; line-height: 1.6; color: var(--muted); }
 .applicationPassport > a { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; font-weight: 650; }
+.gypsumProcess .sectionHeading h2 { font-size: clamp(28px, 3.2vw, 46px); }
 .gypsumProcess .productProcessList { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 44px; }
 .gypsumProcess .productProcessList article { display: flex; flex-direction: column; min-height: 0; }
 .gypsumProcess .productProcessList img { height: 210px; }
@@ -2263,16 +2234,14 @@ a {
 @media (max-width: 1100px) {
   .companyCapabilityGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gypsumProcess .productProcessList { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .applicationDetail, .gypsumIntroduction { gap: 32px; }
+  .applicationDetail { gap: 32px; }
 }
 @media (max-width: 700px) {
   .companyCapabilityGrid { grid-template-columns: 1fr; }
-  .applicationLinks { flex-direction: column; }
-  .gypsumApplications, .gypsumApplication { padding-block: 64px; }
-  .gypsumIntroduction, .applicationDetail { grid-template-columns: 1fr; }
-  .gypsumIntroduction > div:first-child p { font-size: 17px; }
-  .applicationHeader { grid-template-columns: 36px 1fr; gap: 12px; }
-  .applicationNumber { font-size: 28px; }
+  .gypsumApplication { padding-block: 56px; }
+  .applicationBenefits ul, .applicationDetail { grid-template-columns: 1fr; }
+  .applicationBenefits ul { gap: 16px; }
+  .applicationLabel { gap: 12px; font-size: 10px; }
   .applicationPassport { padding: 24px 20px; }
   .applicationPassport dl > div { grid-template-columns: 1fr; gap: 7px; }
   .gypsumProcess .productProcessList { grid-template-columns: 1fr; }
