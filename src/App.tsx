@@ -15,7 +15,7 @@ import {
   X,
 } from 'lucide-react'
 import './App.css'
-import { history, historyPreview } from './septemberContent'
+import { directorGreeting, history, historyPreview } from './septemberContent'
 import { CompanyCapabilityGallery } from './components/CompanyCapabilityGallery'
 import { VisualGallery } from './components/VisualGallery'
 import { productGalleries } from './productGalleries'
@@ -28,9 +28,8 @@ const company = {
   phone: '+7 (903) 310-01-25',
   office: '+7 (347) 298-01-25',
   email: 'dispetcherbmr@yandex.ru',
-  officeAddress: '450081, Республика Башкортостан, город Уфа, ул. Уфимское шоссе, д. 43',
   productionAddress:
-    'Республика Башкортостан, Иглинский район, с.п. Красновосходский сельсовет, территория БАШМИНЕРАЛРЕСУРС, здание 5',
+    'Республика Башкортостан, Иглинский район, вблизи д. Орловка и д. Тюлько-Тамак',
   map: 'https://yandex.ru/maps/org/bashmineralresurs/40841570634/?ll=57.116105%2C55.006176&z=12.56',
 }
 
@@ -156,10 +155,10 @@ function Header() {
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
       <nav id="main-navigation" className={open ? 'isOpen' : ''} aria-label="Основная навигация">
-        <a href="#history" onClick={close}><span>О компании</span></a>
+        <a href="#history" onClick={close}><span>История компании</span></a>
         <a className="headerProductLink" href="#/gypsum" onClick={close}><span>Камень гипсовый и</span><span>гипсоангидритовый</span></a>
         <a className="headerProductLink" href="#/manganese" onClick={close}><span>Марганцовистый</span><span>флюсующий известняк</span></a>
-        <a href="#contacts" onClick={close}>Контакты</a>
+        <a href="#contacts" onClick={close}>Контакты компании</a>
       </nav>
       <div className="headerContacts">
         <a href="tel:+79033100125"><Phone size={17} />{company.phone}</a>
@@ -276,8 +275,10 @@ function HomePage() {
           <div className="greetingCopy">
             <p className="eyebrow">Обращение руководителя</p>
             <h2>Приветственное слово</h2>
-            <p className="greetingPlaceholder">Материал готовится к публикации</p>
-            <p>Здесь будет короткое обращение о предприятии, продукции и принципах работы с промышленными партнёрами. После согласования текст можно дополнить видеозаписью.</p>
+            <div className="greetingMessage">
+              <p className="greetingSalutation">Уважаемые клиенты, партнеры и коллеги!</p>
+              {directorGreeting.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
             <div className="greetingSignature"><strong>Александр Банаев</strong><span>директор ООО «БАШМИНЕРАЛРЕСУРС»</span></div>
           </div>
         </section>
@@ -483,10 +484,14 @@ function ContactSection({ compact = false }: { compact?: boolean }) {
       <div className="section contactInner">
         <SectionHeading eyebrow="Контакты" title={<>Обсудить продукт<br />и условия поставки</>} text="Свяжитесь напрямую: уточним задачу, состав документов, необходимую фракцию и схему отгрузки." inverse />
         <div className="contactList">
-          <a href="tel:+79033100125"><span><Phone size={20} /></span><small>Мобильный телефон</small><strong>{company.phone}</strong></a>
-          <a href="tel:+73472980125"><span><Phone size={20} /></span><small>Офисный телефон</small><strong>{company.office}</strong></a>
+          <div className="contactPhones">
+            <span><Phone size={20} /></span><small>Телефоны компании</small>
+            <div className="contactPhoneNumbers">
+              <a href="tel:+79033100125"><strong>{company.phone}</strong><span>Мобильный</span></a>
+              <a href="tel:+73472980125"><strong>{company.office}</strong><span>Офисный</span></a>
+            </div>
+          </div>
           <a href={`mailto:${company.email}`}><span><Mail size={20} /></span><small>Электронная почта</small><strong>{company.email}</strong></a>
-          <a href="https://yandex.ru/maps/?text=Уфа%2C%20Уфимское%20шоссе%2C%2043" target="_blank" rel="noreferrer"><span><MapPin size={20} /></span><small>Офис</small><strong>{company.officeAddress}</strong></a>
           <a href={company.map} target="_blank" rel="noreferrer"><span><MapPin size={20} /></span><small>Производственная площадка</small><strong>{company.productionAddress}</strong></a>
         </div>
       </div>

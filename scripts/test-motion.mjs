@@ -25,7 +25,7 @@ class Observer {
 }
 globalThis.IntersectionObserver = Observer
 
-function fixture({ reduced = false, available = true, loading = true, header = new MotionElement(true), heroChildren = [] } = {}) {
+function fixture({ reduced = false, available = true, header = new MotionElement(true), heroChildren = [] } = {}) {
   const events = new Map()
   const rootEvents = new Map()
   const mediaEvents = new Map()
@@ -34,7 +34,6 @@ function fixture({ reduced = false, available = true, loading = true, header = n
   const nodes = [header, heading, ...cards, ...heroChildren]
   const media = { matches: reduced, addEventListener: (key, cb) => mediaEvents.set(key, cb), removeEventListener: (key) => mediaEvents.delete(key) }
   const root = {
-    dataset: { bootState: loading ? 'loading' : 'ready' },
     querySelectorAll: (selector) => selector === '.siteHeader' ? [header] : selector === '.sectionHeading' ? [heading] : selector.startsWith('.capabilityCard,') ? cards : selector === '.heroScroll, .productHeroAccent' ? heroChildren : [],
     addEventListener: (key, cb) => rootEvents.set(key, cb),
     removeEventListener: (key) => rootEvents.delete(key),
@@ -51,9 +50,8 @@ function fixture({ reduced = false, available = true, loading = true, header = n
 const normal = fixture()
 const cleanup = installPageMotion(normal.root)
 const observer = observers.at(-1)
-assert.equal(observer.targets.size, 0, 'Do not animate behind the loading screen')
+assert.equal(observer.targets.size, 6, 'Entrances start immediately without a loading screen')
 assert.deepEqual(normal.cards.map((card) => card.dataset.motion), ['left', 'top', 'bottom', 'right'])
-normal.events.get('site:revealed')()
 assert.equal(observer.targets.size, 6)
 observer.enter(normal.header)
 assert.equal(normal.header.dataset.motionState, 'visible')
@@ -70,16 +68,16 @@ assert.equal(normal.events.size, 0)
 assert.equal(normal.rootEvents.size, 0)
 assert.ok(normal.nodes.every((node) => !node.dataset.motion && !node.dataset.motionState && node.properties.size === 0))
 
-const route = fixture({ header: normal.header, loading: false })
+const route = fixture({ header: normal.header })
 const cleanupRoute = installPageMotion(route.root)
 assert.equal(route.header.dataset.motionState, 'visible', 'Preserve an already visible fixed header')
-assert.equal(observers.at(-1).targets.size, 5, 'SPA routes start without replaying the loader')
+assert.equal(observers.at(-1).targets.size, 5, 'SPA routes start with the existing header')
 cleanupRoute()
 
 const hero = new MotionElement()
 const clippedControl = new MotionElement()
 clippedControl.hero = hero
-const clipped = fixture({ loading: false, heroChildren: [clippedControl] })
+const clipped = fixture({ heroChildren: [clippedControl] })
 const cleanupClipped = installPageMotion(clipped.root)
 const clippedObserver = observers.at(-1)
 assert.equal(clippedObserver.targets.has(hero), true, 'Observe the stable hero, not a translated clipped control')
@@ -95,4 +93,4 @@ for (const options of [{ reduced: true }, { available: false }]) {
   assert.equal(observers.length, 0)
   assert.ok(fallback.nodes.every((node) => !node.dataset.motionState), 'Fallback content must never be hidden')
 }
-console.log('Scroll reveal, loading coordination, focus, route cleanup and reduced-motion checks passed.')
+console.log('Immediate scroll reveal, focus, route cleanup and reduced-motion checks passed.')

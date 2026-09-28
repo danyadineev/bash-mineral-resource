@@ -56,10 +56,7 @@ export function installPageMotion(root: HTMLElement) {
     }
   }, { threshold: 0, rootMargin: '0px 0px -24px 0px' })
 
-  let started = false
   const start = () => {
-    if (started) return
-    started = true
     for (const element of targets) {
       // Hero elements can begin just outside their overflow-hidden background.
       // Observe the stable section, so translated controls cannot stay hidden.
@@ -77,18 +74,15 @@ export function installPageMotion(root: HTMLElement) {
     if (element && targets.has(element)) reveal(element, true)
   }
 
-  // A jump to an anchor keeps the same page/observer. New product routes install
-  // fresh targets, but never repeat the startup overlay or fetch new video files.
+  // Anchor jumps keep the observer; product routes install fresh targets.
   root.addEventListener('focusin', onFocus)
   reduced.addEventListener('change', onPreference)
-  window.addEventListener('site:revealed', start)
-  if (root.dataset.bootState !== 'loading') start()
+  start()
 
   return () => {
     observer.disconnect()
     root.removeEventListener('focusin', onFocus)
     reduced.removeEventListener('change', onPreference)
-    window.removeEventListener('site:revealed', start)
     for (const element of targets) {
       delete element.dataset.motion
       delete element.dataset.motionState

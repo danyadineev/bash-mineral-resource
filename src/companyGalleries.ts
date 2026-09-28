@@ -1,12 +1,13 @@
-// Photos follow the source folder and natural filename order. washing/1.jpg is intentionally excluded (duplicate requested by the owner).
+// Owner-selected opening photos (28.09); remaining photos retain source folder order.
+// washing/1.jpg is intentionally excluded as the duplicate requested by the owner.
 export const companyGalleries = {
   "survey": [
     "content/company-galleries/survey-01.webp",
     "content/company-galleries/survey-02.webp"
   ],
   "quarry": [
-    "content/company-galleries/quarry-02.webp",
     "content/company-galleries/quarry-01.webp",
+    "content/company-galleries/quarry-02.webp",
     "content/company-galleries/quarry-03.webp",
     "content/company-galleries/quarry-04.webp",
     "content/company-galleries/quarry-05.webp",
@@ -47,8 +48,8 @@ export const companyGalleries = {
     "content/company-galleries/laboratory-08.webp"
   ],
   "maintenance": [
-    "content/company-galleries/maintenance-02.webp",
     "content/company-galleries/maintenance-03.webp",
+    "content/company-galleries/maintenance-02.webp",
     "content/company-galleries/maintenance-04.webp",
     "content/company-galleries/maintenance-05.webp",
     "content/company-galleries/maintenance-01.webp"
@@ -61,8 +62,8 @@ export const companyGalleries = {
     "content/company-galleries/rail-05.webp"
   ],
   "infrastructure": [
+    "content/company-galleries/infrastructure-01.webp",
     "content/company-galleries/infrastructure-02.webp",
-    "content/company-galleries/infrastructure-03.webp",
-    "content/company-galleries/infrastructure-01.webp"
+    "content/company-galleries/infrastructure-03.webp"
   ]
 } as const

@@ -21,11 +21,9 @@ export function HeroVideo({ desktop, mobile, poster, className }: HeroVideoProps
     let firstFrame = false
     let frameRequest = 0
     let waitingTimer: ReturnType<typeof setTimeout> | undefined
-    let announced = false
     let playRequested = false
     const check = () => {
-      // Build the lead before playing. Otherwise playback behind the loader can
-      // consume bytes as quickly as they arrive, defeating initial prebuffering.
+      // Show the poster while buffering, without blocking the rest of the site.
       if (!playRequested) {
         if (video.readyState < 3 || !hasPlaybackBuffer(video.buffered, video.currentTime, video.duration)) return
         playRequested = true
@@ -36,10 +34,6 @@ export function HeroVideo({ desktop, mobile, poster, className }: HeroVideoProps
       if (!firstFrame || video.paused || video.readyState < 3) return
       clearTimeout(waitingTimer)
       setVisible(true)
-      if (!announced) {
-        announced = true
-        window.dispatchEvent(new Event('hero:ready'))
-      }
     }
     const onFrame = () => { firstFrame = true; check() }
     const onPlaying = () => {
