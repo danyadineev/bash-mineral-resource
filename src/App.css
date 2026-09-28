@@ -554,45 +554,49 @@ a {
 .companyCapabilityGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 40px 24px;
 }
 
 .companyCapabilityGrid article {
-  position: relative;
-  min-height: 350px;
+  display: grid;
+  grid-template-rows: 58px 1fr;
+  gap: 18px;
+  min-width: 0;
+}
+
+.companyCapabilityMedia {
+  display: grid;
+  grid-template-rows: 225px minmax(110px, auto);
   overflow: hidden;
-  color: #fff;
   background: var(--navy);
+  border-radius: 10px;
 }
 
 .companyCapabilityGrid img {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
+  height: 225px;
   object-fit: cover;
-  transition: transform 600ms ease;
 }
 
-.companyCapabilityGrid article::after {
-  position: absolute;
-  inset: 0;
-  content: '';
-  background: linear-gradient(0deg, rgba(5, 18, 28, 0.96), rgba(5, 18, 28, 0.06) 72%);
+.companyCapabilityGrid h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(20px, 1.65vw, 25px);
+  font-weight: 650;
+  letter-spacing: -.035em;
+  line-height: 1.16;
 }
 
-.companyCapabilityGrid article:hover img {
-  transform: scale(1.025);
-}
-
-.companyCapabilityGrid article > div {
-  position: absolute;
-  z-index: 1;
-  right: 20px;
-  bottom: 22px;
-  left: 20px;
+.companyCapabilityDetails {
   display: grid;
+  align-content: center;
   gap: 8px;
+  padding: 18px 20px;
+}
+
+.companyCapabilityDetails:not(:has(strong)) span {
+  font-size: 16px;
+  font-weight: 550;
 }
 
 .companyCapabilityGrid strong {
@@ -604,7 +608,7 @@ a {
 
 .companyCapabilityGrid span {
   max-width: 410px;
-  color: rgba(255, 255, 255, 0.82);
+  color: #fff;
   font-size: 14px;
   line-height: 1.45;
 }
@@ -1642,10 +1646,6 @@ a {
     grid-template-columns: 0.95fr 0.72fr 0.38fr;
   }
 
-  .companyCapabilityGrid article {
-    min-height: 340px;
-  }
-
   .processCard {
     min-height: 400px;
   }
@@ -1984,9 +1984,10 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .companyCapabilityGrid article {
-    min-height: 340px;
-  }
+  .companyCapabilityGrid article { grid-template-rows: auto 1fr; gap: 14px; }
+  .companyCapabilityGrid h3 { font-size: 24px; }
+  .companyCapabilityMedia { grid-template-rows: 250px minmax(94px, auto); }
+  .companyCapabilityGrid img { height: 250px; }
 
   .gypsumOriginGrid {
     grid-template-columns: 1fr;
@@ -2196,15 +2197,6 @@ a {
   }
 }
 
-.companyCapabilityGrid h3 {
-  margin: 0 0 6px;
-  color: #fff;
-  font-size: clamp(18px, 1.4vw, 22px);
-  font-weight: 600;
-  line-height: 1.18;
-}
-
-.companyCapabilityGrid span { color: #fff; }
 .timeline > li > span { overflow-wrap: anywhere; }
 .gypsumApplications { padding-block: 96px; }
 .applicationLinks { display: flex; gap: 16px; margin-top: 34px; }
