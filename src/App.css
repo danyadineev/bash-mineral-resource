@@ -72,8 +72,8 @@ a {
   top: 18px;
   left: 50%;
   display: grid;
-  grid-template-columns: 140px minmax(0, 1fr) auto;
-  gap: 28px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 24px;
   align-items: center;
   width: min(1440px, calc(100vw - 64px));
   min-height: 82px;
@@ -94,22 +94,29 @@ a {
 }
 
 .logo {
-  justify-content: center;
-  padding: 4px 7px;
-  background: #fff;
-  border-radius: 8px;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 0;
+  background: transparent;
 }
 
 .logo img {
-  width: 126px;
-  height: 62px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .logo--compact img {
-  width: 112px;
-  height: 56px;
+  width: 42px;
+  height: 42px;
 }
+
+.logo .logoWordmark { display: inline-flex; color: #fff; font-size: 19px; font-weight: 750; letter-spacing: -.045em; line-height: 1.15; white-space: nowrap; }
+.logo .logoWordmark > span { color: inherit; font: inherit; letter-spacing: inherit; line-height: inherit; }
+.logo .logoWordmark > .logoAccent { color: var(--gold-soft); }
+.logo--compact .logoWordmark { font-size: 14px; }
+.passportTop .logoWordmark { color: var(--ink); }
 
 .siteHeader nav {
   display: flex;
@@ -1432,8 +1439,8 @@ a {
 }
 
 .passportTop .logo img {
-  width: 112px;
-  height: 56px;
+  width: 42px;
+  height: 42px;
 }
 
 .passportTop > span {
@@ -1620,13 +1627,13 @@ a {
   }
 
   .siteHeader {
-    grid-template-columns: 126px minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     gap: 20px;
   }
 
   .logo img {
-    width: 112px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
   }
 
   .siteHeader nav {
@@ -1654,6 +1661,15 @@ a {
   .processCard {
     min-height: 400px;
   }
+}
+
+@media (min-width: 1101px) and (max-width: 1280px) {
+  .siteHeader { grid-template-columns: 1fr auto auto; gap: 18px; }
+  .menuButton { display: grid; grid-column: 3; grid-row: 1; }
+  .headerContacts { grid-column: 2; grid-row: 1; padding-left: 0; border-left: 0; }
+  .siteHeader nav { position: absolute; top: calc(100% + 8px); right: 0; display: none; justify-content: stretch; width: 280px; padding: 18px; background: var(--navy); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; box-shadow: var(--shadow); }
+  .siteHeader nav.isOpen { display: grid; }
+  .siteHeader nav a { padding: 11px 4px; }
 }
 
 @media (max-width: 1100px) {
@@ -1827,13 +1843,16 @@ a {
   }
 
   .logo {
-    padding: 3px 5px;
+    padding: 0;
+    gap: 9px;
   }
 
   .logo img {
-    width: 92px;
-    height: 46px;
+    width: 40px;
+    height: 40px;
   }
+
+  .logo .logoWordmark { display: flex; flex-direction: column; font-size: clamp(13px, 3.8vw, 17px); line-height: 1.05; letter-spacing: -.02em; }
 
   .headerContacts a:last-child,
   .headerContacts a svg {
@@ -1846,7 +1865,8 @@ a {
     font-size: 11px;
   }
 
-  .headerContacts a:first-child { font-size: 12px; }
+  .headerContacts a:first-child { width: 32px; min-height: 36px; padding: 0; justify-content: center; font-size: 0; }
+  .headerContacts a:first-child svg { display: block; width: 19px; height: 19px; }
 
   .menuButton {
     width: 40px;
@@ -2194,6 +2214,7 @@ a {
 
   .passportTop {
     align-items: flex-start;
+    flex-wrap: wrap;
     gap: 20px;
   }
 }

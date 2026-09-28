@@ -126,7 +126,8 @@ type Product = (typeof products)[keyof typeof products]
 function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <span className={`logo${compact ? ' logo--compact' : ''}`}>
-      <img src={asset('brand/bashmineralresurs-original.png')} alt="БАШМИНЕРАЛРЕСУРС" />
+      <img src={asset('brand/bashmineralresurs-mark-transparent.png')} alt="" aria-hidden="true" />
+      <span className="logoWordmark"><span>БАШМИНЕРАЛ</span><span className="logoAccent">РЕСУРС</span></span>
     </span>
   )
 }
