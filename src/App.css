@@ -1401,7 +1401,7 @@ a {
   object-fit: cover;
 }
 
-.productProcessList article > div {
+.productProcessList .productProcessCopy {
   align-self: center;
   padding: 30px;
 }
@@ -2260,7 +2260,7 @@ a {
 .gypsumProcess .productProcessList { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 44px; }
 .gypsumProcess .productProcessList article { display: flex; flex-direction: column; min-height: 0; }
 .gypsumProcess .productProcessList img { height: 210px; }
-.gypsumProcess .productProcessList article > div { padding: 24px; align-self: stretch; }
+.gypsumProcess .productProcessList .productProcessCopy { padding: 24px; align-self: stretch; }
 .gypsumProcess .productProcessList h3 { font-size: 22px; }
 
 @media (max-width: 1100px) {

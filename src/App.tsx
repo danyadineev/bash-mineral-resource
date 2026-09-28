@@ -17,6 +17,8 @@ import {
 import './App.css'
 import { history, historyPreview } from './septemberContent'
 import { CompanyCapabilityGallery } from './components/CompanyCapabilityGallery'
+import { VisualGallery } from './components/VisualGallery'
+import { productGalleries } from './productGalleries'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
@@ -128,6 +130,7 @@ const products = {
 } as const
 
 type Product = (typeof products)[keyof typeof products]
+const processGalleryKeys = ['mining', 'crushing', 'quality', 'shipping'] as const
 
 function Logo({ compact = false }: { compact?: boolean }) {
   return (
@@ -329,7 +332,7 @@ function GypsumContent() {
           <div className="applicationBenefits"><h3>Преимущества нашего продукта</h3><ul>{application.benefits.map(({ icon: Icon, title, text }) => <li key={title}><div className="applicationBenefitTitle"><Icon size={22} aria-hidden="true" /><h4>{title}</h4></div><p>{text}</p></li>)}</ul></div>
           <div className="applicationQuality"><h3><SlidersHorizontal size={23} aria-hidden="true" />Подбор качества под ваше производство</h3><p>Согласуем состав и фракцию с вашим технологом.</p><ol className="applicationQualitySteps">{application.qualitySteps.map(([title, text], step) => <li key={title}><span>0{step + 1}</span><div><h4>{title}</h4><p>{text}</p></div></li>)}</ol></div>
           <div className="applicationDetail">
-            <figure className="applicationPhoto"><img loading="lazy" src={asset(`content/sep27-${application.image}.webp`)} alt={application.caption} /><figcaption>{application.caption}</figcaption></figure>
+            <figure className="applicationPhoto"><VisualGallery className="applicationVisual" title={application.caption} photos={application.id === 'dry-mixes' ? productGalleries.gypsum.mining : ['content/sep27-gypsum.webp']} /><figcaption>{application.caption}</figcaption></figure>
             <div className="applicationPassport">
               <p className="eyebrow">Показатели по паспорту качества</p><h3>Паспорт партии для {application.id === 'cement' ? 'цементного производства' : 'сухих строительных смесей'}</h3>
               <dl><div><dt>{application.focus}</dt><dd>По лабораторному протоколу</dd></div><div><dt>{application.secondary}</dt><dd>По лабораторному протоколу</dd></div><div><dt>Фракция</dt><dd>0–60 / 60–300 мм или по согласованию</dd></div><div><dt>Сорт и соответствие</dt><dd>ГОСТ 4013-2019, по паспорту партии</dd></div><div><dt>Идентификация</dt><dd>Номер и дата отгружаемой партии</dd></div></dl>
@@ -342,7 +345,7 @@ function GypsumContent() {
     ))}
     <section className="section productProcess gypsumProcess" id="process">
       <SectionHeading eyebrow="Производственный процесс" title="Добыча, дробление и отгрузка" text="Для обоих направлений — собственная добыча, дробление, лабораторный контроль и отгрузка выбранным видом транспорта." />
-      <div className="productProcessList">{products.gypsum.process.map(([number, title, text, image]) => <article key={number}><img src={asset(image)} alt={title} loading="lazy" /><div><span>{number}</span><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+      <div className="productProcessList">{products.gypsum.process.map(([number, title, text], index) => <article key={number}><VisualGallery className="productProcessVisual" title={`Гипс · ${title}`} photos={productGalleries.gypsum[processGalleryKeys[index]]} /><div className="productProcessCopy"><span>{number}</span><h3>{title}</h3><p>{text}</p></div></article>)}</div>
     </section>
     <section className="sampleSection"><div className="section sampleInner"><div><p className="eyebrow">Лабораторные испытания</p><h2>Запросите пробу камня</h2><p>Подготовим образцы гипсового и гипсоангидритового камня для проверки в лаборатории вашего предприятия. Сообщите назначение сырья, нужную фракцию и показатели качества.</p></div><div className="sampleActions"><a className="button button--gold" href={`mailto:${company.email}?subject=${encodeURIComponent('Запрос пробы гипсового камня')}`}>Запросить образцы <ArrowRight size={18} /></a><a className="button button--glass" href="tel:+79033100125">Позвонить</a></div></div></section>
   </>
@@ -412,10 +415,10 @@ function ProductPage({ product }: { product: Product }) {
         <section className="section productProcess" id="process">
           <SectionHeading eyebrow="Производственный процесс" title="Добыча, переработка и отгрузка" text="Проследите путь конкретного продукта от месторождения до подготовленной партии с лабораторным контролем и выбранной схемой доставки." />
           <div className="productProcessList">
-            {product.process.map(([number, title, text, image]) => (
+            {product.process.map(([number, title, text], index) => (
               <article key={number}>
-                <img src={asset(image)} alt="" />
-                <div><span>{number}</span><h3>{title}</h3><p>{text}</p></div>
+                <VisualGallery className="productProcessVisual" title={`Марганцовистый известняк · ${title}`} photos={productGalleries.manganese[processGalleryKeys[index]]} />
+                <div className="productProcessCopy"><span>{number}</span><h3>{title}</h3><p>{text}</p></div>
               </article>
             ))}
           </div>
@@ -462,7 +465,7 @@ function ProductPage({ product }: { product: Product }) {
         <section className="section productGallery" id="gallery">
           <SectionHeading eyebrow="Фотографии продукта" title="Сырьё, подготовка и отгрузка" />
           <div className="productGalleryGrid">
-            {product.gallery.map(([title, image]) => <figure key={title}><img src={asset(image)} alt={title} /><figcaption>{title}</figcaption></figure>)}
+            {product.gallery.map(([title, image], index) => <figure key={title}><VisualGallery className="productGalleryVisual" title={`Марганцовистый известняк · ${title}`} photos={index === 0 ? [image] : productGalleries.manganese[index === 1 ? 'mining' : index === 2 ? 'crushing' : 'shipping']} /><figcaption>{title}</figcaption></figure>)}
           </div>
         </section>
 

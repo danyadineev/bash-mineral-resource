@@ -1,4 +1,11 @@
-.capabilityCard { touch-action: pan-y pinch-zoom; }
+.visualGallery { position: relative; overflow: hidden; touch-action: pan-y pinch-zoom; }
+.visualGalleryPhoto { display: block; width: 100%; height: 100%; object-fit: cover; }
+.visualGallery:not(.capabilityCard) .capabilityArrow, .visualGallery:not(.capabilityCard) .capabilityExpand { top: 50%; }
+.productProcessVisual { min-height: 310px; }
+.productProcessVisual .visualGalleryPhoto { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gypsumProcess .productProcessVisual { height: 210px; min-height: 0; flex-shrink: 0; }
+.applicationVisual, .productGalleryVisual { position: absolute; inset: 0; width: 100%; height: 100%; }
+.applicationPhoto figcaption, .productGallery figcaption { z-index: 2; pointer-events: none; }
 .companyCapabilityGrid article::after { pointer-events: none; }
 .companyCapabilityGrid .capabilityCaption { z-index: 2; pointer-events: none; }
 
@@ -10,10 +17,10 @@
 .capabilityArrow--next { right: 12px; }
 .capabilityArrow:hover { background: var(--navy); border-color: var(--gold-soft); }
 .capabilityArrow:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 3px; }
-.companyCapabilityGrid .capabilityCount { position: absolute; z-index: 3; top: 14px; right: 14px; display: flex; align-items: center; gap: 7px; padding: 6px 9px; border: 1px solid #ffffff30; border-radius: 6px; color: #fff; background: #102735cc; font-size: 12px; font-weight: 550; pointer-events: none; opacity: 0; transition: opacity 180ms ease; }
-.capabilityCard:hover .capabilityArrow, .capabilityCard:focus-within .capabilityArrow,
-.capabilityCard:hover .capabilityExpand, .capabilityCard:focus-within .capabilityExpand,
-.companyCapabilityGrid .capabilityCard:hover .capabilityCount, .companyCapabilityGrid .capabilityCard:focus-within .capabilityCount { opacity: 1; }
+.visualGallery .capabilityCount { position: absolute; z-index: 3; top: 14px; right: 14px; display: flex; align-items: center; gap: 7px; padding: 6px 9px; border: 1px solid #ffffff30; border-radius: 6px; color: #fff; background: #102735cc; font-size: 12px; font-weight: 550; pointer-events: none; opacity: 0; transition: opacity 180ms ease; }
+.visualGallery:hover .capabilityArrow, .visualGallery:focus-within .capabilityArrow,
+.visualGallery:hover .capabilityExpand, .visualGallery:focus-within .capabilityExpand,
+.visualGallery:hover .capabilityCount, .visualGallery:focus-within .capabilityCount { opacity: 1; }
 
 .companyLightbox { position: fixed; inset: 0; width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; color: #fff; background: #07141ef5; overflow: hidden; }
 .companyLightbox::backdrop { background: #07141e; }
@@ -34,11 +41,12 @@
 .companyLightboxTouchHint { display: none; }
 
 @media (hover: none) {
-  .capabilityArrow, .companyCapabilityGrid .capabilityCount { opacity: 1; }
+  .capabilityArrow, .visualGallery .capabilityCount { opacity: 1; }
   .companyLightboxHint { display: none; }
   .companyLightboxTouchHint { display: inline; }
 }
 @media (max-width: 700px) {
+  .gypsumProcess .productProcessVisual { height: 240px; }
   .companyLightboxHeader { gap: 14px; padding: 14px 16px; }
   .companyLightboxHeader h2 { font-size: 18px; }
   .companyLightboxButton { width: 44px; height: 44px; }
@@ -46,4 +54,8 @@
   .companyLightboxPrevious { left: 10px; }
   .companyLightboxNext { right: 10px; }
   .companyLightboxFooter { padding: 16px; }
+}
+
+@media (max-width: 1100px) {
+  .productProcessVisual { min-height: 0; height: 260px; }
 }
