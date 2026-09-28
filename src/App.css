@@ -554,49 +554,59 @@ a {
 .companyCapabilityGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 40px 24px;
+  gap: 18px;
 }
 
 .companyCapabilityGrid article {
-  display: grid;
-  grid-template-rows: 58px 1fr;
-  gap: 18px;
+  position: relative;
+  container-type: inline-size;
+  height: 350px;
   min-width: 0;
-}
-
-.companyCapabilityMedia {
-  display: grid;
-  grid-template-rows: 225px minmax(110px, auto);
   overflow: hidden;
   background: var(--navy);
   border-radius: 10px;
 }
 
 .companyCapabilityGrid img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 225px;
+  height: 100%;
   object-fit: cover;
+}
+
+.companyCapabilityGrid article::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(0deg, rgba(5, 18, 28, .95) 0%, rgba(5, 18, 28, .72) 30%, rgba(5, 18, 28, .08) 68%, transparent 100%);
+}
+
+.companyCapabilityCopy {
+  position: absolute;
+  z-index: 1;
+  right: 22px;
+  bottom: 24px;
+  left: 22px;
+  display: grid;
+  grid-template-rows: 46px 1fr;
+  gap: 10px;
+  min-height: 116px;
 }
 
 .companyCapabilityGrid h3 {
   margin: 0;
-  color: var(--navy);
-  font-size: clamp(20px, 1.65vw, 25px);
+  color: #fff;
+  font-size: clamp(19px, 1.45vw, 22px);
   font-weight: 650;
   letter-spacing: -.035em;
-  line-height: 1.16;
+  line-height: 1.2;
 }
 
 .companyCapabilityDetails {
   display: grid;
-  align-content: center;
-  gap: 8px;
-  padding: 18px 20px;
-}
-
-.companyCapabilityDetails:not(:has(strong)) span {
-  font-size: 16px;
-  font-weight: 550;
+  align-content: start;
+  gap: 6px;
 }
 
 .companyCapabilityGrid strong {
@@ -609,8 +619,12 @@ a {
 .companyCapabilityGrid span {
   max-width: 410px;
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.45;
+}
+
+@container (min-width: 290px) {
+  .companyCapabilityCopy { grid-template-rows: 28px 1fr; min-height: 98px; }
 }
 
 .productsSection {
@@ -1984,10 +1998,8 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .companyCapabilityGrid article { grid-template-rows: auto 1fr; gap: 14px; }
-  .companyCapabilityGrid h3 { font-size: 24px; }
-  .companyCapabilityMedia { grid-template-rows: 250px minmax(94px, auto); }
-  .companyCapabilityGrid img { height: 250px; }
+  .companyCapabilityGrid article { height: 340px; }
+  .companyCapabilityGrid h3 { font-size: 22px; }
 
   .gypsumOriginGrid {
     grid-template-columns: 1fr;

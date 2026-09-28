@@ -224,9 +224,9 @@ function HomePage() {
           <div className="section companyCapabilityGrid">
             {capabilities.map(({ title, image, metric, text }) => (
               <article key={title}>
-                <h3>{title}</h3>
-                <div className="companyCapabilityMedia">
-                  <img src={asset(`content/sep27-${image}.webp`)} alt={title} loading="lazy" />
+                <img src={asset(`content/sep27-${image}.webp`)} alt={title} loading="lazy" />
+                <div className="companyCapabilityCopy">
+                  <h3>{title}</h3>
                   <div className="companyCapabilityDetails">{metric && <strong>{metric}</strong>}<span>{text}</span></div>
                 </div>
               </article>
