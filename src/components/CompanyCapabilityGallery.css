@@ -1,0 +1,49 @@
+.capabilityCard { touch-action: pan-y pinch-zoom; }
+.companyCapabilityGrid article::after { pointer-events: none; }
+.companyCapabilityGrid .capabilityCaption { z-index: 2; pointer-events: none; }
+
+.capabilityOpen { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; color: #fff; background: transparent; cursor: zoom-in; }
+.capabilityOpen:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: -5px; }
+.capabilityExpand { position: absolute; top: 39%; left: 50%; box-sizing: content-box; padding: 12px; border: 1px solid #ffffff55; border-radius: 8px; background: #102735c9; transform: translate(-50%, -50%); opacity: 0; transition: opacity 180ms ease; }
+.capabilityArrow { position: absolute; z-index: 3; top: 39%; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #ffffff55; border-radius: 8px; color: #fff; background: #102735d9; cursor: pointer; transform: translateY(-50%); opacity: 0; transition: opacity 180ms ease, background 180ms ease; }
+.capabilityArrow--previous { left: 12px; }
+.capabilityArrow--next { right: 12px; }
+.capabilityArrow:hover { background: var(--navy); border-color: var(--gold-soft); }
+.capabilityArrow:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 3px; }
+.companyCapabilityGrid .capabilityCount { position: absolute; z-index: 3; top: 14px; right: 14px; display: flex; align-items: center; gap: 7px; padding: 6px 9px; border: 1px solid #ffffff30; border-radius: 6px; color: #fff; background: #102735cc; font-size: 12px; font-weight: 550; pointer-events: none; opacity: 0; transition: opacity 180ms ease; }
+.capabilityCard:hover .capabilityArrow, .capabilityCard:focus-within .capabilityArrow,
+.capabilityCard:hover .capabilityExpand, .capabilityCard:focus-within .capabilityExpand,
+.companyCapabilityGrid .capabilityCard:hover .capabilityCount, .companyCapabilityGrid .capabilityCard:focus-within .capabilityCount { opacity: 1; }
+
+.companyLightbox { position: fixed; inset: 0; width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; color: #fff; background: #07141ef5; overflow: hidden; }
+.companyLightbox::backdrop { background: #07141e; }
+.companyLightboxLayout { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; width: 100%; height: 100%; }
+.companyLightboxHeader { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 28px; }
+.companyLightboxHeader h2 { margin: 0; font-size: clamp(18px, 2vw, 26px); font-weight: 600; line-height: 1.25; }
+.companyLightboxButton { display: grid; place-items: center; flex-shrink: 0; width: 48px; height: 48px; padding: 0; border: 1px solid #ffffff33; border-radius: 8px; color: #fff; background: #102735d9; cursor: pointer; }
+.companyLightboxButton:hover { background: #203c50; border-color: var(--gold-soft); }
+.companyLightboxButton:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 3px; }
+.companyLightboxStage { position: relative; min-height: 0; padding: 0 88px; touch-action: pan-y pinch-zoom; }
+.companyLightboxStage img { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; }
+.companyLightboxPrevious, .companyLightboxNext { position: absolute; top: 50%; transform: translateY(-50%); }
+.companyLightboxPrevious { left: 24px; }
+.companyLightboxNext { right: 24px; }
+.companyLightboxFooter { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 28px; font-size: 14px; }
+.companyLightboxFooter > :first-child { color: var(--gold-soft); font-variant-numeric: tabular-nums; }
+.companyLightboxHint, .companyLightboxTouchHint { color: #ffffff99; font-size: 12px; }
+.companyLightboxTouchHint { display: none; }
+
+@media (hover: none) {
+  .capabilityArrow, .companyCapabilityGrid .capabilityCount { opacity: 1; }
+  .companyLightboxHint { display: none; }
+  .companyLightboxTouchHint { display: inline; }
+}
+@media (max-width: 700px) {
+  .companyLightboxHeader { gap: 14px; padding: 14px 16px; }
+  .companyLightboxHeader h2 { font-size: 18px; }
+  .companyLightboxButton { width: 44px; height: 44px; }
+  .companyLightboxStage { padding-inline: 8px; }
+  .companyLightboxPrevious { left: 10px; }
+  .companyLightboxNext { right: 10px; }
+  .companyLightboxFooter { padding: 16px; }
+}

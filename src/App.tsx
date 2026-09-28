@@ -15,7 +15,8 @@ import {
   X,
 } from 'lucide-react'
 import './App.css'
-import { capabilities, history, historyPreview } from './septemberContent'
+import { history, historyPreview } from './septemberContent'
+import { CompanyCapabilityGallery } from './components/CompanyCapabilityGallery'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
@@ -262,14 +263,7 @@ function HomePage() {
               text="Добыча, дробление, промывка, лабораторный контроль и отгрузка сосредоточены на одной промышленной площадке."
             />
           </div>
-          <div className="section companyCapabilityGrid">
-            {capabilities.map(({ title, image, metric, text }) => (
-              <article key={title}>
-                <img src={asset(`content/sep27-${image}.webp`)} alt={title} loading="lazy" />
-                <div><h3>{title}</h3>{metric && <strong>{metric}</strong>}<span>{text}</span></div>
-              </article>
-            ))}
-          </div>
+          <CompanyCapabilityGallery />
         </section>
 
         <section className="greetingSection" id="greeting">
