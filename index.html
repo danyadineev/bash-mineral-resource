@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="is-booting">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -9,9 +9,80 @@
       content="БАШМИНЕРАЛРЕСУРС — добыча и подготовка марганцовистого известняка, гипсового и гипсоангидритового камня в Республике Башкортостан."
     />
     <title>БАШМИНЕРАЛРЕСУРС — горнодобывающее предприятие</title>
+    <style>
+      html.is-booting { overflow: hidden; }
+      .siteLoader {
+        position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center;
+        background: #10283c; color: #f2f1ed; opacity: 1;
+        transition: opacity 420ms ease; font-family: Onest, Arial, sans-serif;
+      }
+      .siteLoader.is-leaving { opacity: 0; pointer-events: none; }
+      .siteLoaderIdentity { display: grid; justify-items: center; gap: 32px; padding: 24px; }
+      .siteLoaderMark {
+        position: relative; width: 170px; height: 104px;
+        -webkit-mask: url('/brand/loader-mark.webp') center / contain no-repeat;
+        mask: url('/brand/loader-mark.webp') center / contain no-repeat;
+        background: rgba(242, 241, 237, .12);
+      }
+      .siteLoaderMark::after {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(0deg, #d69b2d, #f0bf52 65%, #f5d893);
+        clip-path: inset(100% 0 0); animation: mineralFill 2.8s cubic-bezier(.22, .61, .36, 1) forwards;
+      }
+      .siteLoaderName { margin: 0; font-size: clamp(14px, 2.7vw, 20px); font-weight: 700; letter-spacing: -.02em; }
+      .siteLoaderName span { color: #f0bf52; }
+      .siteLoaderLine { margin: -18px 0 0; font-size: 9px; letter-spacing: .16em; color: #a7b7c3; }
+      @keyframes mineralFill { to { clip-path: inset(0); } }
+      @media (prefers-reduced-motion: reduce) {
+        .siteLoader, .siteLoaderMark::after { animation: none; transition: none; }
+        .siteLoaderMark::after { clip-path: inset(0); }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div class="siteLoader" id="site-loader" role="status" aria-label="Загрузка сайта">
+      <div class="siteLoaderIdentity" aria-hidden="true">
+        <div class="siteLoaderMark"></div>
+        <p class="siteLoaderName">БАШМИНЕРАЛ<span>РЕСУРС</span></p>
+        <p class="siteLoaderLine">ДОБЫЧА · ПЕРЕРАБОТКА · ПОСТАВКА</p>
+      </div>
+    </div>
+    <div id="root" inert aria-busy="true" data-boot-state="loading"></div>
+    <script id="site-startup">
+      // The shell appears before React. Its deadline never depends on media events.
+      (() => {
+        const loader = document.getElementById('site-loader');
+        const root = document.getElementById('root');
+        const started = performance.now();
+        let ready = false;
+        let finished = false;
+        let minimumTimer;
+        const reveal = (reason) => {
+          if (finished) return;
+          finished = true;
+          clearTimeout(minimumTimer);
+          clearTimeout(deadline);
+          window.removeEventListener('hero:ready', onReady);
+          root.inert = false;
+          root.removeAttribute('aria-busy');
+          root.dataset.bootState = reason;
+          root.dataset.bootElapsed = String(Math.round(performance.now() - started));
+          document.documentElement.classList.remove('is-booting');
+          loader.setAttribute('aria-hidden', 'true');
+          loader.classList.add('is-leaving');
+          setTimeout(() => loader.remove(), 420);
+        };
+        const onReady = () => {
+          ready = true;
+          const remaining = Math.max(0, 3000 - (performance.now() - started));
+          clearTimeout(minimumTimer);
+          minimumTimer = setTimeout(() => reveal('ready'), remaining);
+        };
+        const deadline = setTimeout(() => reveal(ready ? 'ready' : 'poster'), 4500);
+        window.addEventListener('hero:ready', onReady);
+      })();
+    </script>
+    <noscript><style>.siteLoader { display: none; } html.is-booting { overflow: auto; }</style><p>Для просмотра сайта включите JavaScript в браузере.</p></noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

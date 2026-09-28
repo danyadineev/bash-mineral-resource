@@ -19,6 +19,7 @@ import { history, historyPreview } from './septemberContent'
 import { CompanyCapabilityGallery } from './components/CompanyCapabilityGallery'
 import { VisualGallery } from './components/VisualGallery'
 import { productGalleries } from './productGalleries'
+import { HeroVideo } from './components/HeroVideo'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
@@ -188,10 +189,8 @@ function HomePage() {
       <Header />
       <main>
         <section className="hero" id="top">
-          <video className="heroMedia" autoPlay muted loop playsInline preload="metadata" poster={asset('hero-september-poster.webp')} aria-hidden="true">
-            <source src={asset('hero-september.mp4')} type="video/mp4" media="(min-width: 720px)" />
-            <source src={asset('hero-september-mobile.mp4')} type="video/mp4" />
-          </video>
+          <HeroVideo className="heroMedia" desktop={asset('hero-september-stream.mp4')}
+            mobile={asset('hero-september-stream-mobile.mp4')} poster={asset('hero-september-poster.webp')} />
           <div className="heroShade" />
           <div className="heroBody">
             <p className="heroKicker">Республика Башкортостан · Иглинский район</p>
@@ -357,10 +356,8 @@ function ProductPage({ product }: { product: Product }) {
       <Header />
       <main className="productPage">
         <section className={`productHero productHero--${product.id}`} id="top">
-          <video className="productHeroMedia" autoPlay muted loop playsInline preload="metadata" poster={asset(product.hero)} aria-hidden="true">
-            <source src={asset('hero-drone.mp4')} type="video/mp4" media="(min-width: 720px)" />
-            <source src={asset('hero-drone-mobile.mp4')} type="video/mp4" />
-          </video>
+          <HeroVideo className="productHeroMedia" desktop={asset('hero-drone-stream.mp4')}
+            mobile={asset('hero-drone-stream-mobile.mp4')} poster={asset(product.hero)} />
           <div className="productHeroShade" />
           <div className="productHeroCopy">
             <a className="backLink" href="#top"><ArrowLeft size={17} /> Главная страница</a>

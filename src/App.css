@@ -212,6 +212,7 @@ a {
 }
 
 .heroMedia,
+.heroMediaPoster,
 .heroShade {
   position: absolute;
   inset: 0;
@@ -221,7 +222,12 @@ a {
 
 .heroMedia {
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 600ms ease;
 }
+
+.heroMediaPoster { object-fit: cover; }
+.heroMedia.is-ready { opacity: 1; }
 
 .heroShade {
   background:
@@ -1144,6 +1150,7 @@ a {
 }
 
 .productHeroMedia,
+.productHeroMediaPoster,
 .productHeroShade {
   position: absolute;
   inset: 0;
@@ -1153,7 +1160,12 @@ a {
 
 .productHeroMedia {
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 600ms ease;
 }
+
+.productHeroMediaPoster { object-fit: cover; }
+.productHeroMedia.is-ready { opacity: 1; }
 
 .productHeroShade {
   background: linear-gradient(90deg, rgba(5, 18, 29, 0.93) 0%, rgba(5, 18, 29, 0.76) 45%, rgba(5, 18, 29, 0.2) 100%);
