@@ -87,9 +87,9 @@ const products = {
   },
   gypsum: {
     id: 'gypsum',
-    eyebrow: 'Продукт 02',
+    eyebrow: '',
     title: 'Камень гипсовый и гипсоангидритовый',
-    subtitle: 'Сырьё для цементных и строительных производств',
+    subtitle: 'Сырьё для цементных заводов и производителей сухих строительных смесей',
     intro:
       'Камень Тюлько-Тюбинского месторождения для цементных заводов, производителей сухих смесей, гипсовых вяжущих и изделий.',
     hero: 'content/sep27-gypsum.webp',
@@ -364,7 +364,7 @@ function ProductPage({ product }: { product: Product }) {
           <div className="productHeroCopy">
             <a className="backLink" href="#top"><ArrowLeft size={17} /> Главная страница</a>
             <p className="productBrand">БАШМИНЕРАЛРЕСУРС</p>
-            <p className="eyebrow">{product.eyebrow}</p>
+            {product.eyebrow && <p className="eyebrow">{product.eyebrow}</p>}
             <h1>{product.title}</h1>
             <p>{product.subtitle}</p>
           </div>
