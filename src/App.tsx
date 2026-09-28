@@ -10,7 +10,7 @@ import {
   X,
 } from 'lucide-react'
 import './App.css'
-import { capabilities, history } from './septemberContent'
+import { capabilities, history, historyPreview } from './septemberContent'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
@@ -20,7 +20,7 @@ const company = {
   email: 'dispetcherbmr@yandex.ru',
   officeAddress: '450081, Республика Башкортостан, город Уфа, ул. Уфимское шоссе, д. 43',
   productionAddress:
-    'Республика Башкортостан, Иглинский район, с.п. Красновосходский сельсовет, территория Башминералресурс, здание 5',
+    'Республика Башкортостан, Иглинский район, с.п. Красновосходский сельсовет, территория БАШМИНЕРАЛРЕСУРС, здание 5',
   map: 'https://yandex.ru/maps/org/bashmineralresurs/40841570634/?ll=57.116105%2C55.006176&z=12.56',
 }
 
@@ -126,7 +126,7 @@ type Product = (typeof products)[keyof typeof products]
 function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <span className={`logo${compact ? ' logo--compact' : ''}`}>
-      <img src={asset('brand/bashmineralresurs-original.png')} alt="Башминералресурс" />
+      <img src={asset('brand/bashmineralresurs-original.png')} alt="БАШМИНЕРАЛРЕСУРС" />
     </span>
   )
 }
@@ -137,13 +137,13 @@ function Header() {
 
   return (
     <header className="siteHeader">
-      <a className="headerBrand" href="#top" onClick={close} aria-label="БашМинералРесурс — на главную">
+      <a className="headerBrand" href="#top" onClick={close} aria-label="БАШМИНЕРАЛРЕСУРС — на главную">
         <Logo />
       </a>
-      <button className="menuButton" type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label="Открыть меню">
+      <button className="menuButton" type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="main-navigation" aria-label={open ? 'Закрыть меню' : 'Открыть меню'}>
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
-      <nav className={open ? 'isOpen' : ''} aria-label="Основная навигация">
+      <nav id="main-navigation" className={open ? 'isOpen' : ''} aria-label="Основная навигация">
         <a href="#history" onClick={close}><span>О компании</span></a>
         <a href="#/gypsum" onClick={close}><span>Камень гипсовый и</span><span>гипсоангидритовый</span></a>
         <a href="#/manganese" onClick={close}><span>Марганцовистый</span><span>флюсующий известняк</span></a>
@@ -168,6 +168,11 @@ function SectionHeading({ eyebrow, title, text, inverse = false }: { eyebrow: st
 }
 
 function HomePage() {
+  const [historyExpanded, setHistoryExpanded] = useState(false)
+  const toggleHistory = () => {
+    setHistoryExpanded(!historyExpanded)
+    if (historyExpanded) window.requestAnimationFrame(() => document.getElementById('history')?.scrollIntoView({ behavior: 'smooth' }))
+  }
   return (
     <>
       <Header />
@@ -180,27 +185,32 @@ function HomePage() {
           <div className="heroShade" />
           <div className="heroBody">
             <p className="heroKicker">Республика Башкортостан · Иглинский район</p>
-            <h1>Башминералресурс</h1>
+            <h1>БАШМИНЕРАЛРЕСУРС</h1>
             <div className="heroLower">
               <p className="heroStatement">Предприятие по добыче камня гипсового и марганцовистого известняка</p>
               <div className="heroActions">
-                <a className="button button--gold" href="#history">О предприятии <ArrowRight size={18} /></a>
-                <a className="button button--glass" href="#products">Продукция</a>
+                <a className="button button--gold" href="#products">Наша продукция <ArrowRight size={18} /></a>
+                <a className="button button--glass" href="#history">О предприятии</a>
               </div>
             </div>
           </div>
           <a className="heroScroll" href="#history"><span>Листайте ниже</span><ChevronDown size={18} /></a>
         </section>
 
-        <section className="section historySection" id="history">
+        <section className={`section historySection${historyExpanded ? ' historySection--expanded' : ''}`} id="history">
           <SectionHeading
             eyebrow="История компании"
             title={<>От геологической разведки<br />к современному производству</>}
-            text="История предприятия начинается с изучения месторождений в середине прошлого века и продолжается промышленной разработкой двух сырьевых направлений."
+            text="От первых геологических исследований — к добыче, переработке и поставкам двух видов минерального сырья."
           />
-          <ol className="timeline">
-            {history.map(([year, text]) => <li key={year}><span>{year}</span><p>{text}</p></li>)}
-          </ol>
+          <div className="historyContent">
+            <ol className="timeline" id="history-timeline">
+              {(historyExpanded ? history : historyPreview).map(([year, text]) => <li key={year}><span>{year}</span><p>{text}</p></li>)}
+            </ol>
+            <button className="historyToggle" type="button" aria-expanded={historyExpanded} aria-controls="history-timeline" onClick={toggleHistory}>
+              <span>{historyExpanded ? 'Свернуть историю' : 'Смотреть историю полностью'}<small>{historyExpanded ? 'К краткому обзору' : 'Все 14 этапов'}</small></span><ChevronDown size={20} />
+            </button>
+          </div>
         </section>
 
         <section className="companyTodaySection" id="company">
@@ -258,14 +268,14 @@ function HomePage() {
 
         <section className="greetingSection" id="greeting">
           <div className="greetingPortrait">
-            <img src={asset('content/director-alexander-banaev.webp')} alt="Александр Банаев, директор ООО «БашМинералРесурс»" />
+            <img src={asset('content/director-alexander-banaev.webp')} alt="Александр Банаев, директор ООО «БАШМИНЕРАЛРЕСУРС»" />
           </div>
           <div className="greetingCopy">
             <p className="eyebrow">Обращение руководителя</p>
             <h2>Приветственное слово</h2>
             <p className="greetingPlaceholder">Материал готовится к публикации</p>
             <p>Здесь будет короткое обращение о предприятии, продукции и принципах работы с промышленными партнёрами. После согласования текст можно дополнить видеозаписью.</p>
-            <div className="greetingSignature"><strong>Александр Банаев</strong><span>директор ООО «БашМинералРесурс»</span></div>
+            <div className="greetingSignature"><strong>Александр Банаев</strong><span>директор ООО «БАШМИНЕРАЛРЕСУРС»</span></div>
           </div>
         </section>
 
@@ -349,7 +359,7 @@ function ProductPage({ product }: { product: Product }) {
           <div className="productHeroShade" />
           <div className="productHeroCopy">
             <a className="backLink" href="#top"><ArrowLeft size={17} /> Главная страница</a>
-            <p className="productBrand">Башминералресурс</p>
+            <p className="productBrand">БАШМИНЕРАЛРЕСУРС</p>
             <p className="eyebrow">{product.eyebrow}</p>
             <h1>{product.title}</h1>
             <p>{product.subtitle}</p>
@@ -487,7 +497,7 @@ function Footer() {
       <Logo />
       <div><small>Продукция</small><a href="#/manganese">Марганцовистый флюсующий известняк</a><a href="#/gypsum">Гипсовый и гипсоангидритовый камень</a></div>
       <div><small>Предприятие</small><a href="#company">О компании</a><a href="#history">История</a><a href="#contacts">Контакты</a></div>
-      <div><small>Связь</small><a href="tel:+79033100125">{company.phone}</a><a href="tel:+73472980125">{company.office}</a><a href={`mailto:${company.email}`}>{company.email}</a><span>ООО «Башминералресурс»</span></div>
+      <div><small>Связь</small><a href="tel:+79033100125">{company.phone}</a><a href="tel:+73472980125">{company.office}</a><a href={`mailto:${company.email}`}>{company.email}</a><span>ООО «БАШМИНЕРАЛРЕСУРС»</span></div>
     </footer>
   )
 }
