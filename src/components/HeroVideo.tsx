@@ -24,14 +24,16 @@ export function HeroVideo({ desktop, mobile, poster, className }: HeroVideoProps
     let announced = false
     let playRequested = false
     const check = () => {
-      if (video.readyState < 3 || !hasPlaybackBuffer(video.buffered, video.currentTime, video.duration)) return
       // Build the lead before playing. Otherwise playback behind the loader can
       // consume bytes as quickly as they arrive, defeating initial prebuffering.
       if (!playRequested) {
+        if (video.readyState < 3 || !hasPlaybackBuffer(video.buffered, video.currentTime, video.duration)) return
         playRequested = true
         void video.play().catch(() => setVisible(false))
       }
-      if (!firstFrame || video.paused) return
+      // The first frame consumes part of the lead; don't demand the same buffer
+      // again and accidentally keep a playing video hidden on a slower link.
+      if (!firstFrame || video.paused || video.readyState < 3) return
       clearTimeout(waitingTimer)
       setVisible(true)
       if (!announced) {
