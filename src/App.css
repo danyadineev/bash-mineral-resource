@@ -159,9 +159,9 @@ a {
   transform: scaleX(1);
 }
 
-.siteHeader nav .headerProductLink { padding: 12px 14px; border-radius: 8px; color: var(--ink); background: #fff; transition: background 180ms ease, color 180ms ease; }
+.siteHeader nav .headerProductLink { padding: 12px 14px; border-radius: 8px; color: #fff; background: var(--navy-2); transition: background 180ms ease, color 180ms ease; }
 .siteHeader nav .headerProductLink::after { content: none; }
-.siteHeader nav .headerProductLink:hover { background: var(--gold-soft); }
+.siteHeader nav .headerProductLink:hover { background: var(--navy-3); }
 
 .headerContacts {
   display: grid;
