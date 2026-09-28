@@ -17,6 +17,7 @@
   --section: min(1380px, calc(100vw - 96px));
   --shadow: 0 22px 70px rgba(16, 40, 60, 0.13);
   --heading-size: clamp(32px, 3.1vw, 50px);
+  --header-clearance: 112px;
 }
 
 * {
@@ -25,7 +26,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 94px;
+  scroll-padding-top: var(--header-clearance);
 }
 
 body {
@@ -118,6 +119,7 @@ a {
 .logo .logoWordmark { display: inline-flex; color: #fff; font-size: 19px; font-weight: 750; letter-spacing: -.045em; line-height: 1.15; white-space: nowrap; }
 .logo .logoWordmark > span { color: inherit; font: inherit; letter-spacing: inherit; line-height: inherit; }
 .logo .logoWordmark > .logoAccent { color: var(--gold-soft); }
+.siteHeader .logo .logoWordmark > .logoAccent { color: #fff; }
 .logo--compact .logoWordmark { font-size: 14px; }
 .passportTop .logoWordmark { color: var(--ink); }
 
@@ -159,9 +161,9 @@ a {
   transform: scaleX(1);
 }
 
-.siteHeader nav .headerProductLink { padding: 12px 14px; border-radius: 8px; color: #fff; background: var(--navy-2); transition: background 180ms ease, color 180ms ease; }
-.siteHeader nav .headerProductLink::after { content: none; }
-.siteHeader nav .headerProductLink:hover { background: var(--navy-3); }
+.siteHeader nav .headerNavLink { padding: 12px 14px; border-radius: 8px; color: #fff; background: var(--navy-2); transition: background 180ms ease, color 180ms ease; }
+.siteHeader nav .headerNavLink::after { content: none; }
+.siteHeader nav .headerNavLink:hover { background: var(--navy-3); }
 
 .headerContacts {
   display: grid;
@@ -971,9 +973,13 @@ a {
 
 .greetingSection {
   display: grid;
-  grid-template-columns: clamp(220px, 22vw, 310px) minmax(0, 1fr);
+  grid-template-columns: clamp(260px, 24vw, 360px) minmax(0, 1fr);
   gap: clamp(30px, 3vw, 48px);
-  padding: 36px max(32px, calc((100vw - 1380px) / 2));
+  min-height: 100svh;
+  align-items: center;
+  padding: calc(var(--header-clearance) + 28px) max(32px, calc((100vw - 1380px) / 2)) 28px;
+  /* The slide includes its own clear area for the fixed header. */
+  scroll-margin-top: calc(-1 * var(--header-clearance));
   color: #fff;
   background: var(--navy-2);
 }
@@ -1006,11 +1012,11 @@ a {
   line-height: 1.4;
 }
 
-.greetingCopy h2 { font-size: clamp(28px, 2.4vw, 38px); line-height: 1.1; }
+.greetingCopy h2 { font-size: clamp(32px, 2.8vw, 42px); line-height: 1.1; }
 .greetingMessage {
   margin-top: 20px;
   color: rgba(255, 255, 255, 0.88);
-  font-size: clamp(14px, 1.04vw, 16px);
+  font-size: 15px;
   line-height: 1.55;
 }
 .greetingMessage p { margin: 0; }
@@ -1032,6 +1038,13 @@ a {
 .greetingSignature span {
   color: rgba(255, 255, 255, 0.54);
   font-size: 13px;
+}
+
+@media (min-width: 1101px) and (min-height: 820px) {
+  .greetingSection { padding-top: calc(var(--header-clearance) + 40px); padding-bottom: 40px; }
+  .greetingMessage { font-size: 16px; line-height: 1.65; }
+  .greetingMessage p + p { margin-top: 12px; }
+  .greetingSignature { margin-top: 24px; padding-top: 18px; }
 }
 
 .contactSection {
@@ -1838,8 +1851,9 @@ a {
   }
 
   .greetingSection {
-    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-columns: 200px minmax(0, 1fr);
   }
+  .greetingMessage { font-size: 14.5px; }
 
   .siteFooter {
     grid-template-columns: 1fr 1fr;
@@ -1857,10 +1871,11 @@ a {
 @media (max-width: 700px) {
   :root {
     --section: calc(100vw - 32px);
+    --header-clearance: 82px;
   }
 
   html {
-    scroll-padding-top: 82px;
+    scroll-padding-top: var(--header-clearance);
   }
 
   .siteHeader {
@@ -2171,7 +2186,8 @@ a {
 
   .greetingSection {
     grid-template-columns: 1fr;
-    padding: 40px 22px;
+    min-height: 0;
+    padding: calc(var(--header-clearance) + 28px) 22px 40px;
     gap: 28px;
   }
 
