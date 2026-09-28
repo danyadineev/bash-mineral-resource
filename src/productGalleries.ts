@@ -1,4 +1,4 @@
-// Yandex Disk product folders; current covers first, then source filename order.
+// Photos follow each product/source folder and natural filename order; no cover promotion.
 export const productGalleries = {
   "gypsum": {
     "mining": [
@@ -28,15 +28,15 @@ export const productGalleries = {
   },
   "manganese": {
     "mining": [
-      "content/product-galleries/manganese-mining-01.webp",
       "content/product-galleries/manganese-mining-02.webp",
       "content/product-galleries/manganese-mining-03.webp",
+      "content/product-galleries/manganese-mining-01.webp",
       "content/product-galleries/manganese-mining-04.webp"
     ],
     "crushing": [
-      "content/product-galleries/manganese-crushing-01.webp",
       "content/product-galleries/manganese-crushing-02.webp",
       "content/product-galleries/manganese-crushing-03.webp",
+      "content/product-galleries/manganese-crushing-01.webp",
       "content/product-galleries/manganese-crushing-04.webp",
       "content/product-galleries/manganese-crushing-05.webp",
       "content/product-galleries/manganese-crushing-06.webp",

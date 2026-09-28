@@ -132,10 +132,10 @@ const products = {
 type Product = (typeof products)[keyof typeof products]
 const processGalleryKeys = ['mining', 'crushing', 'quality', 'shipping'] as const
 
-function Logo({ compact = false }: { compact?: boolean }) {
+function Logo({ compact = false, original = false }: { compact?: boolean; original?: boolean }) {
   return (
-    <span className={`logo${compact ? ' logo--compact' : ''}`}>
-      <img src={asset('brand/bashmineralresurs-mark-transparent.png')} alt="" aria-hidden="true" />
+    <span className={`logo${compact ? ' logo--compact' : ''}${original ? ' logo--original' : ''}`}>
+      <img src={asset(original ? 'brand/bashmineralresurs-original.png' : 'brand/bashmineralresurs-mark-transparent.png')} alt="" aria-hidden="true" />
       <span className="logoWordmark"><span>БАШМИНЕРАЛ</span><span className="logoAccent">РЕСУРС</span></span>
     </span>
   )
@@ -148,15 +148,15 @@ function Header() {
   return (
     <header className="siteHeader">
       <a className="headerBrand" href="#top" onClick={close} aria-label="БАШМИНЕРАЛРЕСУРС — на главную">
-        <Logo />
+        <Logo original />
       </a>
       <button className="menuButton" type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="main-navigation" aria-label={open ? 'Закрыть меню' : 'Открыть меню'}>
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
       <nav id="main-navigation" className={open ? 'isOpen' : ''} aria-label="Основная навигация">
         <a href="#history" onClick={close}><span>О компании</span></a>
-        <a href="#/gypsum" onClick={close}><span>Камень гипсовый и</span><span>гипсоангидритовый</span></a>
-        <a href="#/manganese" onClick={close}><span>Марганцовистый</span><span>флюсующий известняк</span></a>
+        <a className="headerProductLink" href="#/gypsum" onClick={close}><span>Камень гипсовый и</span><span>гипсоангидритовый</span></a>
+        <a className="headerProductLink" href="#/manganese" onClick={close}><span>Марганцовистый</span><span>флюсующий известняк</span></a>
         <a href="#contacts" onClick={close}>Контакты</a>
       </nav>
       <div className="headerContacts">

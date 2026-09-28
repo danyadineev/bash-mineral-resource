@@ -81,12 +81,12 @@ export function VisualGallery({ title, photos, className = '', photoClassName = 
   return <>
     <Tag className={`visualGallery ${className}`} aria-label={title} aria-roledescription="галерея фотографий" onMouseEnter={preloadNeighbours} onTouchStart={startSwipe} onTouchEnd={endSwipe} onTouchCancel={() => { touchStart.current = null }}>
       <img className={`visualGalleryPhoto ${photoClassName}`} src={asset(photos[index])} alt={`${title} — фото ${index + 1} из ${photos.length}`} loading="lazy" draggable={false} />
-      <button ref={openerRef} className="capabilityOpen" type="button" aria-label={`Открыть галерею: ${title}`} onClick={() => { if (Date.now() >= suppressClickUntil.current) setOpen(true) }}><Maximize2 className="capabilityExpand" size={22} aria-hidden="true" /></button>
+      <button ref={openerRef} className="capabilityOpen" type="button" aria-label={`Открыть галерею: ${title}`} onClick={() => { if (Date.now() >= suppressClickUntil.current) setOpen(true) }}><Maximize2 className="capabilityExpand" size={20} strokeWidth={1.5} aria-hidden="true" /></button>
       {children}
       {multiple && <>
         <span className="capabilityCount" aria-hidden="true"><Images size={14} />{index + 1} / {photos.length}</span>
-        <button className="capabilityArrow capabilityArrow--previous" type="button" aria-label={`Предыдущее фото: ${title}`} onClick={() => step(-1)}><ChevronLeft size={22} aria-hidden="true" /></button>
-        <button className="capabilityArrow capabilityArrow--next" type="button" aria-label={`Следующее фото: ${title}`} onClick={() => step(1)}><ChevronRight size={22} aria-hidden="true" /></button>
+        <button className="capabilityArrow capabilityArrow--previous" type="button" aria-label={`Предыдущее фото: ${title}`} onClick={() => step(-1)}><ChevronLeft size={24} strokeWidth={1.5} aria-hidden="true" /></button>
+        <button className="capabilityArrow capabilityArrow--next" type="button" aria-label={`Следующее фото: ${title}`} onClick={() => step(1)}><ChevronRight size={24} strokeWidth={1.5} aria-hidden="true" /></button>
       </>}
     </Tag>
     {createPortal(
@@ -101,8 +101,8 @@ export function VisualGallery({ title, photos, className = '', photoClassName = 
           <div className="companyLightboxStage" onTouchStart={startSwipe} onTouchEnd={endSwipe} onTouchCancel={() => { touchStart.current = null }} onClick={(event) => { if (event.target === event.currentTarget && Date.now() >= suppressClickUntil.current) setOpen(false) }}>
             <img src={asset(photos[index])} alt={`${title} — фото ${index + 1} из ${photos.length}`} draggable={false} />
             {multiple && <>
-              <button type="button" className="companyLightboxButton companyLightboxPrevious" aria-label="Предыдущее фото" onClick={() => step(-1)}><ChevronLeft size={28} aria-hidden="true" /></button>
-              <button type="button" className="companyLightboxButton companyLightboxNext" aria-label="Следующее фото" onClick={() => step(1)}><ChevronRight size={28} aria-hidden="true" /></button>
+              <button type="button" className="companyLightboxButton companyLightboxPrevious" aria-label="Предыдущее фото" onClick={() => step(-1)}><ChevronLeft size={28} strokeWidth={1.5} aria-hidden="true" /></button>
+              <button type="button" className="companyLightboxButton companyLightboxNext" aria-label="Следующее фото" onClick={() => step(1)}><ChevronRight size={28} strokeWidth={1.5} aria-hidden="true" /></button>
             </>}
           </div>
           <footer className="companyLightboxFooter"><span role="status" aria-live="polite" aria-atomic="true">{index + 1} / {photos.length}</span><span className="companyLightboxHint">{multiple ? '← → — листать · ' : ''}Esc — закрыть</span>{multiple && <span className="companyLightboxTouchHint">Свайп — листать</span>}</footer>

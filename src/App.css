@@ -16,6 +16,7 @@
   --line: rgba(16, 40, 60, 0.16);
   --section: min(1380px, calc(100vw - 96px));
   --shadow: 0 22px 70px rgba(16, 40, 60, 0.13);
+  --heading-size: clamp(32px, 3.1vw, 50px);
 }
 
 * {
@@ -112,6 +113,8 @@ a {
   height: 42px;
 }
 
+.siteHeader .logo--original img { width: 94px; height: 62px; padding: 5px; border-radius: 8px; background: #fff; }
+
 .logo .logoWordmark { display: inline-flex; color: #fff; font-size: 19px; font-weight: 750; letter-spacing: -.045em; line-height: 1.15; white-space: nowrap; }
 .logo .logoWordmark > span { color: inherit; font: inherit; letter-spacing: inherit; line-height: inherit; }
 .logo .logoWordmark > .logoAccent { color: var(--gold-soft); }
@@ -122,7 +125,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: clamp(20px, 2vw, 32px);
+  gap: clamp(14px, 1.3vw, 20px);
   font-size: 13px;
   font-weight: 620;
 }
@@ -132,7 +135,8 @@ a {
   display: grid;
   align-content: start;
   gap: 2px;
-  padding: 14px 0;
+  min-height: 58px;
+  padding: 12px 0;
   line-height: 1.3;
   white-space: nowrap;
 }
@@ -154,6 +158,10 @@ a {
 .siteHeader nav a:focus-visible::after {
   transform: scaleX(1);
 }
+
+.siteHeader nav .headerProductLink { padding: 12px 14px; border-radius: 8px; color: var(--ink); background: #fff; transition: background 180ms ease, color 180ms ease; }
+.siteHeader nav .headerProductLink::after { content: none; }
+.siteHeader nav .headerProductLink:hover { background: var(--gold-soft); }
 
 .headerContacts {
   display: grid;
@@ -248,7 +256,7 @@ a {
 .hero h1 {
   max-width: none;
   margin: 0;
-  font-size: clamp(44px, 6.05vw, 94px);
+  font-size: var(--heading-size);
   font-weight: 720;
   letter-spacing: -0.045em;
   line-height: 1;
@@ -376,7 +384,7 @@ a {
 .greetingCopy h2,
 .productOverviewIntro h2 {
   margin: 0;
-  font-size: clamp(32px, 3.1vw, 50px);
+  font-size: var(--heading-size);
   font-weight: 690;
   letter-spacing: -0.055em;
   line-height: 0.98;
@@ -1726,7 +1734,7 @@ a {
   }
 
   .hero h1 {
-    font-size: clamp(42px, 6.05vw, 66px);
+    font-size: var(--heading-size);
   }
 
   .heroFacts {
@@ -1851,6 +1859,8 @@ a {
     width: 40px;
     height: 40px;
   }
+
+  .siteHeader .logo--original img { width: 48px; height: 42px; padding: 3px; border-radius: 6px; }
 
   .logo .logoWordmark { display: flex; flex-direction: column; font-size: clamp(13px, 3.8vw, 17px); line-height: 1.05; letter-spacing: -.02em; }
 
