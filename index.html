@@ -14,10 +14,14 @@
       .siteLoader {
         position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center;
         background: #10283c; color: #f2f1ed; opacity: 1;
-        transition: opacity 420ms ease; font-family: Onest, Arial, sans-serif;
+        transition: opacity 1000ms cubic-bezier(.4, 0, .2, 1); font-family: Onest, Arial, sans-serif;
       }
       .siteLoader.is-leaving { opacity: 0; pointer-events: none; }
-      .siteLoaderIdentity { display: grid; justify-items: center; gap: 32px; padding: 24px; }
+      .siteLoaderIdentity {
+        display: grid; justify-items: center; gap: 32px; padding: 24px;
+        transition: opacity 650ms ease, transform 900ms cubic-bezier(.22, 1, .36, 1);
+      }
+      .siteLoader.is-leaving .siteLoaderIdentity { opacity: 0; transform: translateY(-8px); }
       .siteLoaderMark {
         position: relative; width: 170px; height: 104px;
         -webkit-mask: url('/brand/loader-mark.webp') center / contain no-repeat;
@@ -34,7 +38,8 @@
       .siteLoaderLine { margin: -18px 0 0; font-size: 9px; letter-spacing: .16em; color: #a7b7c3; }
       @keyframes mineralFill { to { clip-path: inset(0); } }
       @media (prefers-reduced-motion: reduce) {
-        .siteLoader, .siteLoaderMark::after { animation: none; transition: none; }
+        .siteLoader, .siteLoaderIdentity, .siteLoaderMark::after { animation: none; transition: none; }
+        .siteLoader.is-leaving .siteLoaderIdentity { transform: none; }
         .siteLoaderMark::after { clip-path: inset(0); }
       }
     </style>
@@ -54,6 +59,7 @@
         const loader = document.getElementById('site-loader');
         const root = document.getElementById('root');
         const started = performance.now();
+        const fadeDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1000;
         let ready = false;
         let finished = false;
         let minimumTimer;
@@ -70,7 +76,8 @@
           document.documentElement.classList.remove('is-booting');
           loader.setAttribute('aria-hidden', 'true');
           loader.classList.add('is-leaving');
-          setTimeout(() => loader.remove(), 420);
+          window.dispatchEvent(new Event('site:revealed'));
+          setTimeout(() => loader.remove(), fadeDuration);
         };
         const onReady = () => {
           ready = true;
@@ -78,7 +85,7 @@
           clearTimeout(minimumTimer);
           minimumTimer = setTimeout(() => reveal('ready'), remaining);
         };
-        const deadline = setTimeout(() => reveal(ready ? 'ready' : 'poster'), 4500);
+        const deadline = setTimeout(() => reveal(ready ? 'ready' : 'poster'), 4000);
         window.addEventListener('hero:ready', onReady);
       })();
     </script>

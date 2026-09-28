@@ -1,0 +1,42 @@
+/* Content stays in its original grid positions throughout the entrance. */
+#root { overflow-x: clip; }
+
+[data-motion] {
+  --motion-x: 0px;
+  --motion-y: 0px;
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 850ms ease,
+    translate 1100ms cubic-bezier(.22, 1, .36, 1);
+  transition-delay: var(--motion-delay, 0ms);
+}
+
+[data-motion='left'] { --motion-x: -56px; }
+[data-motion='right'] { --motion-x: 56px; }
+[data-motion='top'] { --motion-y: -36px; }
+[data-motion='bottom'] { --motion-y: 40px; }
+
+[data-motion-state='pending'] {
+  opacity: 0;
+  translate: var(--motion-x) var(--motion-y);
+}
+
+/* Never leave a keyboard user on an invisible control. */
+[data-motion]:focus-within { opacity: 1; translate: 0 0; transition: none; }
+
+@media (max-width: 700px) {
+  [data-motion='left'] { --motion-x: -24px; }
+  [data-motion='right'] { --motion-x: 24px; }
+  [data-motion='top'] { --motion-y: -20px; }
+  [data-motion='bottom'] { --motion-y: 24px; }
+  [data-motion] { transition-duration: 700ms, 850ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-motion] { opacity: 1; translate: none; transition: none; }
+}
+
+@media print {
+  [data-motion] { opacity: 1 !important; translate: none !important; transition: none !important; }
+}

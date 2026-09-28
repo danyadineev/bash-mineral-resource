@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "test:startup": "node scripts/test-startup.mjs",
+    "test:motion": "node scripts/test-motion.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

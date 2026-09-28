@@ -7,7 +7,7 @@ const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8')
 const startup = html.match(/<script id="site-startup">([\s\S]*?)<\/script>/)[1]
 
 // Exercise the actual early HTML shell without a browser or real timers.
-function boot() {
+function boot(reducedMotion = false) {
   let now = 0
   let id = 0
   let removed = false
@@ -18,7 +18,13 @@ function boot() {
   runInNewContext(startup, {
     performance: { now: () => now },
     document: { getElementById: (name) => name === 'root' ? root : loader, documentElement: { classList: { remove() {} } } },
-    window: { addEventListener: (name, cb) => events.set(name, cb), removeEventListener: (name) => events.delete(name) },
+    window: {
+      matchMedia: () => ({ matches: reducedMotion }),
+      addEventListener: (name, cb) => events.set(name, cb),
+      removeEventListener: (name) => events.delete(name),
+      dispatchEvent: (event) => events.get(event.type)?.(),
+    },
+    Event,
     setTimeout: (cb, delay) => { timers.set(++id, { cb, time: now + delay }); return id },
     clearTimeout: (timer) => timers.delete(timer),
   })
@@ -43,7 +49,9 @@ assert.equal(early.root.inert, true)
 early.at(3000)
 assert.equal(early.root.dataset.bootState, 'ready')
 assert.equal(early.root.inert, false)
-early.at(3420)
+early.at(3999)
+assert.equal(early.removed, false)
+early.at(4000)
 assert.equal(early.removed, true)
 
 const late = boot()
@@ -52,13 +60,17 @@ assert.equal(late.root.dataset.bootElapsed, '3800')
 
 // Slow, failed, autoplay-blocked or missing JS/media cannot trap the visitor.
 const failed = boot()
-failed.at(4500)
+failed.at(4000)
 assert.equal(failed.root.dataset.bootState, 'poster')
 assert.equal(failed.root.inert, false)
-failed.at(4920)
+failed.at(5000)
 assert.equal(failed.removed, true)
 failed.ready()
 assert.equal(failed.root.dataset.bootState, 'poster')
+
+const reduced = boot(true)
+reduced.at(100); reduced.ready(); reduced.at(3000)
+assert.equal(reduced.removed, true)
 
 const ranges = (...items) => ({ length: items.length, start: (i) => items[i][0], end: (i) => items[i][1] })
 assert.equal(hasPlaybackBuffer(ranges(), 0, 45), false)

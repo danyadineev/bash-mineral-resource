@@ -223,7 +223,7 @@ a {
 .heroMedia {
   object-fit: cover;
   opacity: 0;
-  transition: opacity 600ms ease;
+  transition: opacity 1100ms cubic-bezier(.4, 0, .2, 1);
 }
 
 .heroMediaPoster { object-fit: cover; }
@@ -1161,7 +1161,7 @@ a {
 .productHeroMedia {
   object-fit: cover;
   opacity: 0;
-  transition: opacity 600ms ease;
+  transition: opacity 1100ms cubic-bezier(.4, 0, .2, 1);
 }
 
 .productHeroMediaPoster { object-fit: cover; }

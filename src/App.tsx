@@ -20,6 +20,7 @@ import { CompanyCapabilityGallery } from './components/CompanyCapabilityGallery'
 import { VisualGallery } from './components/VisualGallery'
 import { productGalleries } from './productGalleries'
 import { HeroVideo } from './components/HeroVideo'
+import { usePageMotion } from './components/usePageMotion'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
@@ -506,6 +507,7 @@ function Footer() {
 
 function App() {
   const [route, setRoute] = useState(() => window.location.hash.replace('#/', ''))
+  usePageMotion(route === 'gypsum' || route === 'manganese' ? route : 'home')
 
   useEffect(() => {
     const sync = () => {
