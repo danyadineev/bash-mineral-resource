@@ -353,13 +353,17 @@ function GypsumContent() {
 }
 
 function ProductPage({ product }: { product: Product }) {
+  const heroVideo = product.id === 'gypsum'
+    ? { desktop: 'hero-gypsum-september29.mp4', mobile: 'hero-gypsum-september29-mobile.mp4', poster: 'hero-gypsum-september29-poster.webp' }
+    : { desktop: 'hero-drone.mp4', mobile: 'hero-drone-mobile.mp4', poster: product.hero }
+
   return (
     <>
       <Header />
       <main className="productPage">
         <section className={`productHero productHero--${product.id}`} id="top">
-          <HeroVideo className="productHeroMedia" desktop={asset('hero-drone.mp4')}
-            mobile={asset('hero-drone-mobile.mp4')} poster={asset(product.hero)} />
+          <HeroVideo className="productHeroMedia" desktop={asset(heroVideo.desktop)}
+            mobile={asset(heroVideo.mobile)} poster={asset(heroVideo.poster)} />
           <div className="productHeroShade" />
           <div className="productHeroCopy">
             <a className="backLink" href="#top"><ArrowLeft size={17} /> Главная страница</a>
