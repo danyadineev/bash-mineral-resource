@@ -1016,7 +1016,7 @@ a {
 
 .greetingCopy h2 { font-size: clamp(32px, 2.8vw, 42px); line-height: 1.1; }
 .greetingMessage {
-  margin-top: 20px;
+  margin-top: 0;
   color: rgba(255, 255, 255, 0.88);
   font-size: 15px;
   line-height: 1.55;
@@ -1238,7 +1238,8 @@ a {
   line-height: 0.94;
 }
 
-.productHero--gypsum h1 {
+.productHero--gypsum h1,
+.productHero--manganese h1 {
   font-size: var(--heading-size);
   font-weight: 720;
   letter-spacing: -0.045em;
@@ -1267,6 +1268,8 @@ a {
   background: var(--gold-soft);
   font-weight: 720;
 }
+
+.productHero--manganese .productHeroAccent { max-width: 540px; }
 
 .productOverview {
   display: grid;
@@ -2253,7 +2256,8 @@ a {
     word-break: normal;
   }
 
-  .productHero--gypsum h1 {
+  .productHero--gypsum h1,
+  .productHero--manganese h1 {
     font-size: clamp(21px, 7.15vw, 42px);
   }
 
@@ -2316,14 +2320,14 @@ a {
 .applicationQualitySteps li > span { color: var(--gold-soft); font-size: 12px; line-height: 24px; font-weight: 650; }
 .applicationQualitySteps h4 { margin: 0 0 7px; font-size: 17px; font-weight: 600; }
 .applicationQualitySteps p { font-size: 14px; }
-.applicationDetail { display: grid; grid-template-columns: 1fr 0.85fr; gap: 48px; align-items: stretch; }
-.applicationPhoto { position: relative; min-height: 360px; margin: 0; border-radius: 8px; overflow: hidden; }
+.applicationDetail { display: grid; grid-template-columns: 1fr 0.94fr; gap: 26px; align-items: stretch; max-width: 1110px; margin-inline: auto; }
+.applicationPhoto { position: relative; min-height: 300px; margin: 0; border-radius: 8px; overflow: hidden; }
 .applicationPhoto img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
 .applicationPhoto figcaption { position: absolute; right: 16px; bottom: 16px; left: 16px; padding: 12px 14px; color: #fff; background: rgba(5,18,28,.76); border-radius: 6px; font-size: 12px; }
-.applicationPassport { display: flex; flex-direction: column; padding: 32px; color: var(--ink); background: var(--paper); border-top: 3px solid var(--gold); border-radius: 8px; overflow: hidden; }
+.applicationPassport { display: flex; flex-direction: column; padding: 24px; color: var(--ink); background: var(--paper); border-top: 3px solid var(--gold); border-radius: 8px; overflow: hidden; }
 .applicationPassport .eyebrow { color: #966000; font-size: 10px; }
 .applicationPassport dl { margin: 0; }
-.applicationPassport dl > div { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding: 17px 0; border-top: 1px solid var(--line); }
+.applicationPassport dl > div { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 12px 0; border-top: 1px solid var(--line); }
 .applicationPassport dt { font-size: 13px; color: var(--muted); }
 .applicationPassport dd { margin: 0; font-size: 14px; font-weight: 600; }
 .applicationPassport > p:not(.eyebrow) { font-size: 13px; line-height: 1.6; color: var(--muted); }
@@ -2336,10 +2340,40 @@ a {
 .gypsumProcess .productProcessList .productProcessCopy { padding: 24px; align-self: stretch; }
 .gypsumProcess .productProcessList h3 { font-size: 22px; }
 
+.manganeseDirections { padding-block: 108px; }
+.manganeseDirectionGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 40px; }
+.manganeseDirection { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.manganeseDirectionImage { height: 300px; overflow: hidden; background: #423b39; }
+.manganeseDirectionImage img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.manganeseDirectionImage--stone img { object-position: center 68%; }
+.manganeseDirectionImage--flux img { object-position: center 62%; }
+.manganeseDirectionCopy { padding: 30px; }
+.manganeseDirectionNumber { color: #9a6500; font-size: 11px; font-weight: 750; letter-spacing: .1em; }
+.manganeseDirection h3 { margin: 18px 0 8px; color: var(--ink); font-size: clamp(25px, 2.25vw, 34px); line-height: 1.1; letter-spacing: -.035em; }
+.manganeseDirectionTag { color: #956100; font-size: 15px; font-weight: 700; }
+.manganeseDirectionCopy > p:not(.manganeseDirectionTag) { min-height: 52px; color: var(--muted); line-height: 1.55; }
+.manganeseAnalysis { display: grid; gap: 7px; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--line); }
+.manganeseAnalysis strong { font-size: 15px; }
+.manganeseAnalysis span { color: var(--muted); font-size: 13px; }
+.manganeseAdvantages { padding-block: 100px; color: #fff; background: var(--navy-2); }
+.manganeseAdvantageGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 42px 0 0; padding: 0; list-style: none; }
+.manganeseAdvantageGrid li { min-height: 172px; padding: 26px; border: 1px solid #ffffff2c; border-radius: 10px; background: #ffffff09; }
+.manganeseAdvantageGrid span { color: var(--gold-soft); font-size: 13px; font-weight: 750; }
+.manganeseAdvantageGrid p { margin: 22px 0 0; font-size: 17px; line-height: 1.45; }
+.manganeseExperience { padding-block: 108px; }
+.manganeseExperienceGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 42px; }
+.manganeseExperienceGrid article { padding: 30px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+.manganeseExperienceGrid h3 { margin: 20px 0 7px; font-size: clamp(22px, 2vw, 30px); line-height: 1.17; }
+.manganeseExperienceGrid article > p { margin: 0 0 20px; color: var(--muted); }
+.manganeseExperienceGrid strong { font-size: 14px; }
+.manganeseExperienceGrid ul { display: grid; gap: 10px; margin: 14px 0 0; padding-left: 20px; line-height: 1.45; }
+.manganeseExperienceGrid li::marker { color: #a36b00; }
+
 @media (max-width: 1100px) {
   .companyCapabilityGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gypsumProcess .productProcessList { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .applicationDetail { gap: 32px; }
+  .manganeseAdvantageGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 700px) {
   .companyCapabilityGrid { grid-template-columns: 1fr; }
@@ -2353,6 +2387,12 @@ a {
   .applicationPassport dl > div { grid-template-columns: 1fr; gap: 7px; }
   .gypsumProcess .productProcessList { grid-template-columns: 1fr; }
   .gypsumProcess .productProcessList img { height: 240px; }
+  .productHero--manganese .productHeroAccent { max-width: none; }
+  .manganeseDirections, .manganeseExperience, .manganeseAdvantages { padding-block: 58px; }
+  .manganeseDirectionGrid, .manganeseExperienceGrid, .manganeseAdvantageGrid { grid-template-columns: 1fr; }
+  .manganeseDirectionImage { height: 225px; }
+  .manganeseDirectionCopy, .manganeseExperienceGrid article { padding: 22px; }
+  .manganeseAdvantageGrid li { min-height: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

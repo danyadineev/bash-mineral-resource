@@ -36,13 +36,13 @@ const company = {
 const products = {
   manganese: {
     id: 'manganese',
-    eyebrow: 'Продукт 01',
+    eyebrow: '',
     title: 'Марганцовистый флюсующий известняк',
     subtitle: 'Комплексная марганцовистая флюсующая добавка для металлургического производства',
     intro:
       'Осадочная горная порода с природным содержанием марганца и кальция. После дробления и рассева материал подготавливается под согласованную технологическую задачу.',
     hero: 'content/sep27-manganese.webp',
-    accent: 'Три стадии дробления и рассева на ДСК',
+    accent: 'Уникальный природный комплексный флюс, содержащий оксиды кальция и марганца',
     specs: [
       ['Базовый продукт', 'Марганцовистый известняк фракции 0–6 мм'],
       ['Применение', 'Агломерация и дальнейшие металлургические переделы'],
@@ -223,7 +223,6 @@ function HomePage() {
               <span className="productChoiceText">
                 <small>Для металлургических производств</small>
                 <strong>Марганцовистый флюсующий известняк</strong>
-                <p>Состав, применение в агломерации и окатышах, подготовка партии и лабораторный контроль.</p>
                 <span>Характеристики и применение <ArrowRight size={18} /></span>
               </span>
             </a>
@@ -234,7 +233,6 @@ function HomePage() {
               <span className="productChoiceText">
                 <small>Для цементных и строительных производств</small>
                 <strong>Камень гипсовый и гипсоангидритовый</strong>
-                <p>Требования по ГОСТ, направления применения, подготовка фракции, контроль и отгрузка.</p>
                 <span>Характеристики и применение <ArrowRight size={18} /></span>
               </span>
             </a>
@@ -268,13 +266,11 @@ function HomePage() {
           <CompanyCapabilityGallery />
         </section>
 
-        <section className="greetingSection" id="greeting">
+        <section className="greetingSection" id="greeting" aria-label="Обращение руководителя">
           <div className="greetingPortrait">
             <img src={asset('content/director-alexander-banaev.webp')} alt="Александр Банаев, директор ООО «БАШМИНЕРАЛРЕСУРС»" />
           </div>
           <div className="greetingCopy">
-            <p className="eyebrow">Обращение руководителя</p>
-            <h2>Приветственное слово</h2>
             <div className="greetingMessage">
               <p className="greetingSalutation">Уважаемые клиенты, партнеры и коллеги!</p>
               {directorGreeting.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -333,7 +329,7 @@ function GypsumContent() {
           <div className="applicationBenefits"><h3>Преимущества нашего продукта</h3><ul>{application.benefits.map(({ icon: Icon, title, text }) => <li key={title}><div className="applicationBenefitTitle"><Icon size={22} aria-hidden="true" /><h4>{title}</h4></div><p>{text}</p></li>)}</ul></div>
           <div className="applicationQuality"><h3><SlidersHorizontal size={23} aria-hidden="true" />Подбор качества под ваше производство</h3><p>Согласуем состав и фракцию с вашим технологом.</p><ol className="applicationQualitySteps">{application.qualitySteps.map(([title, text], step) => <li key={title}><span>0{step + 1}</span><div><h4>{title}</h4><p>{text}</p></div></li>)}</ol></div>
           <div className="applicationDetail">
-            <figure className="applicationPhoto"><VisualGallery className="applicationVisual" title={application.caption} photos={application.id === 'dry-mixes' ? productGalleries.gypsum.mining : ['content/sep27-gypsum.webp']} /><figcaption>{application.caption}</figcaption></figure>
+            <figure className="applicationPhoto"><VisualGallery className="applicationVisual" title={application.caption} photos={application.id === 'dry-mixes' ? ['content/gypsum-stone.webp'] : ['content/sep27-gypsum.webp']} /><figcaption>{application.caption}</figcaption></figure>
             <div className="applicationPassport">
               <p className="eyebrow">Показатели по паспорту качества</p><h3>Паспорт партии для {application.id === 'cement' ? 'цементного производства' : 'сухих строительных смесей'}</h3>
               <dl><div><dt>{application.focus}</dt><dd>По лабораторному протоколу</dd></div><div><dt>{application.secondary}</dt><dd>По лабораторному протоколу</dd></div><div><dt>Фракция</dt><dd>0–60 / 60–300 мм или по согласованию</dd></div><div><dt>Сорт и соответствие</dt><dd>ГОСТ 4013-2019, по паспорту партии</dd></div><div><dt>Идентификация</dt><dd>Номер и дата отгружаемой партии</dd></div></dl>
@@ -349,6 +345,55 @@ function GypsumContent() {
       <div className="productProcessList">{products.gypsum.process.map(([number, title, text], index) => <article key={number}><VisualGallery className="productProcessVisual" title={`Гипс · ${title}`} photos={productGalleries.gypsum[processGalleryKeys[index]]} /><div className="productProcessCopy"><span>{number}</span><h3>{title}</h3><p>{text}</p></div></article>)}</div>
     </section>
     <section className="sampleSection"><div className="section sampleInner"><div><p className="eyebrow">Лабораторные испытания</p><h2>Запросите пробу камня</h2><p>Подготовим образцы гипсового и гипсоангидритового камня для проверки в лаборатории вашего предприятия. Сообщите назначение сырья, нужную фракцию и показатели качества.</p></div><div className="sampleActions"><a className="button button--gold" href={`mailto:${company.email}?subject=${encodeURIComponent('Запрос пробы гипсового камня')}`}>Запросить образцы <ArrowRight size={18} /></a><a className="button button--glass" href="tel:+79033100125">Позвонить</a></div></div></section>
+  </>
+}
+
+const manganeseAdvantages = [
+  'Стабильное качество химического состава в течение всего периода поставки.',
+  'В одном сырье одновременно содержатся оксиды кальция (CaO) и марганца (Mn).',
+  'Низкий уровень фосфора (P).',
+  'Возможность производства разных марок марганцовистого флюсующего известняка — в том числе с дополнительным содержанием MgO, Fe и других компонентов.',
+  'Существенные балансовые запасы исходного сырья обеспечивают долгосрочные стабильные поставки.',
+]
+
+const manganeseExperience = [
+  {
+    title: 'Агломерационная шихта АО «НЛМК»',
+    period: 'Поставки в 2016–2019 гг.',
+    effects: ['Увеличение холодной прочности агломерата', 'Снижение доли мелочи менее 5 мм', 'Снижение расхода обычных флюсов', 'Снижение расхода топлива', 'Улучшение газодинамики и стабильности последующего доменного процесса'],
+  },
+  { title: 'Промывка доменных печей АО «НЛМК»', period: 'Применение марганцовистого известняка', effects: [] },
+  { title: 'Производство окатышей', period: 'Применение марганцовистого известняка', effects: [] },
+  {
+    title: 'Железофлюс в агломерационной печи АО «ЕВРАЗ»',
+    period: 'Марганцовистый известняк в составе шихты',
+    effects: ['Снижение удельного расхода кокса', 'Снижение расхода природного газа', 'Увеличение выхода годного агломерата', 'Упрощение процесса шихтовки для технологического производства'],
+  },
+]
+
+function ManganeseContent() {
+  return <>
+    <section className="section manganeseDirections" id="product">
+      <SectionHeading eyebrow="Продукция" title="Два направления применения" text="Характеристики и фракцию каждой партии согласуем под технологическую задачу." />
+      <div className="manganeseDirectionGrid">
+        <article className="manganeseDirection">
+          <div className="manganeseDirectionImage manganeseDirectionImage--stone"><img src={asset('content/manganese-limestone-sample.webp')} alt="Марганцовистый известняк" loading="lazy" /></div>
+          <div className="manganeseDirectionCopy"><span className="manganeseDirectionNumber">01 / ПРИРОДНОЕ СЫРЬЁ</span><h3>Марганцовистый известняк</h3><p className="manganeseDirectionTag">Любой фракции</p><p>Фракцию и марку подбираем под задачи металлургического производства.</p><div className="manganeseAnalysis"><strong>Химический анализ</strong><span>Показатели будут добавлены после согласования данных.</span></div></div>
+        </article>
+        <article className="manganeseDirection">
+          <div className="manganeseDirectionImage manganeseDirectionImage--flux"><img src={asset('content/manganese-fused-flux.webp')} alt="Марганцовистый плавленный флюс" loading="lazy" /></div>
+          <div className="manganeseDirectionCopy"><span className="manganeseDirectionNumber">02 / ПОДГОТОВЛЕННЫЙ ПРОДУКТ</span><h3>Марганцовистый плавленный флюс</h3><p className="manganeseDirectionTag">Разных марок</p><p>Описание марок и применения будет дополнено после согласования.</p><div className="manganeseAnalysis"><strong>Химический анализ</strong><span>Показатели будут добавлены после согласования данных.</span></div></div>
+        </article>
+      </div>
+    </section>
+    <section className="manganeseAdvantages" id="advantages"><div className="section">
+      <SectionHeading eyebrow="Преимущества продукта" title="Почему выбирают марганцовистый флюсующий известняк" inverse />
+      <ol className="manganeseAdvantageGrid">{manganeseAdvantages.map((text, index) => <li key={text}><span>0{index + 1}</span><p>{text}</p></li>)}</ol>
+    </div></section>
+    <section className="section manganeseExperience" id="application">
+      <SectionHeading eyebrow="Практика применения" title="Опыт на металлургических предприятиях" text="Примеры применения марганцовистого известняка и отмеченные эффекты внедрения." />
+      <div className="manganeseExperienceGrid">{manganeseExperience.map(({ title, period, effects }, index) => <article key={title}><span className="manganeseDirectionNumber">0{index + 1} / ОПЫТ ПРИМЕНЕНИЯ</span><h3>{title}</h3><p>{period}</p>{effects.length > 0 && <><strong>Эффекты от внедрения</strong><ul>{effects.map(effect => <li key={effect}>{effect}</li>)}</ul></>}</article>)}</div>
+    </section>
   </>
 }
 
@@ -376,46 +421,9 @@ function ProductPage({ product }: { product: Product }) {
         </section>
 
         {product.id === 'gypsum' ? <GypsumContent /> : <>
-        <section className="section productOverview" id="product">
-          <div className="productOverviewIntro">
-            <p className="eyebrow">Описание продукта</p>
-            <h2>Базовый продукт<br />и назначение</h2>
-            <p>{product.intro}</p>
-          </div>
-          <dl className="specList">
-            {product.specs.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
-          </dl>
-        </section>
+        <ManganeseContent />
 
-
-        {product.testingHistory.length > 0 && (
-          <section className="testingHistorySection" id="testing-history">
-            <div className="section testingHistoryInner">
-              <SectionHeading
-                eyebrow="История внедрения и испытаний"
-                title="От исследований к промышленному применению"
-                text="Раздел подготовлен для последовательной публикации исследований, испытаний и результатов внедрения марганцовистого известняка."
-                inverse
-              />
-              <ol className="testingTimeline">
-                {product.testingHistory.map(([title, text], index) => (
-                  <li key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>
-                ))}
-              </ol>
-            </div>
-          </section>
-        )}
-
-        <section className="productUseSection" id="application">
-          <div className="section productUseInner">
-            <SectionHeading eyebrow={product.usesEyebrow} title={product.usesTitle} text={product.value} inverse />
-            <div className="useGrid">
-              {product.uses.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}
-            </div>
-          </div>
-        </section>
-
-        <section className="section productProcess" id="process">
+        <section className="section productProcess gypsumProcess manganeseProcess" id="process">
           <SectionHeading eyebrow="Производственный процесс" title="Добыча, переработка и отгрузка" text="Проследите путь конкретного продукта от месторождения до подготовленной партии с лабораторным контролем и выбранной схемой доставки." />
           <div className="productProcessList">
             {product.process.map(([number, title, text], index) => (
@@ -426,52 +434,6 @@ function ProductPage({ product }: { product: Product }) {
             ))}
           </div>
         </section>
-
-        <section className="passportSection" id="passport">
-          <div className="section passportInner">
-            <SectionHeading eyebrow="Контроль качества" title="Показатели — по паспорту партии" text="Паспорт качества и лабораторный протокол фиксируют фактические характеристики подготовленной партии для технолога и закупщика." inverse />
-            <div className="passportSheet">
-              <div className="passportTop"><Logo compact /><span>Предварительная структура документа</span></div>
-              <dl>
-                <div><dt>Химический состав</dt><dd>по лабораторному протоколу партии</dd></div>
-                <div><dt>Фракция</dt><dd>по согласованным условиям поставки</dd></div>
-                <div><dt>Влажность</dt><dd>по паспорту качества</dd></div>
-                <div><dt>Номер и дата партии</dt><dd>заполняются при отгрузке</dd></div>
-              </dl>
-              <p>Финальные значения и сканы документов размещаются после согласования специалистами предприятия.</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="productConsumersSection" id="consumers">
-          <div className="section productConsumersInner">
-            <SectionHeading eyebrow="Потребители" title="Кому поставляется продукт" text="Показываем текущие отрасли применения и направления развития поставок именно для этого вида сырья." inverse />
-            <div className="productConsumerGrid">
-              {product.consumers.map(([title, text], index) => (
-                <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {product.evidence.length > 0 && (
-          <section className="section evidenceSection" id="evidence">
-            <SectionHeading eyebrow="Подтверждающие материалы" title="Исследования, акты и заключения" text="Документы будут размещаться по мере подготовки согласованных версий для публикации." />
-            <div className="evidenceGrid">
-              {product.evidence.map(([title, text], index) => (
-                <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p><small>Материалы готовятся к публикации</small></article>
-              ))}
-            </div>
-          </section>
-        )}
-
-        <section className="section productGallery" id="gallery">
-          <SectionHeading eyebrow="Фотографии продукта" title="Сырьё, подготовка и отгрузка" />
-          <div className="productGalleryGrid">
-            {product.gallery.map(([title, image], index) => <figure key={title}><VisualGallery className="productGalleryVisual" title={`Марганцовистый известняк · ${title}`} photos={index === 0 ? [image] : productGalleries.manganese[index === 1 ? 'mining' : index === 2 ? 'crushing' : 'shipping']} /><figcaption>{title}</figcaption></figure>)}
-          </div>
-        </section>
-
 
         </>}
         <ContactSection compact />
@@ -486,7 +448,7 @@ function ContactSection({ compact = false }: { compact?: boolean }) {
     <section className={`contactSection${compact ? ' contactSection--compact' : ''}`} id="contacts">
       <div className="contactBackdrop" style={{ '--contact-image': `url(${asset('content/home-rail.webp')})` } as CSSProperties} />
       <div className="section contactInner">
-        <SectionHeading eyebrow="Контакты" title={<>Обсудить продукт<br />и условия поставки</>} text="Свяжитесь напрямую: уточним задачу, состав документов, необходимую фракцию и схему отгрузки." inverse />
+        <SectionHeading eyebrow="Контакты" title={<>Обсудить продукт<br />и условия поставки</>} text="Свяжитесь напрямую: уточним потребность, состав и фракцию, найдем взаимовыгодные условия поставки." inverse />
         <div className="contactList">
           <div className="contactPhones">
             <span><Phone size={20} /></span><small>Телефоны компании</small>
