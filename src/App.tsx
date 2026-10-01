@@ -329,7 +329,7 @@ function GypsumContent() {
           <div className="applicationBenefits"><h3>Преимущества нашего продукта</h3><ul>{application.benefits.map(({ icon: Icon, title, text }) => <li key={title}><div className="applicationBenefitTitle"><Icon size={22} aria-hidden="true" /><h4>{title}</h4></div><p>{text}</p></li>)}</ul></div>
           <div className="applicationQuality"><h3><SlidersHorizontal size={23} aria-hidden="true" />Подбор качества под ваше производство</h3><p>Согласуем состав и фракцию с вашим технологом.</p><ol className="applicationQualitySteps">{application.qualitySteps.map(([title, text], step) => <li key={title}><span>0{step + 1}</span><div><h4>{title}</h4><p>{text}</p></div></li>)}</ol></div>
           <div className="applicationDetail">
-            <figure className="applicationPhoto"><VisualGallery className="applicationVisual" title={application.caption} photos={application.id === 'dry-mixes' ? ['content/gypsum-stone.webp'] : ['content/sep27-gypsum.webp']} /><figcaption>{application.caption}</figcaption></figure>
+            <figure className="applicationPhoto"><VisualGallery className="applicationVisual" title={application.caption} photos={application.id === 'dry-mixes' ? ['content/gypsum-stone.webp'] : ['content/gypsum-cement-bright.webp']} /><figcaption>{application.caption}</figcaption></figure>
             <div className="applicationPassport">
               <p className="eyebrow">Показатели по паспорту качества</p><h3>Паспорт партии для {application.id === 'cement' ? 'цементного производства' : 'сухих строительных смесей'}</h3>
               <dl><div><dt>{application.focus}</dt><dd>По лабораторному протоколу</dd></div><div><dt>{application.secondary}</dt><dd>По лабораторному протоколу</dd></div><div><dt>Фракция</dt><dd>0–60 / 60–300 мм или по согласованию</dd></div><div><dt>Сорт и соответствие</dt><dd>ГОСТ 4013-2019, по паспорту партии</dd></div><div><dt>Идентификация</dt><dd>Номер и дата отгружаемой партии</dd></div></dl>
@@ -377,7 +377,7 @@ function ManganeseContent() {
       <SectionHeading eyebrow="Продукция" title="Два направления применения" text="Характеристики и фракцию каждой партии согласуем под технологическую задачу." />
       <div className="manganeseDirectionGrid">
         <article className="manganeseDirection">
-          <div className="manganeseDirectionImage manganeseDirectionImage--stone"><img src={asset('content/manganese-limestone-sample.webp')} alt="Марганцовистый известняк" loading="lazy" /></div>
+          <div className="manganeseDirectionImage manganeseDirectionImage--stone"><img src={asset('content/manganese-limestone-owner.webp')} alt="Марганцовистый известняк" loading="lazy" /></div>
           <div className="manganeseDirectionCopy"><span className="manganeseDirectionNumber">01 / ПРИРОДНОЕ СЫРЬЁ</span><h3>Марганцовистый известняк</h3><p className="manganeseDirectionTag">Любой фракции</p><p>Фракцию и марку подбираем под задачи металлургического производства.</p><div className="manganeseAnalysis"><strong>Химический анализ</strong><span>Показатели будут добавлены после согласования данных.</span></div></div>
         </article>
         <article className="manganeseDirection">
