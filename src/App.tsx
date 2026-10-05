@@ -21,6 +21,8 @@ import { VisualGallery } from './components/VisualGallery'
 import { productGalleries } from './productGalleries'
 import { HeroVideo } from './components/HeroVideo'
 import { usePageMotion } from './components/usePageMotion'
+import { limestoneComposition, fluxComposition, oreComposition, manganeseAdvantages, manganeseExperience, cooperationSteps, gypsumPassports } from './octoberContent'
+import './octoberContent.css'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
@@ -294,7 +296,7 @@ function GypsumContent() {
       benefits: [
         { icon: ShieldCheck, title: 'Качество по ГОСТ', text: 'Гипсовый камень — 1–2 сорт. Гипсоангидритовый — выше требований к 1 сорту ГОСТ 4013-2019.' },
         { icon: FlaskConical, title: 'Лабораторный контроль', text: 'Проверяем состав сырья перед отгрузкой.' },
-        { icon: Ruler, title: 'Нужная фракция', text: '0–60 или 60–300 мм. Другие фракции — по согласованию.' },
+        { icon: Ruler, title: 'Нужная фракция', text: '0–10 / 10–60 / 10–80 / 60–300 мм.' },
       ],
       qualitySteps: [
         ['Согласование', 'Требуемое соотношение SO₃ и CaSO₄·2H₂O.'],
@@ -302,6 +304,7 @@ function GypsumContent() {
         ['Проверка', 'Подтверждаем состав протоколом партии.'],
       ],
       focus: 'SO₃ — серный ангидрит', secondary: 'CaSO₄·2H₂O — двуводный гипс',
+      focusValue: '52%', secondaryValue: '27%', fraction: '0–10 / 10–60 / 10–80 / 60–300 мм',
       caption: 'Сырьё для цементных производств',
     },
     {
@@ -317,7 +320,8 @@ function GypsumContent() {
         ['Шихтовка', 'Подбираем соотношение двуводного гипса и серного ангидрида.'],
         ['Проверка', 'Контролируем состав и фракцию перед поставкой.'],
       ],
-      focus: 'CaSO₄·2H₂O — двуводный гипс', secondary: 'SO₃ — серный ангидрит',
+      focus: 'Содержание гипса (CaSO₄·2H₂O)', secondary: 'Содержание кристаллизационной воды',
+      focusValue: '91%', secondaryValue: '19%', fraction: '0–60 / 60–300 мм или по согласованию',
       caption: 'Тюлько-Тюбинское месторождение',
     },
   ]
@@ -332,11 +336,13 @@ function GypsumContent() {
             <figure className="applicationPhoto"><VisualGallery className="applicationVisual" title={application.caption} photos={application.id === 'dry-mixes' ? ['content/gypsum-cement-bright.webp'] : ['content/sep27-gypsum.webp']} /><figcaption>{application.caption}</figcaption></figure>
             <div className="applicationPassport">
               <p className="eyebrow">Показатели по паспорту качества</p><h3>Паспорт партии для {application.id === 'cement' ? 'цементного производства' : 'сухих строительных смесей'}</h3>
-              <dl><div><dt>{application.focus}</dt><dd>По лабораторному протоколу</dd></div><div><dt>{application.secondary}</dt><dd>По лабораторному протоколу</dd></div><div><dt>Фракция</dt><dd>0–60 / 60–300 мм или по согласованию</dd></div><div><dt>Сорт и соответствие</dt><dd>ГОСТ 4013-2019, по паспорту партии</dd></div><div><dt>Идентификация</dt><dd>Номер и дата отгружаемой партии</dd></div></dl>
+              <dl><div><dt>{application.focus}</dt><dd>{application.focusValue}</dd></div><div><dt>{application.secondary}</dt><dd>{application.secondaryValue}</dd></div><div><dt>Фракция</dt><dd>{application.fraction}</dd></div><div><dt>Сорт и соответствие</dt><dd>ГОСТ 4013-2019, по паспорту партии</dd></div><div><dt>Идентификация</dt><dd>Номер и дата отгружаемой партии</dd></div></dl>
               <p>Фактические значения указываются в документах на конкретную партию. Целевой состав и фракцию согласуем с вашим технологом до поставки.</p>
               <a href={`mailto:${company.email}?subject=${encodeURIComponent(application.title + ' — запрос характеристик')}`}>Запросить характеристики <ArrowRight size={18} /></a>
             </div>
           </div>
+          {application.id === 'cement' && <p className="applicationBlendingNote">По требованию заказчика мы производим шихтовку камня и доводим до нужных усредненных химических показателей.</p>}
+          <PassportExample passport={gypsumPassports[application.id as keyof typeof gypsumPassports]} />
         </div>
       </section>
     ))}
@@ -348,52 +354,52 @@ function GypsumContent() {
   </>
 }
 
-const manganeseAdvantages = [
-  'Стабильное качество химического состава в течение всего периода поставки.',
-  'В одном сырье одновременно содержатся оксиды кальция (CaO) и марганца (Mn).',
-  'Низкий уровень фосфора (P).',
-  'Возможность производства разных марок марганцовистого флюсующего известняка — в том числе с дополнительным содержанием MgO, Fe и других компонентов.',
-  'Существенные балансовые запасы исходного сырья обеспечивают долгосрочные стабильные поставки.',
-]
+function PassportExample({ passport }: { passport: (typeof gypsumPassports)[keyof typeof gypsumPassports] }) {
+  return <article className="passportExample">
+    <div className="passportExampleHeader"><div><p className="eyebrow">Химико-аналитическая лаборатория</p><h3>Паспорт качества № {passport.number}</h3><p>{passport.material} · фракция {passport.fraction} · сорт {passport.grade}</p></div><span>{passport.date}</span></div>
+    <div className="passportExampleBody">
+      <dl className="passportExampleFacts">
+        <div><dt>Номер партии</dt><dd>{passport.batch}</dd></div><div><dt>Масса партии</dt><dd>{passport.mass} тонн</dd></div>
+        <div><dt>Дата изготовления</dt><dd>{passport.manufacture}</dd></div><div><dt>Дата отбора пробы</dt><dd>{passport.sampling}</dd></div>
+        <div><dt>Дата испытаний</dt><dd>{passport.testing}</dd></div><div><dt>Ж/д квитанция</dt><dd>{passport.receipt}</dd></div>
+      </dl>
+      <div><p className="passportExampleMethod">Отбор пробы и метод испытаний: ГОСТ 4013-2019. Место отбора: отгрузочная площадка ж/д участка ООО «Башминералресурс».</p>
+        <table className="qualityResultTable"><thead><tr><th scope="col">Показатель</th><th scope="col">Норма по ГОСТ</th><th scope="col">Фактические данные</th></tr></thead><tbody>{passport.rows.map(([label, norm, value]) => <tr key={label}><th scope="row">{label}</th><td>{norm}</td><td>{value}</td></tr>)}</tbody></table>
+      </div>
+    </div>
+    <div className="passportExampleFooter"><div><p><strong>Заключение:</strong> {passport.conclusion}</p><small>Старший лаборант Хуснуллина Р.Р.</small></div><a href={asset(passport.file)} download>Скачать паспорт <ArrowRight size={18} /></a></div>
+  </article>
+}
 
-const manganeseExperience = [
-  {
-    title: 'Агломерационная шихта АО «НЛМК»',
-    period: 'Поставки в 2016–2019 гг.',
-    effects: ['Увеличение холодной прочности агломерата', 'Снижение доли мелочи менее 5 мм', 'Снижение расхода обычных флюсов', 'Снижение расхода топлива', 'Улучшение газодинамики и стабильности последующего доменного процесса'],
-  },
-  { title: 'Промывка доменных печей АО «НЛМК»', period: 'Применение марганцовистого известняка', effects: [] },
-  { title: 'Производство окатышей', period: 'Применение марганцовистого известняка', effects: [] },
-  {
-    title: 'Железофлюс в агломерационной печи АО «ЕВРАЗ»',
-    period: 'Марганцовистый известняк в составе шихты',
-    effects: ['Снижение удельного расхода кокса', 'Снижение расхода природного газа', 'Увеличение выхода годного агломерата', 'Упрощение процесса шихтовки для технологического производства'],
-  },
-]
+function ChemicalComposition({ rows }: { rows: string[][] }) {
+  return <div className="manganeseAnalysis"><h4>Химический анализ</h4><table className="compositionTable"><thead><tr><th scope="col">Показатель</th><th scope="col">Содержание</th></tr></thead><tbody>{rows.map(([label, value]) => <tr key={label}><th scope="row">{label}</th><td>{value}</td></tr>)}</tbody></table></div>
+}
 
 function ManganeseContent() {
   return <>
     <section className="section manganeseDirections" id="product">
-      <SectionHeading eyebrow="Продукция" title="Два направления применения" text="Характеристики и фракцию каждой партии согласуем под технологическую задачу." />
+      <SectionHeading eyebrow="Продукция" title="Два направления применения" />
+      <div className="manganeseDirectionsIntro"><p className="sectionLead">Характеристики и фракцию каждой партии согласуем под технологическую задачу.</p><figure className="manganeseRawPhoto"><img src={asset('content/manganese-raw-face.webp')} alt="Марганцовистый известняк из забоя" loading="lazy" /><figcaption>Сырье из забоя</figcaption></figure></div>
       <div className="manganeseDirectionGrid">
         <article className="manganeseDirection">
           <div className="manganeseDirectionImage manganeseDirectionImage--stone"><img src={asset('content/manganese-limestone-owner.webp')} alt="Марганцовистый известняк" loading="lazy" /></div>
-          <div className="manganeseDirectionCopy"><span className="manganeseDirectionNumber">01 / ПРИРОДНОЕ СЫРЬЁ</span><h3>Марганцовистый известняк</h3><p className="manganeseDirectionTag">Любой фракции</p><p>Фракцию и марку подбираем под задачи металлургического производства.</p><div className="manganeseAnalysis"><strong>Химический анализ</strong><span>Показатели будут добавлены после согласования данных.</span></div></div>
+          <div className="manganeseDirectionCopy"><span className="manganeseDirectionNumber">01 / ПРИРОДНОЕ СЫРЬЁ</span><h3>Марганцовистый известняк</h3><p className="manganeseDirectionTag">Фракции: 0–6 / 0–10 / 20–50 и др.</p><p>Фракцию и марку подбираем под задачи металлургического производства.</p><ChemicalComposition rows={limestoneComposition} /></div>
         </article>
         <article className="manganeseDirection">
           <div className="manganeseDirectionImage manganeseDirectionImage--flux"><img src={asset('content/manganese-fused-flux.webp')} alt="Марганцовистый плавленный флюс" loading="lazy" /></div>
-          <div className="manganeseDirectionCopy"><span className="manganeseDirectionNumber">02 / ПОДГОТОВЛЕННЫЙ ПРОДУКТ</span><h3>Марганцовистый плавленный флюс</h3><p className="manganeseDirectionTag">Разных марок</p><p>Описание марок и применения будет дополнено после согласования.</p><div className="manganeseAnalysis"><strong>Химический анализ</strong><span>Показатели будут добавлены после согласования данных.</span></div></div>
+          <div className="manganeseDirectionCopy"><span className="manganeseDirectionNumber">02 / ПОДГОТОВЛЕННЫЙ ПРОДУКТ</span><h3>Марганцовистый плавленный флюс</h3><p className="manganeseDirectionTag">Разных марок с увеличенным содержанием Mn / CaO / Mg / Fe и др.</p><p>Совместно с академическими и отраслевыми институтами проведены полномасштабные исследования и разработаны составы плавленного марганцовистого флюса.</p><ChemicalComposition rows={fluxComposition} /></div>
         </article>
       </div>
     </section>
     <section className="manganeseAdvantages" id="advantages"><div className="section">
       <SectionHeading eyebrow="Преимущества продукта" title="Почему выбирают марганцовистый флюсующий известняк" inverse />
-      <ol className="manganeseAdvantageGrid">{manganeseAdvantages.map((text, index) => <li key={text}><span>0{index + 1}</span><p>{text}</p></li>)}</ol>
+      <ol className="manganeseAdvantageGrid">{manganeseAdvantages.map(({ title, benefit, note }, index) => <li key={title}><span>0{index + 1} / КАЧЕСТВО ПРОДУКТА</span><h3>{title}</h3><div className="manganeseBuyerBenefit"><small>Преимущество для покупателя</small><p>{benefit}</p>{note && <p>{note}</p>}</div></li>)}</ol>
     </div></section>
     <section className="section manganeseExperience" id="application">
-      <SectionHeading eyebrow="Практика применения" title="Опыт на металлургических предприятиях" text="Примеры применения марганцовистого известняка и отмеченные эффекты внедрения." />
-      <div className="manganeseExperienceGrid">{manganeseExperience.map(({ title, period, effects }, index) => <article key={title}><span className="manganeseDirectionNumber">0{index + 1} / ОПЫТ ПРИМЕНЕНИЯ</span><h3>{title}</h3><p>{period}</p>{effects.length > 0 && <><strong>Эффекты от внедрения</strong><ul>{effects.map(effect => <li key={effect}>{effect}</li>)}</ul></>}</article>)}</div>
+      <SectionHeading eyebrow="Практика применения" title="Опыт внедрения и поставок" text="Применение марганцовистого известняка на металлургических предприятиях и отмеченные эффекты внедрения." />
+      <div className="manganeseExperienceGrid">{manganeseExperience.map(({ consumer, application, period, volume, effects, note }, index) => <article key={`${consumer}-${period}`}><div className="experienceInfo"><span className="manganeseDirectionNumber">0{index + 1} / ОПЫТ ВНЕДРЕНИЯ</span><h3>{consumer}</h3><p className="experiencePeriod">{period}</p>{volume && <strong className="experienceVolume">{volume}</strong>}<p className="experienceApplication">{application}</p></div><div className="experienceEffects"><h4>Эффект</h4><ul>{effects.map(effect => <li key={effect}>{effect}</li>)}</ul>{note && <p>{note}</p>}</div></article>)}</div>
     </section>
+    <section className="oreSection" id="oxide-ore"><div className="section oreProduct"><figure><img src={asset('content/manganese-oxide-ore.jpg')} alt="Окисная марганцовистая рыхлая руда из забоя" loading="lazy" /><figcaption>Сырье из забоя</figcaption></figure><div><span className="manganeseDirectionNumber">03 / ПРОДУКТ</span><h2>Окисная марганцовистая рыхлая руда</h2><p>Химические показатели исходной окисной марганцовистой руды Башминералресурс</p><ChemicalComposition rows={oreComposition} /></div></div></section>
   </>
 }
 
@@ -436,20 +442,21 @@ function ProductPage({ product }: { product: Product }) {
         </section>
 
         </>}
-        <ContactSection compact />
+        <ContactSection compact algorithm={product.id === 'manganese'} />
       </main>
       <Footer />
     </>
   )
 }
 
-function ContactSection({ compact = false }: { compact?: boolean }) {
+function ContactSection({ compact = false, algorithm = false }: { compact?: boolean; algorithm?: boolean }) {
   return (
-    <section className={`contactSection${compact ? ' contactSection--compact' : ''}`} id="contacts">
+    <section className={`contactSection${compact ? ' contactSection--compact' : ''}${algorithm ? ' contactSection--algorithm' : ''}`} id="contacts">
       <div className="contactBackdrop" style={{ '--contact-image': `url(${asset('content/home-rail.webp')})` } as CSSProperties} />
       <div className="section contactInner">
-        <SectionHeading eyebrow="Контакты" title={<>Обсудить продукт<br />и условия поставки</>} text="Свяжитесь напрямую: уточним потребность, состав и фракцию, найдем взаимовыгодные условия поставки." inverse />
+        {algorithm ? <div><SectionHeading eyebrow="Сотрудничество" title="Предлагаемый алгоритм работы" inverse /><ol className="cooperationSteps">{cooperationSteps.map((text, index) => <li key={text}><span>{String(index + 1).padStart(2, '0')}</span><p>{text}</p></li>)}</ol></div> : <SectionHeading eyebrow="Контакты" title={<>Обсудить продукт<br />и условия поставки</>} text="Свяжитесь напрямую: уточним потребность, состав и фракцию, найдем взаимовыгодные условия поставки." inverse />}
         <div className="contactList">
+          {!compact && <><p className="contactCompanyIdentity">ООО «Башминералресурс» <span>(ИНН 0272020740)</span></p><a href={company.map} target="_blank" rel="noreferrer"><span><MapPin size={20} /></span><small>Производственная площадка</small><strong>{company.productionAddress}</strong></a></>}
           <div className="contactPhones">
             <span><Phone size={20} /></span><small>Телефоны компании</small>
             <div className="contactPhoneNumbers">
@@ -458,7 +465,7 @@ function ContactSection({ compact = false }: { compact?: boolean }) {
             </div>
           </div>
           <a href={`mailto:${company.email}`}><span><Mail size={20} /></span><small>Электронная почта</small><strong>{company.email}</strong></a>
-          <a href={company.map} target="_blank" rel="noreferrer"><span><MapPin size={20} /></span><small>Производственная площадка</small><strong>{company.productionAddress}</strong></a>
+          {compact && <a href={company.map} target="_blank" rel="noreferrer"><span><MapPin size={20} /></span><small>Производственная площадка</small><strong>{company.productionAddress}</strong></a>}
         </div>
       </div>
     </section>
