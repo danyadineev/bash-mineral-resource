@@ -17,7 +17,7 @@ const groups: [string, string[], number][] = [
   ['.applicationBenefits > h3', ['left'], 0],
   ['.applicationBenefits li, .useGrid > article, .evidenceGrid > article', ['left', 'bottom', 'right'], 0],
   ['.applicationQuality', ['bottom'], 0],
-  ['.passportExample, .applicationBlendingNote, .manganeseRawPhoto', ['bottom'], 0],
+  ['.applicationBlendingNote, .manganeseRawStage', ['bottom'], 0],
   ['.manganeseDirection, .manganeseAdvantageGrid > li, .manganeseExperienceGrid > article, .oreProduct > *', ['left', 'right'], 0],
   ['.productConsumerGrid > article, .productGalleryGrid > figure', ['left', 'right'], 0],
   ['.sampleInner > div', ['left', 'right'], 0],

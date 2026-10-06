@@ -1,6 +1,7 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import {
   ArrowLeft,
+  ArrowDownRight,
   ArrowRight,
   ChevronDown,
   FlaskConical,
@@ -21,7 +22,7 @@ import { VisualGallery } from './components/VisualGallery'
 import { productGalleries } from './productGalleries'
 import { HeroVideo } from './components/HeroVideo'
 import { usePageMotion } from './components/usePageMotion'
-import { limestoneComposition, fluxComposition, oreComposition, manganeseAdvantages, manganeseExperience, cooperationSteps, gypsumPassports } from './octoberContent'
+import { limestoneComposition, fluxComposition, oreComposition, manganeseAdvantages, manganeseExperience, cooperationSteps } from './octoberContent'
 import './octoberContent.css'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
@@ -342,7 +343,6 @@ function GypsumContent() {
             </div>
           </div>
           {application.id === 'cement' && <p className="applicationBlendingNote">По требованию заказчика мы производим шихтовку камня и доводим до нужных усредненных химических показателей.</p>}
-          <PassportExample passport={gypsumPassports[application.id as keyof typeof gypsumPassports]} />
         </div>
       </section>
     ))}
@@ -354,23 +354,6 @@ function GypsumContent() {
   </>
 }
 
-function PassportExample({ passport }: { passport: (typeof gypsumPassports)[keyof typeof gypsumPassports] }) {
-  return <article className="passportExample">
-    <div className="passportExampleHeader"><div><p className="eyebrow">Химико-аналитическая лаборатория</p><h3>Паспорт качества № {passport.number}</h3><p>{passport.material} · фракция {passport.fraction} · сорт {passport.grade}</p></div><span>{passport.date}</span></div>
-    <div className="passportExampleBody">
-      <dl className="passportExampleFacts">
-        <div><dt>Номер партии</dt><dd>{passport.batch}</dd></div><div><dt>Масса партии</dt><dd>{passport.mass} тонн</dd></div>
-        <div><dt>Дата изготовления</dt><dd>{passport.manufacture}</dd></div><div><dt>Дата отбора пробы</dt><dd>{passport.sampling}</dd></div>
-        <div><dt>Дата испытаний</dt><dd>{passport.testing}</dd></div><div><dt>Ж/д квитанция</dt><dd>{passport.receipt}</dd></div>
-      </dl>
-      <div><p className="passportExampleMethod">Отбор пробы и метод испытаний: ГОСТ 4013-2019. Место отбора: отгрузочная площадка ж/д участка ООО «Башминералресурс».</p>
-        <table className="qualityResultTable"><thead><tr><th scope="col">Показатель</th><th scope="col">Норма по ГОСТ</th><th scope="col">Фактические данные</th></tr></thead><tbody>{passport.rows.map(([label, norm, value]) => <tr key={label}><th scope="row">{label}</th><td>{norm}</td><td>{value}</td></tr>)}</tbody></table>
-      </div>
-    </div>
-    <div className="passportExampleFooter"><div><p><strong>Заключение:</strong> {passport.conclusion}</p><small>Старший лаборант Хуснуллина Р.Р.</small></div><a href={asset(passport.file)} download>Скачать паспорт <ArrowRight size={18} /></a></div>
-  </article>
-}
-
 function ChemicalComposition({ rows }: { rows: string[][] }) {
   return <div className="manganeseAnalysis"><h4>Химический анализ</h4><table className="compositionTable"><thead><tr><th scope="col">Показатель</th><th scope="col">Содержание</th></tr></thead><tbody>{rows.map(([label, value]) => <tr key={label}><th scope="row">{label}</th><td>{value}</td></tr>)}</tbody></table></div>
 }
@@ -379,7 +362,8 @@ function ManganeseContent() {
   return <>
     <section className="section manganeseDirections" id="product">
       <SectionHeading eyebrow="Продукция" title="Два направления применения" />
-      <div className="manganeseDirectionsIntro"><p className="sectionLead">Характеристики и фракцию каждой партии согласуем под технологическую задачу.</p><figure className="manganeseRawPhoto"><img src={asset('content/manganese-raw-face.webp')} alt="Марганцовистый известняк из забоя" loading="lazy" /><figcaption>Сырье из забоя</figcaption></figure></div>
+      <p className="sectionLead manganeseDirectionsLead">Характеристики и фракцию каждой партии согласуем под технологическую задачу.</p>
+      <div className="manganeseRawStage"><figure className="manganeseRawPhoto"><img src={asset('content/manganese-raw-face.webp')} alt="Марганцовистый известняк из забоя до дробления" loading="lazy" /></figure><div><p className="eyebrow">До переработки</p><h3>Сырье из забоя</h3><p>Так выглядит марганцовистый известняк до дробления и рассева.</p><p className="manganeseRawNext">Далее — подготовка продукта под задачи производства <ArrowDownRight size={22} aria-hidden="true" /></p></div></div>
       <div className="manganeseDirectionGrid">
         <article className="manganeseDirection">
           <div className="manganeseDirectionImage manganeseDirectionImage--stone"><img src={asset('content/manganese-limestone-owner.webp')} alt="Марганцовистый известняк" loading="lazy" /></div>
@@ -397,7 +381,7 @@ function ManganeseContent() {
     </div></section>
     <section className="section manganeseExperience" id="application">
       <SectionHeading eyebrow="Практика применения" title="Опыт внедрения и поставок" text="Применение марганцовистого известняка на металлургических предприятиях и отмеченные эффекты внедрения." />
-      <div className="manganeseExperienceGrid">{manganeseExperience.map(({ consumer, application, period, volume, effects, note }, index) => <article key={`${consumer}-${period}`}><div className="experienceInfo"><span className="manganeseDirectionNumber">0{index + 1} / ОПЫТ ВНЕДРЕНИЯ</span><h3>{consumer}</h3><p className="experiencePeriod">{period}</p>{volume && <strong className="experienceVolume">{volume}</strong>}<p className="experienceApplication">{application}</p></div><div className="experienceEffects"><h4>Эффект</h4><ul>{effects.map(effect => <li key={effect}>{effect}</li>)}</ul>{note && <p>{note}</p>}</div></article>)}</div>
+      <div className="manganeseExperienceGrid">{manganeseExperience.map(({ consumer, application, period, volume, effects, note }, index) => <article key={`${consumer}-${period}`}><div className="experienceInfo"><span className="manganeseDirectionNumber">0{index + 1} / ОПЫТ ВНЕДРЕНИЯ</span><div className="experienceCompany"><img src={asset(consumer.includes('НЛМК') ? 'brand/nlmk.svg' : 'brand/evraz.svg')} alt="" aria-hidden="true" loading="lazy" /><h3>{consumer}</h3></div><p className="experiencePeriod">{period}</p>{volume && <strong className="experienceVolume">{volume}</strong>}<p className="experienceApplication">{application}</p></div><div className="experienceEffects"><h4>Эффект</h4><ul>{effects.map(effect => <li key={effect}>{effect}</li>)}</ul>{note && <p>{note}</p>}</div></article>)}</div>
     </section>
     <section className="oreSection" id="oxide-ore"><div className="section oreProduct"><figure><img src={asset('content/manganese-oxide-ore.jpg')} alt="Окисная марганцовистая рыхлая руда из забоя" loading="lazy" /><figcaption>Сырье из забоя</figcaption></figure><div><span className="manganeseDirectionNumber">03 / ПРОДУКТ</span><h2>Окисная марганцовистая рыхлая руда</h2><p>Химические показатели исходной окисной марганцовистой руды Башминералресурс</p><ChemicalComposition rows={oreComposition} /></div></div></section>
   </>
