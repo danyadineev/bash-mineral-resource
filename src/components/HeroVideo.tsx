@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { hasPlaybackBuffer } from '../lib/heroMedia'
 
 type HeroVideoProps = {
   desktop: string
@@ -12,64 +11,65 @@ export function HeroVideo({ desktop, mobile, poster, className }: HeroVideoProps
   // Pick once per mount: resizing must not interrupt playback or fetch two files.
   const [isMobile] = useState(() => window.matchMedia('(max-width: 719px)').matches)
   const [visible, setVisible] = useState(false)
+  const [blocked, setBlocked] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const src = isMobile ? mobile : desktop
 
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
-    let firstFrame = false
+    let disposed = false
     let frameRequest = 0
-    let waitingTimer: ReturnType<typeof setTimeout> | undefined
-    let playRequested = false
-    const check = () => {
-      // Show the poster while buffering, without blocking the rest of the site.
-      if (!playRequested) {
-        if (video.readyState < 3 || !hasPlaybackBuffer(video.buffered, video.currentTime, video.duration)) return
-        playRequested = true
-        void video.play().catch(() => setVisible(false))
-      }
-      // The first frame consumes part of the lead; don't demand the same buffer
-      // again and accidentally keep a playing video hidden on a slower link.
-      if (!firstFrame || video.paused || video.readyState < 3) return
-      clearTimeout(waitingTimer)
-      setVisible(true)
+    let pending = false
+    // Set the DOM properties as well as attributes for mobile autoplay.
+    video.muted = true
+    video.defaultMuted = true
+    const play = () => {
+      if (pending || disposed || document.hidden || !video.paused) return
+      pending = true
+      void video.play().then(() => {
+        if (!disposed) setBlocked(false)
+      }).catch((error: unknown) => {
+        if (!disposed && error instanceof DOMException && error.name === 'NotAllowedError') setBlocked(true)
+      }).finally(() => { pending = false })
     }
-    const onFrame = () => { firstFrame = true; check() }
+    const onFrame = () => { if (!disposed) setVisible(true) }
     const onPlaying = () => {
-      playRequested = true
-      clearTimeout(waitingTimer)
+      setBlocked(false)
+      if (frameRequest) video.cancelVideoFrameCallback(frameRequest)
       if ('requestVideoFrameCallback' in video) frameRequest = video.requestVideoFrameCallback(onFrame)
       else onFrame()
-      check()
     }
-    const onWaiting = () => {
-      clearTimeout(waitingTimer)
-      // A long stall falls back gracefully; short buffering doesn't flash a still.
-      waitingTimer = setTimeout(() => setVisible(false), 600)
-    }
-    const onError = () => { clearTimeout(waitingTimer); setVisible(false) }
+    const onError = () => { setVisible(false) }
     video.addEventListener('playing', onPlaying)
-    video.addEventListener('progress', check)
-    video.addEventListener('waiting', onWaiting)
+    video.addEventListener('canplay', play)
+    video.addEventListener('loadeddata', play)
     video.addEventListener('error', onError)
-    const interval = setInterval(check, 250)
+    document.addEventListener('visibilitychange', play)
+    document.addEventListener('pointerdown', play)
+    document.addEventListener('keydown', play)
     if (!video.paused) onPlaying()
-    check()
+    play()
     return () => {
-      clearInterval(interval)
-      clearTimeout(waitingTimer)
+      disposed = true
       if (frameRequest) video.cancelVideoFrameCallback(frameRequest)
       video.removeEventListener('playing', onPlaying)
-      video.removeEventListener('progress', check)
-      video.removeEventListener('waiting', onWaiting)
+      video.removeEventListener('canplay', play)
+      video.removeEventListener('loadeddata', play)
       video.removeEventListener('error', onError)
+      document.removeEventListener('visibilitychange', play)
+      document.removeEventListener('pointerdown', play)
+      document.removeEventListener('keydown', play)
     }
   }, [src])
 
   return <>
     <img className={`${className}Poster`} src={poster} alt="" aria-hidden="true" fetchPriority="high" decoding="async" />
     <video ref={videoRef} className={`${className}${visible ? ' is-ready' : ''}`} src={src}
-      muted loop playsInline preload="auto" poster={poster} aria-hidden="true" />
+      autoPlay muted loop playsInline preload="auto" poster={poster} aria-hidden="true" />
+    {blocked && <button className="heroVideoPlay" onClick={() => {
+      const video = videoRef.current
+      if (video) { video.muted = true; void video.play().then(() => setBlocked(false)).catch(() => {}) }
+    }}>▶ Включить видео</button>}
   </>
 }

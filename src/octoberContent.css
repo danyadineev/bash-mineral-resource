@@ -16,9 +16,6 @@
 .manganeseRawStage p:not(.eyebrow) { color: var(--muted); line-height: 1.6; }
 .manganeseRawStage .manganeseRawNext { display: flex; align-items: center; gap: 12px; margin-top: 24px; color: var(--ink); font-weight: 600; }
 .manganeseRawNext svg { flex-shrink: 0; color: #956100; }
-.experienceCompany { display: flex; align-items: center; gap: 18px; margin-top: 18px; }
-.experienceCompany img { width: 80px; height: 52px; object-fit: contain; flex-shrink: 0; }
-.experienceCompany h3 { margin: 0; }
 .compositionTable { width: 100%; border-collapse: collapse; text-align: left; }
 .manganeseDirectionCopy { display: flex; flex-direction: column; }
 .manganeseDirectionTag { line-height: 1.5; }
@@ -72,9 +69,6 @@
 @media (max-width: 700px) {
   .manganeseRawStage { grid-template-columns: 1fr; gap: 20px; padding: 18px; margin-block: 28px; }
   .manganeseRawPhoto img { aspect-ratio: 3 / 2; }
-  .experienceCompany { gap: 12px; }
-  .experienceCompany img { width: 64px; height: 44px; }
-  .experienceCompany h3 { font-size: 23px; }
   .manganeseAdvantageGrid { grid-template-columns: 1fr; }
   .manganeseExperienceGrid article { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
   .experienceEffects { padding: 24px 0 0; border-left: 0; border-top: 1px solid var(--line); }
@@ -84,3 +78,7 @@
   .compositionTable { font-size: 14px; }
   .compositionTable th, .compositionTable td { padding: 11px 10px; }
 }
+
+.heroVideoPlay { position: absolute; z-index: 4; top: 110px; right: 24px; border: 1px solid #ffffff66; border-radius: 6px; padding: 12px 18px; color: #fff; background: #102b3ed9; cursor: pointer; font: inherit; }
+.heroVideoPlay:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+@media (max-width: 700px) { .heroVideoPlay { top: 96px; right: 16px; font-size: 13px; } }

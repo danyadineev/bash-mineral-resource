@@ -6,6 +6,11 @@ const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8')
 assert.ok(html.includes('<div id="root"></div>'), 'Site is interactive without a loading gate')
 assert.doesNotMatch(html, /site-loader|site-startup|is-booting|\binert\b|aria-busy/)
 const css = readFileSync(new URL('../src/App.css', import.meta.url), 'utf8')
+const video = readFileSync(new URL('../src/components/HeroVideo.tsx', import.meta.url), 'utf8')
+assert.match(video, /autoPlay muted loop playsInline/, 'Hero video requests mobile-compatible autoplay')
+assert.doesNotMatch(video, /hasPlaybackBuffer|playRequested/, 'Playback must not be gated by a fixed buffer or one-shot flag')
+assert.match(video, /NotAllowedError/, 'Blocked autoplay exposes a manual recovery')
+assert.match(video, /Включить видео/, 'Users can start video if their browser blocks autoplay')
 for (const selector of ['heroMedia', 'productHeroMedia']) {
   const rule = css.match(new RegExp(`\\.${selector}\\s*\\{([^}]+)\\}`))[1]
   assert.match(rule, /transition:\s*none;/, `${selector} must appear without a fade`)
