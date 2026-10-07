@@ -49,8 +49,8 @@
     // Replace the unsuitable fused-flux close-up with the even-fraction sample image.
     document.querySelectorAll(".manganeseDirectionImage--flux img").forEach((image) => {
       if (image.dataset.mobileMaterialFixed === "1") return;
-      image.src = window.matchMedia("(max-width: 767px)").matches ? "/content/manganese-flux-owner-original.jpg" : "/content/manganese-limestone-sample.webp";
-      image.alt = window.matchMedia("(max-width: 767px)").matches ? "Марганцовистый плавленный флюс" : "Ровные фракции подготовленного продукта";
+      image.src = window.matchMedia("(max-width: 767px)").matches ? "/content/manganese-flux-owner-original.jpg" : "/content/manganese-fused-flux.webp";
+      image.alt = "Марганцовистый плавленный флюс";
       image.dataset.mobileMaterialFixed = "1";
     });
   };
