@@ -16,11 +16,18 @@
       }
     });
 
-    // The compact menu uses the same short section names as the desktop navigation.
+    // Both layouts retain the full product names and the original two-line buttons.
     document.querySelectorAll(".headerNavLink").forEach((link) => {
       const href = link.getAttribute("href") || "";
-      if (href === "#/gypsum" && link.textContent.trim() !== (window.matchMedia("(max-width: 767px)").matches ? "Гипсовый камень" : "Камень")) link.textContent = window.matchMedia("(max-width: 767px)").matches ? "Гипсовый камень" : "Камень";
-      if (href === "#/manganese" && link.textContent.trim() !== (window.matchMedia("(max-width: 767px)").matches ? "Марганцовистый известняк" : "Известняк")) link.textContent = window.matchMedia("(max-width: 767px)").matches ? "Марганцовистый известняк" : "Известняк";
+      const lines = href === "#/gypsum" ? ["Камень гипсовый и", "гипсоангидритовый"]
+        : href === "#/manganese" ? ["Марганцовистый", "флюсующий известняк"] : null;
+      if (lines && (link.children.length !== 2 || [...link.children].some((span, index) => span.textContent !== lines[index]))) {
+        link.replaceChildren(...lines.map(text => {
+          const span = document.createElement("span");
+          span.textContent = text;
+          return span;
+        }));
+      }
       if (href === "#history" && link.textContent.trim() !== "О компании") link.textContent = "О компании";
     });
 
