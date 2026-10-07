@@ -2421,7 +2421,7 @@
 .cooperationSteps > li > span { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; font-size: 26px; line-height: 1; font-variant-numeric: tabular-nums; }
 .cooperationSteps > li > p { margin: 0; padding-top: 7px; }
 @media (max-width: 767px) {
- .siteHeader .logo--original img { padding: 6px 9px !important; object-fit: contain !important; object-position: center !important; }
+ .siteHeader .logo--original::before { background-size: 74% auto !important; background-position: center !important; }
  .manganeseAdvantages .sectionHeading::after, .manganeseExperience .sectionHeading::after { display: none !important; content: none !important; }
  .manganeseAdvantageGrid, .manganeseExperienceGrid { display: grid !important; grid-template-columns: minmax(0,1fr) !important; gap: 10px !important; overflow: visible !important; margin-inline: 0 !important; padding: 0 !important; scroll-snap-type: none !important; }
  .manganeseAdvantageGrid > li { display: block !important; min-height: 0 !important; height: auto !important; padding: 14px !important; }
