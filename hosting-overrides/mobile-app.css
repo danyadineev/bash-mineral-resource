@@ -1,0 +1,2454 @@
+/*
+ * Compact mobile layout for Bashmineralresurs.
+ * Desktop styles remain in the generated application bundle.
+ */
+
+/* Use the wide BMR mark instead of the tall duplicate lockup in the header. */
+.siteHeader .logo--original img {
+  display: none;
+}
+
+.siteHeader .logo--original::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 94px;
+  height: 42px;
+  padding: 3px 6px;
+  border-radius: 8px;
+  background: #fff url("/brand/bashmineralresurs-mark-transparent.png") center / contain no-repeat;
+}
+
+.siteHeader .logo--original {
+  align-items: center;
+}
+
+.siteHeader .logo--original::before,
+.siteHeader .logo--original .logoWordmark {
+  align-self: center;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --mobile-edge: 12px;
+    --mobile-gap: 8px;
+    --mobile-radius: 14px;
+    --mobile-header: 64px;
+  }
+
+  html {
+    scroll-padding-top: 74px;
+  }
+
+  html,
+  body,
+  #root {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  body,
+  #root,
+  #root > div,
+  main {
+    width: auto !important;
+  }
+
+  main > section {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #eef0ec;
+  }
+
+  [data-motion][data-motion-state="pending"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  [data-motion] {
+    translate: none !important;
+  }
+
+  .section {
+    width: 100% !important;
+    max-width: none !important;
+    margin-inline: 0 !important;
+    padding-inline: var(--mobile-edge) !important;
+  }
+
+  .siteHeader {
+    top: 8px;
+    right: 8px;
+    left: 8px;
+    width: auto;
+    height: 56px;
+    min-height: 56px;
+    padding: 6px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 15px;
+    background: rgba(7, 28, 43, 0.9);
+    box-shadow: 0 10px 34px rgba(3, 20, 31, 0.24), inset 0 1px rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    transform: none !important;
+  }
+
+  .headerBrand {
+    height: 44px;
+    min-height: 44px;
+  }
+
+  .logo--original {
+    height: 36px;
+    min-height: 36px;
+  }
+
+  .siteHeader .logo--original::before {
+    width: 72px;
+    height: 34px;
+    padding: 2px 4px;
+    border-radius: 7px;
+  }
+
+  .siteHeader .menuButton {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+  }
+
+  .siteHeader .headerContacts > a:first-child {
+    width: 44px;
+    height: 44px;
+  }
+
+  .sectionHeading {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .sectionHeading .eyebrow,
+  .eyebrow {
+    margin-bottom: 10px;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    letter-spacing: 0.12em;
+  }
+
+  .sectionHeading h2,
+  .sampleInner h2 {
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(1.55rem, 7.2vw, 2rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+
+  .sectionHeading h2 br {
+    display: none;
+  }
+
+  .sectionLead {
+    max-width: 38rem;
+    margin-top: 12px;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+
+  .button {
+    min-height: 42px;
+    padding: 0 14px;
+    border-radius: 11px;
+    font-size: 0.7rem;
+  }
+
+  /* Home hero: the entire 16:9 film stays visible instead of being cropped. */
+  .hero {
+    position: relative;
+    display: block;
+    height: auto;
+    min-height: clamp(500px, 70svh, 560px);
+    background: #071d2b;
+  }
+
+  .heroMediaPoster,
+  .heroMedia {
+    position: absolute;
+    z-index: 0;
+    top: var(--mobile-header);
+    right: 0;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 56.25vw;
+    max-height: 255px;
+    object-fit: contain;
+    object-position: center;
+    background: #071923;
+  }
+
+  .heroShade {
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(7, 29, 43, 0.08) 64px, rgba(7, 29, 43, 0.02) 270px, #071d2b 60%),
+      linear-gradient(90deg, rgba(7, 29, 43, 0.2), transparent 45%);
+  }
+
+  .heroBody {
+    position: absolute;
+    z-index: 2;
+    top: calc(var(--mobile-header) + min(56.25vw, 255px) + 20px);
+    right: var(--mobile-edge);
+    bottom: auto;
+    left: var(--mobile-edge);
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .heroKicker {
+    margin: 0 0 12px;
+    font-size: 0.58rem;
+    line-height: 1.3;
+    letter-spacing: 0.11em;
+  }
+
+  .heroBody h1 {
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(1.5rem, 7vw, 2.15rem);
+    line-height: 0.94;
+    letter-spacing: -0.065em;
+    white-space: nowrap;
+  }
+
+  .heroLower {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px;
+    width: 100%;
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+
+  .heroStatement {
+    max-width: 31rem;
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.42;
+  }
+
+  .heroActions {
+    display: grid;
+    grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.92fr);
+    gap: var(--mobile-gap);
+    width: 100%;
+    margin: 0;
+  }
+
+  .heroActions .button {
+    width: 100%;
+    min-width: 0 !important;
+    padding-inline: 11px;
+    overflow: hidden;
+    font-size: 0.64rem;
+    white-space: nowrap;
+  }
+
+  /* Home product cards */
+  .productsSection {
+    padding: 42px var(--mobile-edge) 46px;
+  }
+
+  .productsHeading {
+    min-height: 0;
+    margin-bottom: 22px !important;
+    padding: 0 !important;
+  }
+
+  .productChoiceGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+    width: 100%;
+  }
+
+  .productChoice {
+    width: 100%;
+    min-width: 0;
+    height: 262px;
+    min-height: 0;
+    border-radius: var(--mobile-radius);
+    transform: none !important;
+  }
+
+  .productChoiceIndex {
+    top: 12px;
+    left: 12px;
+    font-size: 0.66rem;
+  }
+
+  .productChoiceText {
+    right: 12px;
+    bottom: 14px;
+    left: 12px;
+    width: auto;
+    gap: 8px;
+  }
+
+  .productChoiceText small {
+    font-size: 0.52rem;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+  }
+
+  .productChoiceText strong {
+    font-size: 0.9rem;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .productChoiceText > span {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    font-size: 0.56rem;
+    line-height: 1.2;
+  }
+
+  .productChoiceText svg {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+  }
+
+  /* Condensed company history: four milestones in a two-column app grid. */
+  .historySection {
+    display: block;
+    width: 100% !important;
+    padding: 42px var(--mobile-edge) 46px !important;
+  }
+
+  .historyContent {
+    width: 100%;
+    margin: 22px 0 0;
+    transform: none !important;
+  }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .timeline::before,
+  .timeline li::before {
+    display: none;
+  }
+
+  .timeline li {
+    display: block !important;
+    min-width: 0;
+    min-height: 138px;
+    margin: 0;
+    padding: 13px;
+    border: 1px solid rgba(20, 45, 57, 0.11);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.62);
+    transform: none !important;
+  }
+
+  .timeline li > span {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+    line-height: 1.15;
+  }
+
+  .timeline li p {
+    display: -webkit-box;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-size: 0.66rem;
+    line-height: 1.42;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+  }
+
+  .historyToggle {
+    width: 100%;
+    min-height: 48px;
+    margin-top: var(--mobile-gap);
+    padding: 10px 13px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+  }
+
+  .historyToggle small {
+    margin-top: 2px;
+    font-size: 0.58rem;
+  }
+
+  /* Company blocks sit side-by-side like an application dashboard. */
+  .companyTodaySection {
+    padding: 42px var(--mobile-edge) 46px;
+  }
+
+  .companyTodayHeading {
+    min-height: 0;
+    margin: 0 0 22px !important;
+    padding: 0 !important;
+  }
+
+  .companyTodayHeading .sectionHeading {
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  .companyCapabilityGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+    width: 100%;
+    padding: 0 !important;
+  }
+
+  .companyCapabilityGrid .capabilityCard {
+    width: 100%;
+    min-width: 0;
+    height: 192px;
+    min-height: 0;
+    margin: 0;
+    border-radius: var(--mobile-radius);
+    transform: none !important;
+  }
+
+  .capabilityCaption {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    width: auto;
+    gap: 5px;
+  }
+
+  .capabilityCaption h3 {
+    font-size: 0.76rem;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+
+  .capabilityDetails {
+    gap: 2px;
+    font-size: 0.56rem;
+    line-height: 1.3;
+  }
+
+  .capabilityDetails p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .capabilityCount {
+    top: 8px;
+    right: 8px;
+    min-height: 22px;
+    padding: 4px 7px;
+    font-size: 0.55rem;
+  }
+
+  .capabilityExpand {
+    top: 10px;
+    left: 10px;
+    width: 17px;
+    height: 17px;
+  }
+
+  .capabilityArrow {
+    display: none !important;
+  }
+
+  /* Short, editorial director block instead of a full mobile article. */
+  .greetingSection {
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+    width: 100%;
+    min-height: 0;
+    padding: 42px var(--mobile-edge) 46px;
+  }
+
+  .greetingPortrait {
+    width: 104px;
+    height: 156px;
+    margin: 0;
+    border-radius: 12px;
+  }
+
+  .greetingCopy {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .greetingMessage {
+    font-size: 0.68rem;
+    line-height: 1.43;
+  }
+
+  .greetingMessage p {
+    margin: 0 0 8px;
+  }
+
+  .greetingMessage p:nth-child(n + 3):nth-child(-n + 6) {
+    display: none;
+  }
+
+  .greetingSalutation {
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
+
+  .greetingSignature {
+    gap: 2px;
+    font-size: 0.65rem;
+    line-height: 1.3;
+  }
+
+  .greetingSignature strong {
+    font-size: 0.72rem;
+  }
+
+  /* Contact information becomes a compact two-column action panel. */
+  .contactSection,
+  .contactSection--compact,
+  .contactSection--algorithm {
+    height: auto;
+    min-height: 0;
+  }
+
+  .contactInner {
+    display: grid;
+    gap: 22px;
+    width: 100%;
+    min-height: 0;
+    padding: 42px var(--mobile-edge) 46px !important;
+  }
+
+  .contactList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contactCompanyIdentity,
+  .contactList > a:first-of-type {
+    grid-column: 1 / -1;
+  }
+
+  .contactCompanyIdentity {
+    margin: 0 0 4px;
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+
+  .contactList > a,
+  .contactPhones {
+    min-width: 0;
+    min-height: 0;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: rgba(5, 22, 34, 0.3);
+  }
+
+  .contactList small {
+    font-size: 0.53rem;
+    letter-spacing: 0.08em;
+  }
+
+  .contactList strong {
+    font-size: 0.7rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .contactPhoneNumbers {
+    display: grid;
+    gap: 7px;
+    width: 100%;
+  }
+
+  .contactPhoneNumbers a {
+    min-width: 0;
+    min-height: 44px;
+  }
+
+  .contactPhoneNumbers strong {
+    white-space: nowrap;
+  }
+
+  .contactPhoneNumbers span {
+    font-size: 0.55rem;
+  }
+
+  /* Product page hero uses the same uncropped 16:9 film treatment. */
+  .productHero {
+    position: relative;
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding: calc(var(--mobile-header) + min(56.25vw, 255px) + 18px) var(--mobile-edge) 28px;
+    background: #071d2b;
+  }
+
+  .productHeroMediaPoster,
+  .productHeroMedia {
+    position: absolute;
+    z-index: 0;
+    top: var(--mobile-header);
+    right: 0;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 56.25vw;
+    max-height: 255px;
+    object-fit: contain;
+    object-position: center;
+    background: #071923;
+  }
+
+  .productHeroShade {
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(7, 29, 43, 0.04) 60px, rgba(7, 29, 43, 0.02) 280px, #071d2b 58%);
+  }
+
+  .productHeroCopy {
+    position: relative;
+    z-index: 2;
+    inset: auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .backLink {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin: -12px 0 0;
+    padding-right: 8px;
+    font-size: 0.64rem;
+  }
+
+  .productBrand {
+    margin-bottom: 8px;
+    font-size: 0.56rem;
+    letter-spacing: 0.11em;
+  }
+
+  .productHeroCopy h1 {
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(1.8rem, 8.4vw, 2.55rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+  }
+
+  .productHeroCopy > p:last-child {
+    max-width: 34rem;
+    margin: 12px 0 0;
+    font-size: 0.76rem;
+    line-height: 1.42;
+  }
+
+  .productHeroAccent {
+    position: relative;
+    z-index: 2;
+    inset: auto;
+    width: 100%;
+    margin: 16px 0 0;
+    padding: 12px 13px;
+    border-radius: 11px;
+    font-size: 0.66rem;
+    line-height: 1.4;
+  }
+
+  /* Shared compact product-page sections. */
+  .manganeseDirections,
+  .manganeseExperience,
+  .productProcess {
+    width: 100% !important;
+    padding: 42px var(--mobile-edge) 46px !important;
+  }
+
+  .manganeseRawStage {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: 12px;
+    width: 100%;
+    min-height: 0;
+    margin: 22px 0 0;
+    padding: 12px;
+    border-radius: var(--mobile-radius);
+  }
+
+  .manganeseRawPhoto {
+    min-width: 0;
+    min-height: 150px;
+    margin: 0;
+    border-radius: 10px;
+  }
+
+  .manganeseRawStage > :not(.manganeseRawPhoto) {
+    min-width: 0;
+  }
+
+  .manganeseRawStage h3 {
+    font-size: 1rem;
+    line-height: 1.05;
+  }
+
+  .manganeseRawStage p,
+  .manganeseRawStage li {
+    font-size: 0.63rem;
+    line-height: 1.4;
+  }
+
+  .manganeseDirectionGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+    width: 100%;
+    margin-top: var(--mobile-gap);
+  }
+
+  .manganeseDirection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    border-radius: var(--mobile-radius);
+  }
+
+  .manganeseDirectionImage {
+    width: 100%;
+    height: 138px;
+    min-height: 138px;
+  }
+
+  .manganeseDirectionCopy {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    padding: 13px;
+  }
+
+  .manganeseDirectionCopy h3 {
+    font-size: 0.9rem;
+    line-height: 1.08;
+  }
+
+  .manganeseDirectionCopy p,
+  .manganeseDirectionCopy li {
+    font-size: 0.62rem;
+    line-height: 1.38;
+  }
+
+  .manganeseDirectionCopy p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+  }
+
+  .manganeseAnalysis {
+    margin-top: 12px;
+  }
+
+  .manganeseAnalysis h4 {
+    margin-bottom: 7px;
+    font-size: 0.7rem;
+  }
+
+  .compositionTable {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .compositionTable th,
+  .compositionTable td {
+    padding: 5px 4px;
+    font-size: 0.57rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .compositionTable thead th {
+    padding-inline: 2px;
+    font-size: 0.5rem;
+    letter-spacing: -0.025em;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .manganeseAdvantages {
+    padding: 42px var(--mobile-edge) 46px;
+  }
+
+  .manganeseAdvantages > .section {
+    padding: 0 !important;
+  }
+
+  .manganeseAdvantageGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+    width: 100%;
+    margin-top: 22px;
+  }
+
+  .manganeseAdvantageGrid > li {
+    min-width: 0;
+    min-height: 0;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .manganeseAdvantageGrid h3,
+  .manganeseAdvantageGrid h4 {
+    font-size: 0.82rem;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  .manganeseAdvantageGrid p,
+  .manganeseAdvantageGrid li li {
+    font-size: 0.61rem;
+    line-height: 1.38;
+  }
+
+  .manganeseAdvantageGrid p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .manganeseBuyerBenefit {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .manganeseBuyerBenefit small {
+    font-size: 0.54rem;
+  }
+
+  .manganeseExperienceGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+    width: 100%;
+    margin-top: 22px;
+  }
+
+  .manganeseExperienceGrid > article {
+    min-width: 0;
+    min-height: 0;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .manganeseExperienceGrid > article:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .manganeseExperienceGrid h3,
+  .manganeseExperienceGrid h4 {
+    font-size: 0.84rem;
+    line-height: 1.15;
+  }
+
+  .manganeseExperienceGrid p,
+  .manganeseExperienceGrid li {
+    font-size: 0.62rem;
+    line-height: 1.4;
+  }
+
+  .manganeseExperienceGrid p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+  }
+
+  .experienceInfo {
+    gap: 6px;
+  }
+
+  .experienceCompany {
+    gap: 7px;
+  }
+
+  .experienceCompany img {
+    max-width: 72px;
+    max-height: 24px;
+  }
+
+  .experienceEffects {
+    gap: 7px;
+  }
+
+  .experienceEffects ul {
+    display: grid;
+    gap: 4px;
+  }
+
+  .experienceEffects li {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .experienceEffects > p {
+    -webkit-line-clamp: 2;
+  }
+
+  .oreSection {
+    padding: 42px var(--mobile-edge) 46px;
+  }
+
+  .oreProduct {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: 12px;
+    width: 100%;
+    min-height: 0;
+    padding: 0 !important;
+  }
+
+  .oreProduct > * {
+    min-width: 0;
+  }
+
+  .oreProduct h2,
+  .oreProduct h3 {
+    font-size: 1rem;
+    line-height: 1.08;
+  }
+
+  .oreProduct p,
+  .oreProduct li {
+    font-size: 0.63rem;
+    line-height: 1.4;
+  }
+
+  /* Product process cards: two next to each other. */
+  .productProcessList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: var(--mobile-gap) !important;
+    width: 100%;
+    margin-top: 22px;
+  }
+
+  .productProcessList > article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    height: 242px;
+    min-height: 0;
+    border-radius: var(--mobile-radius);
+    overflow: hidden;
+  }
+
+  .productProcessVisual {
+    width: 100%;
+    height: 138px;
+    min-height: 138px;
+  }
+
+  .productProcessCopy {
+    display: grid;
+    gap: 4px;
+    padding: 11px 12px 12px;
+  }
+
+  .productProcessCopy > span {
+    font-size: 0.56rem;
+  }
+
+  .productProcessCopy h3 {
+    font-size: 0.82rem;
+    line-height: 1.08;
+  }
+
+  .productProcessCopy p {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    font-size: 0.6rem;
+    line-height: 1.35;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Gypsum application content */
+  .gypsumApplication {
+    padding: 42px var(--mobile-edge) 46px;
+  }
+
+  .gypsumApplication > .section {
+    padding: 0 !important;
+  }
+
+  .applicationHeader {
+    margin-bottom: 22px;
+  }
+
+  .applicationBenefits h3,
+  .applicationQuality h3,
+  .applicationPassport h3 {
+    font-size: 1rem;
+    line-height: 1.08;
+  }
+
+  .applicationBenefits > ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+    margin-top: 12px;
+  }
+
+  .applicationBenefits > ul > li {
+    min-width: 0;
+    min-height: 0;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .applicationBenefits > ul > li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .applicationBenefitTitle {
+    gap: 7px;
+  }
+
+  .applicationBenefitTitle svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .applicationBenefitTitle h4 {
+    font-size: 0.74rem;
+    line-height: 1.15;
+  }
+
+  .applicationBenefits li p {
+    margin-top: 8px;
+    font-size: 0.61rem;
+    line-height: 1.38;
+  }
+
+  .applicationQuality {
+    margin-top: 22px;
+    padding: 18px 0;
+  }
+
+  .applicationQuality > p {
+    margin-top: 8px;
+    font-size: 0.68rem;
+    line-height: 1.4;
+  }
+
+  .applicationQualitySteps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+    width: 100%;
+    margin-top: 14px;
+  }
+
+  .applicationQualitySteps > li {
+    display: block;
+    min-width: 0;
+    min-height: 0;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .applicationQualitySteps > li > span {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.58rem;
+  }
+
+  .applicationQualitySteps h4 {
+    font-size: 0.68rem;
+    line-height: 1.15;
+  }
+
+  .applicationQualitySteps p {
+    margin-top: 5px;
+    font-size: 0.56rem;
+    line-height: 1.32;
+  }
+
+  .applicationDetail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--mobile-gap);
+    width: 100%;
+    margin-top: 22px;
+  }
+
+  .applicationPhoto {
+    min-height: 176px;
+    margin: 0;
+    border-radius: var(--mobile-radius);
+    overflow: hidden;
+  }
+
+  .applicationVisual {
+    min-height: 150px;
+  }
+
+  .applicationPhoto figcaption {
+    padding: 8px 10px;
+    font-size: 0.6rem;
+  }
+
+  .applicationPassport {
+    display: flex;
+    min-height: 0;
+    padding: 14px;
+    border-radius: var(--mobile-radius);
+  }
+
+  .applicationPassport dl {
+    margin: 12px 0;
+  }
+
+  .applicationPassport dl > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+    gap: 8px;
+    padding: 8px 0;
+  }
+
+  .applicationPassport dt,
+  .applicationPassport dd,
+  .applicationPassport > p:last-of-type {
+    font-size: 0.6rem;
+    line-height: 1.35;
+  }
+
+  .applicationPassport > a {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 0.66rem;
+  }
+
+  .applicationBlendingNote {
+    margin-top: var(--mobile-gap);
+    padding: 12px;
+    border-radius: 11px;
+    font-size: 0.64rem;
+    line-height: 1.4;
+  }
+
+  .sampleSection {
+    min-height: 0;
+  }
+
+  .sampleInner {
+    display: grid;
+    gap: 18px;
+    min-height: 0;
+    padding: 42px var(--mobile-edge) 46px !important;
+  }
+
+  .sampleInner > div > p:last-child {
+    margin-top: 12px;
+    font-size: 0.7rem;
+    line-height: 1.45;
+  }
+
+  .sampleActions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+  }
+
+  .sampleActions .button {
+    width: 100%;
+    min-width: 0;
+    padding-inline: 10px;
+  }
+
+  .siteFooter {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 16px;
+    padding: 30px var(--mobile-edge) 34px;
+  }
+
+  .siteFooter > .logo {
+    grid-column: 1 / -1;
+  }
+
+  .siteFooter > div {
+    min-width: 0;
+  }
+
+  .siteFooter small,
+  .siteFooter a,
+  .siteFooter span {
+    font-size: 0.62rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .contactSection--algorithm .contactInner {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 22px !important;
+  }
+
+  .contactSection--algorithm .contactInner > div:first-child {
+    min-width: 0;
+  }
+
+  .cooperationSteps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 18px;
+  }
+
+  .cooperationSteps > li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 7px;
+    min-width: 0;
+    padding: 9px;
+    border-radius: 10px;
+  }
+
+  .cooperationSteps span {
+    font-size: 0.56rem;
+  }
+
+  .cooperationSteps p {
+    font-size: 0.58rem;
+    line-height: 1.32;
+  }
+}
+
+@media (max-width: 359px) {
+  :root {
+    --mobile-edge: 18px;
+    --mobile-gap: 7px;
+  }
+
+  .historySection .sectionHeading,
+  .historyContent,
+  .companyTodayHeading .sectionHeading,
+  .productChoice,
+  .companyCapabilityGrid .capabilityCard {
+    margin-inline: 0 !important;
+    transform: none !important;
+  }
+
+  .productChoice {
+    height: 246px;
+  }
+
+  .productChoiceText strong,
+  .manganeseDirectionCopy h3 {
+    font-size: 0.82rem;
+  }
+
+  .companyCapabilityGrid .capabilityCard {
+    height: 180px;
+  }
+
+  .greetingSection {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .greetingPortrait {
+    width: 88px;
+    height: 136px;
+  }
+}
+
+.heroVideoPlay {
+  position: absolute;
+  z-index: 5;
+  top: 34%;
+  left: 50%;
+  min-height: 44px;
+  padding: 0 18px;
+  color: #fff;
+  background: rgba(16, 40, 60, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(4, 16, 26, 0.35);
+  font-size: 13px;
+  font-weight: 700;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.heroVideoPlay[hidden] {
+  display: none;
+}
+
+.heroVideoPlay span {
+  margin-right: 7px;
+  color: var(--gold-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Product-page polish: compact, contained media and app-like contacts. */
+@media (max-width: 767px) {
+  .siteHeader .headerBrand,
+  .siteHeader .logo--original {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .siteHeader .logo--original {
+    height: 40px;
+    min-height: 40px;
+    gap: 8px;
+    transform: translateY(1px);
+  }
+
+  .siteHeader .logo--original::before {
+    width: 68px;
+    height: 31px;
+    padding: 1px 3px;
+    transform: translateY(-1px);
+  }
+
+  .siteHeader .logo .logoWordmark {
+    line-height: 1;
+    transform: translateY(1px);
+  }
+
+  /* The client logo marks do not add information on the compact product view. */
+  .productPage .experienceCompany img {
+    display: none;
+  }
+
+  .productPage .experienceCompany {
+    gap: 0;
+    margin-top: 12px;
+  }
+
+  /* Keep every product image inside a stable frame instead of stretching/cropping it. */
+  .productPage .visualGallery,
+  .productPage .productProcessVisual,
+  .productPage .applicationPhoto,
+  .productPage .manganeseDirectionImage,
+  .productPage .manganeseRawPhoto {
+    background: #e8ece8;
+  }
+
+  .productPage .visualGalleryPhoto {
+    object-fit: contain;
+    background: #e8ece8;
+  }
+
+  .productProcessList > article {
+    height: auto;
+    min-height: 0;
+  }
+
+  .productProcessVisual {
+    height: clamp(104px, 28vw, 132px) !important;
+    min-height: 104px;
+    aspect-ratio: auto;
+    flex: 0 0 clamp(104px, 28vw, 132px);
+  }
+
+  .productProcessVisual .visualGalleryPhoto {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .productProcessCopy {
+    min-height: 108px;
+  }
+
+  .manganeseDirectionImage {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1.5;
+  }
+
+  .manganeseDirectionImage img {
+    object-fit: contain;
+    background: #e8ece8;
+    transform: none !important;
+  }
+
+  .manganeseRawPhoto img {
+    aspect-ratio: 1.6;
+    object-fit: contain;
+    background: #e8ece8;
+  }
+
+  .applicationPhoto {
+    min-height: 0;
+    aspect-ratio: 1.45;
+  }
+
+  .applicationPhoto img {
+    object-fit: contain;
+    background: #e8ece8;
+  }
+
+  /* Product contacts use the same compact card rhythm as the mobile menu. */
+  .contactSection--compact .contactList,
+  .contactSection--algorithm .contactList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mobile-gap);
+    align-items: stretch;
+  }
+
+  .contactSection--compact .contactList > a,
+  .contactSection--compact .contactPhones,
+  .contactSection--algorithm .contactList > a,
+  .contactSection--algorithm .contactPhones {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 96px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: rgba(5, 22, 34, 0.32);
+  }
+
+  .contactSection--compact .contactPhones,
+  .contactSection--algorithm .contactPhones,
+  .contactSection--compact .contactList > a[href^="mailto:"],
+  .contactSection--algorithm .contactList > a[href^="mailto:"],
+  .contactSection--compact .contactList > a[href*="yandex.ru/maps"],
+  .contactSection--algorithm .contactList > a[href*="yandex.ru/maps"] {
+    grid-column: 1 / -1;
+  }
+
+  .contactSection--compact .contactList > a:last-child,
+  .contactSection--algorithm .contactList > a:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .contactSection--compact .contactList > a > span,
+  .contactSection--compact .contactPhones > span,
+  .contactSection--algorithm .contactList > a > span,
+  .contactSection--algorithm .contactPhones > span {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 8px;
+    grid-row: auto;
+  }
+
+  .contactSection--compact .contactList small,
+  .contactSection--algorithm .contactList small {
+    font-size: 0.52rem;
+  }
+
+  .contactSection--compact .contactList strong,
+  .contactSection--algorithm .contactList strong {
+    font-size: 0.68rem;
+    line-height: 1.28;
+    overflow-wrap: anywhere;
+  }
+
+  .contactSection--compact .contactPhoneNumbers,
+  .contactSection--algorithm .contactPhoneNumbers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--mobile-gap);
+  }
+
+  .contactSection--compact .contactPhoneNumbers a,
+  .contactSection--algorithm .contactPhoneNumbers a {
+    min-height: 42px;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .contactSection--compact .contactPhoneNumbers strong,
+  .contactSection--algorithm .contactPhoneNumbers strong {
+    font-size: 0.68rem;
+  }
+
+  .contactSection--compact .contactPhoneNumbers span,
+  .contactSection--algorithm .contactPhoneNumbers span {
+    font-size: 0.55rem;
+    text-align: right;
+  }
+
+  /* Keep the phone card aligned with the full-width email and address cards. */
+  .contactSection .contactList > a,
+  .contactSection .contactList > .contactPhones {
+    grid-column: 1 / -1;
+  }
+
+  .contactSection .contactPhones {
+    grid-template-columns: 1fr;
+  }
+
+  .contactSection .contactPhoneNumbers {
+    grid-column: 1 / -1 !important;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--mobile-gap);
+  }
+
+  .contactSection .contactPhoneNumbers a {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  /* Home and product pages share one contact-card system. */
+  .contactSection .contactList {
+    grid-template-columns: 1fr;
+  }
+
+  .contactSection .contactPhones {
+    min-height: 96px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: rgba(5, 22, 34, 0.32);
+  }
+
+  .contactSection .contactPhones > span {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 8px;
+    grid-row: auto;
+  }
+
+  .contactSection .contactList small {
+    font-size: 0.52rem;
+  }
+
+  .contactSection .contactList strong {
+    font-size: 0.68rem;
+    line-height: 1.28;
+    overflow-wrap: anywhere;
+  }
+
+  .contactSection .contactPhoneNumbers a {
+    min-height: 42px;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  /* Contact-first order on the home page. */
+  .contactSection .contactList > .contactPhones {
+    order: 1;
+  }
+
+  .contactSection .contactList > a[href^="mailto:"] {
+    order: 2;
+  }
+
+  .contactSection .contactList > a[href*="yandex.ru/maps"] {
+    order: 3;
+  }
+}
+
+/* Final mobile pass: one visual language, one reading order, and touch-first slides. */
+@media (max-width: 767px) {
+  .siteHeader .logo--original .logoWordmark,
+  .siteFooter .logoWordmark,
+  .productBrand,
+  .heroBody h1 {
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  .siteHeader .logo--original .logoWordmark {
+    font-size: 0 !important;
+  }
+
+  .siteHeader .logo--original .logoWordmark::before,
+  .siteFooter .logoWordmark::before {
+    content: "БАШМИНЕРАЛРЕСУРС";
+    display: inline-block;
+    color: #fff;
+    font-size: clamp(0.62rem, 3.65vw, 0.88rem);
+    font-weight: 750;
+    line-height: 1;
+    letter-spacing: -0.055em;
+    white-space: nowrap;
+  }
+
+  .siteHeader .logo--original .logoWordmark > span,
+  .siteFooter .logoWordmark > span {
+    display: none !important;
+  }
+
+  .greetingSection {
+    grid-template-columns: minmax(116px, 0.38fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .greetingPortrait {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    max-height: 320px;
+    align-self: stretch;
+  }
+
+  .greetingMessage {
+    font-size: 0.62rem;
+    line-height: 1.38;
+  }
+
+  .greetingMessage p:nth-child(n + 3):nth-child(-n + 6) {
+    display: block;
+  }
+
+  .siteHeader .logo--original .logoWordmark {
+    min-width: 0;
+    font-size: clamp(0.62rem, 3.65vw, 0.88rem);
+    letter-spacing: -0.055em;
+  }
+
+  .siteHeader .logo--original .logoWordmark span {
+    display: inline !important;
+  }
+
+  .siteHeader .logo--original .logoAccent::before,
+  .siteHeader .logo--original .logoAccent::after {
+    content: none !important;
+  }
+
+  .siteFooter .logo {
+    align-items: center;
+  }
+
+  .siteFooter .logoWordmark {
+    font-size: 0 !important;
+    letter-spacing: -0.045em;
+  }
+
+  .siteFooter .logoWordmark span {
+    display: inline !important;
+  }
+
+  /* Add the breathing room marked on the home page. */
+  .historySection,
+  .contactSection,
+  .manganeseDirections,
+  .oreSection {
+    scroll-margin-top: 80px;
+  }
+
+  .historySection {
+    padding-top: 58px !important;
+  }
+
+  .historySection .sectionHeading {
+    margin-bottom: 26px !important;
+  }
+
+  /* Every gallery uses the same edge-to-edge, cropped visual frame. */
+  .productPage .visualGallery,
+  .productPage .productProcessVisual,
+  .productPage .applicationPhoto,
+  .productPage .manganeseDirectionImage,
+  .productPage .manganeseRawPhoto,
+  .companyCapabilityGrid .visualGallery {
+    overflow: hidden;
+    border-radius: var(--mobile-radius);
+    background: #dfe5e1;
+  }
+
+  .productPage .visualGalleryPhoto,
+  .productPage .manganeseDirectionImage img,
+  .productPage .manganeseRawPhoto img,
+  .productPage .applicationPhoto img,
+  .companyCapabilityGrid .visualGalleryPhoto {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none;
+    max-height: none;
+    object-fit: cover !important;
+    object-position: center;
+    background: transparent;
+  }
+
+  .manganeseDirectionImage,
+  .manganeseRawPhoto {
+    aspect-ratio: 1.5;
+  }
+
+  /* Process stages are wide, image-led cards in one vertical 01 → 04 sequence. */
+  .productProcessList {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .productProcessList > article {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: clamp(210px, 55vw, 250px) !important;
+    min-height: 210px;
+    border-radius: var(--mobile-radius);
+    overflow: hidden;
+    background: #102c3f;
+  }
+
+  .productProcessList > article .productProcessVisual {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100% !important;
+    min-height: 0;
+    border-radius: 0;
+  }
+
+  .productProcessList > article .productProcessVisual::after {
+    content: "";
+    position: absolute;
+    inset: 36% 0 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent, rgba(5, 20, 31, 0.94));
+  }
+
+  .productProcessList > article .productProcessVisual > * {
+    position: relative;
+    z-index: 0;
+  }
+
+  .productProcessList > article .capabilityCount,
+  .productProcessList > article .capabilityOpen,
+  .productProcessList > article .capabilityArrow {
+    z-index: 3;
+  }
+
+  .productProcessCopy {
+    position: absolute;
+    z-index: 2;
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    display: grid;
+    gap: 4px;
+    padding: 0;
+    color: #fff;
+  }
+
+  .productProcessCopy > span {
+    color: #f0bf49;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .productProcessCopy h3 {
+    color: #fff;
+    font-size: clamp(1.05rem, 5.3vw, 1.45rem);
+    line-height: 1.05;
+  }
+
+  .productProcessCopy p {
+    display: block;
+    max-width: 34rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 0.7rem;
+    line-height: 1.34;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
+  /* Keep the two direction cards aligned while removing their white image mat. */
+  .manganeseDirectionGrid {
+    align-items: stretch;
+  }
+
+  .manganeseDirection {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    overflow: hidden;
+  }
+
+  .manganeseDirectionCopy {
+    display: grid;
+    grid-template-rows: auto minmax(2.4em, auto) auto minmax(4.6em, auto) auto;
+    align-content: start;
+  }
+
+  .manganeseDirectionCopy p {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
+  /* Product advantages: one swipeable pair, left = product, right = buyer. */
+  .manganeseAdvantageGrid {
+    display: flex !important;
+    gap: 12px !important;
+    margin-right: calc(var(--mobile-edge) * -1);
+    margin-left: calc(var(--mobile-edge) * -1);
+    padding: 0 var(--mobile-edge) 6px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .manganeseAdvantageGrid::-webkit-scrollbar,
+  .manganeseExperienceGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .manganeseAdvantageGrid > li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "number number" "title buyer";
+    flex: 0 0 calc(100vw - (var(--mobile-edge) * 2));
+    min-height: 244px;
+    scroll-snap-align: start;
+    padding: 16px;
+  }
+
+  .manganeseAdvantageGrid > li > span {
+    grid-area: number;
+    margin-bottom: 14px;
+  }
+
+  .manganeseAdvantageGrid > li > h3 {
+    grid-area: title;
+    padding-right: 10px;
+    font-size: 0.88rem;
+  }
+
+  .manganeseAdvantageGrid .manganeseBuyerBenefit {
+    grid-area: buyer;
+    margin: 0;
+    padding: 0 0 0 12px;
+    border-top: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .manganeseAdvantageGrid p,
+  .manganeseAdvantageGrid li li {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
+  .manganeseBuyerBenefit small {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.55rem;
+  }
+
+  /* Experience: one swipeable pair, left = consumer, right = application experience. */
+  .manganeseExperienceGrid {
+    display: flex !important;
+    gap: 12px !important;
+    margin-right: calc(var(--mobile-edge) * -1);
+    margin-left: calc(var(--mobile-edge) * -1);
+    padding: 0 var(--mobile-edge) 6px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .manganeseExperienceGrid > article {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    flex: 0 0 calc(100vw - (var(--mobile-edge) * 2));
+    min-height: 300px;
+    scroll-snap-align: start;
+    align-content: start;
+  }
+
+  .manganeseExperienceGrid > article:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+
+  .manganeseExperienceGrid .experienceInfo,
+  .manganeseExperienceGrid .experienceEffects {
+    min-width: 0;
+  }
+
+  .manganeseExperienceGrid .experienceInfo {
+    padding-right: 12px;
+    border-right: 1px solid rgba(20, 45, 57, 0.16);
+  }
+
+  .manganeseExperienceGrid .experienceEffects {
+    padding-left: 12px;
+  }
+
+  .manganeseExperienceGrid .experienceInfo::before,
+  .manganeseExperienceGrid .experienceEffects::before {
+    display: block;
+    margin-bottom: 10px;
+    color: #9b6d1a;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .manganeseExperienceGrid .experienceInfo::before {
+    content: "Потребитель";
+  }
+
+  .manganeseExperienceGrid .experienceEffects::before {
+    content: "Опыт применения";
+  }
+
+  .manganeseExperienceGrid p,
+  .manganeseExperienceGrid li {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
+  /* Product data: title → wide photo → chemical analysis. */
+  .oreProduct {
+    display: flex !important;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .oreProduct > div {
+    display: contents;
+  }
+
+  .oreProduct > div > .manganeseDirectionNumber {
+    order: 1;
+  }
+
+  .oreProduct > div > h2 {
+    order: 2;
+    width: 100%;
+    margin: 0;
+  }
+
+  .oreProduct > div > p {
+    order: 3;
+    width: 100%;
+    margin: 0;
+  }
+
+  .oreProduct > figure {
+    order: 4;
+    width: 100%;
+    margin: 0;
+  }
+
+  .oreProduct > figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 52vw;
+    aspect-ratio: 1.5;
+    object-fit: cover;
+    border-radius: var(--mobile-radius);
+  }
+
+  .oreProduct > figure figcaption {
+    margin-top: 7px;
+    text-align: left;
+  }
+
+  .oreProduct > div > .manganeseAnalysis {
+    order: 5;
+    width: 100%;
+    margin: 0;
+  }
+
+  /* Quality passport: only the requested title remains. */
+  .applicationPassport > .eyebrow {
+    display: none;
+  }
+
+  .applicationPassport > h3 {
+    margin-top: 0;
+  }
+
+  /* All cooperation steps run in one reading order. */
+  .cooperationSteps {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .cooperationSteps > li {
+    grid-template-columns: 34px minmax(0, 1fr);
+    min-height: 0;
+    padding: 12px;
+  }
+
+  /* Avoid truncating the text the client asked to keep. */
+  .capabilityDetails p,
+  .greetingMessage p,
+  .manganeseExperienceGrid p,
+  .manganeseExperienceGrid li,
+  .manganeseDirectionCopy p {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+}
+
+/* Mobile correction pass: alignment, touch cues, and the shared photo/contact system. */
+@media (max-width: 767px) {
+  /* Company-today captions begin on one baseline and never cover more than a third of a photo. */
+  .companyCapabilityGrid {
+    align-items: stretch;
+  }
+
+  .companyCapabilityGrid .capabilityCard {
+    height: 210px;
+  }
+
+  .companyCapabilityGrid .capabilityCaption {
+    top: auto;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    height: 31%;
+    max-height: 31%;
+    gap: 3px;
+    overflow: hidden;
+    align-content: start;
+  }
+
+  .companyCapabilityGrid .capabilityCaption h3 {
+    min-height: 2.15em;
+    margin: 0;
+    font-size: 0.66rem;
+    line-height: 1.06;
+  }
+
+  .companyCapabilityGrid .capabilityDetails {
+    gap: 1px;
+    font-size: 0.49rem;
+    line-height: 1.18;
+  }
+
+  /* The director note keeps only its essential message; the portrait is centred against it. */
+  .greetingSection {
+    grid-template-columns: 108px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+    padding: 34px var(--mobile-edge) 38px;
+  }
+
+  .greetingPortrait {
+    width: 108px;
+    height: 160px;
+    min-height: 0;
+    max-height: none;
+    margin: 0;
+    border-radius: 10px;
+    align-self: center;
+  }
+
+  .greetingCopy {
+    gap: 8px;
+  }
+
+  .greetingMessage {
+    font-size: 0.61rem;
+    line-height: 1.36;
+  }
+
+  .greetingMessage p {
+    margin: 0 0 6px;
+  }
+
+  .greetingMessage p {
+    display: none !important;
+  }
+
+  .greetingMessage p:nth-of-type(1),
+  .greetingMessage p:nth-of-type(2),
+  .greetingMessage p:nth-of-type(3),
+  .greetingMessage p:last-of-type {
+    display: block !important;
+  }
+
+  .greetingSalutation,
+  .greetingSignature strong {
+    font-size: 0.68rem;
+  }
+
+  .greetingSignature {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  .greetingSignature span {
+    font-size: 0.58rem;
+  }
+
+  /* Cement and gypsum pictures use the same compact, full-bleed frame as home-page cards. */
+  .applicationDetail {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .applicationPhoto {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 1.32;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: var(--mobile-radius);
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .applicationPhoto .applicationVisual,
+  .applicationPhoto .visualGallery,
+  .applicationPhoto .visualGalleryPhoto {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+    border-radius: inherit;
+    object-fit: cover !important;
+    background: transparent !important;
+  }
+
+  .applicationPhoto figcaption {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    padding: 7px 9px;
+    border-radius: 8px;
+    font-size: 0.58rem;
+  }
+
+  /* The two manganese product cards share the exact same visual rhythm. */
+  .manganeseDirectionGrid {
+    gap: var(--mobile-gap);
+  }
+
+  .manganeseDirectionImage {
+    height: 190px;
+    min-height: 190px;
+    aspect-ratio: auto;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .manganeseDirectionImage img,
+  .manganeseDirectionImage--stone img,
+  .manganeseDirectionImage--flux img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    transform: none !important;
+  }
+
+  .manganeseDirectionCopy {
+    grid-template-rows: 3.7em 3.1em 4.6em 6.8em auto;
+    gap: 0;
+    padding: 12px;
+  }
+
+  .manganeseDirectionCopy .manganeseDirectionNumber {
+    display: block;
+    font-size: 0.54rem;
+    line-height: 1.18;
+  }
+
+  .manganeseDirectionCopy h3 {
+    min-height: 3.1em;
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.08;
+  }
+
+  .manganeseDirectionCopy .manganeseDirectionTag {
+    min-height: 4.6em;
+    margin: 0;
+    font-size: 0.57rem;
+    line-height: 1.34;
+  }
+
+  .manganeseDirectionCopy > p:not(.manganeseDirectionTag) {
+    min-height: 6.8em;
+    margin: 0;
+    font-size: 0.56rem;
+    line-height: 1.38;
+  }
+
+  .manganeseDirectionCopy .manganeseAnalysis {
+    align-self: start;
+    margin-top: 0;
+    padding-top: 10px;
+  }
+
+  .manganeseDirectionCopy .manganeseAnalysis h4 {
+    font-size: 0.68rem;
+  }
+
+  .manganeseDirectionCopy .compositionTable th,
+  .manganeseDirectionCopy .compositionTable td {
+    padding: 4px 3px;
+    font-size: 0.54rem;
+  }
+
+  /* Center every swipe card within the section and make touch behaviour obvious. */
+  .manganeseAdvantages .sectionHeading::after,
+  .manganeseExperience .sectionHeading::after {
+    display: block;
+    margin-top: 12px;
+    color: var(--gold-soft);
+    font-size: 0.61rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .manganeseAdvantages .sectionHeading::after {
+    content: "Листайте вправо →";
+  }
+
+  .manganeseExperience .sectionHeading::after {
+    content: "Листайте вправо →";
+  }
+
+  .manganeseAdvantageGrid,
+  .manganeseExperienceGrid {
+    justify-content: flex-start;
+    width: 100%;
+    margin-inline: 0;
+    padding-inline: 0;
+    scroll-padding-inline: 0;
+  }
+
+  .manganeseAdvantageGrid > li,
+  .manganeseExperienceGrid > article {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+  }
+
+  /* Restore the natural orientation of the brown ore sample. */
+  .oreProduct > figure img {
+    transform: none;
+  }
+
+  .oreProduct > figure {
+    aspect-ratio: 1.32;
+    overflow: hidden;
+    border-radius: var(--mobile-radius);
+  }
+
+  .oreProduct > figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Product-process photos now use the same two-column, image-first card format as “Предприятие сегодня”. */
+  .productProcessList {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: var(--mobile-gap) !important;
+  }
+
+  .productProcessList > article {
+    height: 210px !important;
+    min-height: 210px;
+  }
+
+  .productProcessCopy {
+    right: auto;
+    bottom: 10px;
+    left: 4px;
+    width: calc(100% - 8px);
+    min-height: 90px;
+    height: 90px;
+    max-height: none;
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 12px 26px 24px;
+    gap: 3px;
+    overflow: hidden;
+    padding: 6px 7px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 9px;
+    background: rgba(5, 20, 31, 0.82);
+    box-shadow: 0 4px 16px rgba(1, 11, 19, 0.34);
+  }
+
+  .productProcessCopy > span {
+    font-size: 0.52rem;
+    line-height: 1;
+  }
+
+  .productProcessCopy h3 {
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    font-size: 0.66rem;
+    line-height: 1.05;
+    white-space: normal !important;
+    overflow-wrap: normal;
+    overflow: hidden;
+  }
+
+  .productProcessCopy p {
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    font-size: 0.52rem;
+    line-height: 1.18;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .applicationPhoto figcaption {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(5, 20, 31, 0.82);
+  }
+
+  /* All contact panels use one identical mobile-card layout on every route. */
+  .contactSection .contactList,
+  .contactSection--compact .contactList,
+  .contactSection--algorithm .contactList {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px;
+  }
+
+  .contactSection .contactList > a,
+  .contactSection .contactPhones,
+  .contactSection--compact .contactList > a,
+  .contactSection--compact .contactPhones,
+  .contactSection--algorithm .contactList > a,
+  .contactSection--algorithm .contactPhones {
+    grid-column: 1 / -1 !important;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .contactSection .contactPhoneNumbers,
+  .contactSection--compact .contactPhoneNumbers,
+  .contactSection--algorithm .contactPhoneNumbers {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .siteFooter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .siteFooter > .logo {
+    grid-column: 1 / -1;
+  }
+}
+/* October 8: scoped mobile corrections; desktop unchanged except step alignment. */
+.cooperationSteps > li { display: grid; grid-template-columns: 44px minmax(0,1fr); gap: 18px; align-items: start; }
+.cooperationSteps > li > span { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; font-size: 26px; line-height: 1; font-variant-numeric: tabular-nums; }
+.cooperationSteps > li > p { margin: 0; padding-top: 7px; }
+@media (max-width: 767px) {
+ .siteHeader .logo--original img { padding: 6px 9px !important; object-fit: contain !important; object-position: center !important; }
+ .manganeseAdvantages .sectionHeading::after, .manganeseExperience .sectionHeading::after { display: none !important; content: none !important; }
+ .manganeseAdvantageGrid, .manganeseExperienceGrid { display: grid !important; grid-template-columns: minmax(0,1fr) !important; gap: 10px !important; overflow: visible !important; margin-inline: 0 !important; padding: 0 !important; scroll-snap-type: none !important; }
+ .manganeseAdvantageGrid > li { display: block !important; min-height: 0 !important; height: auto !important; padding: 14px !important; }
+ .manganeseAdvantageGrid > li > span { display: block; margin: 0 0 8px; }
+ .manganeseAdvantageGrid > li > h3 { margin: 0 0 10px !important; padding: 0 !important; font-size: 15px !important; line-height: 1.25 !important; }
+ .manganeseAdvantageGrid .manganeseBuyerBenefit { margin: 0 !important; padding: 10px 0 0 !important; border-left: 0 !important; border-top: 1px solid #ffffff26 !important; }
+ .manganeseBuyerBenefit small { margin-bottom: 5px !important; }
+ .manganeseAdvantageGrid p { margin: 5px 0 0 !important; font-size: 12px !important; line-height: 1.4 !important; }
+ .manganeseExperienceGrid > article { grid-template-columns: 1fr !important; min-height: 0 !important; height: auto !important; gap: 12px !important; padding: 14px !important; }
+ .manganeseExperienceGrid .experienceInfo { padding: 0 !important; border: 0 !important; }
+ .manganeseExperienceGrid .experienceEffects { padding: 12px 0 0 !important; border-left: 0 !important; border-top: 1px solid var(--line) !important; }
+ .manganeseExperienceGrid .experienceInfo::before, .manganeseExperienceGrid .experienceEffects::before { display: none !important; }
+ .manganeseExperienceGrid h3 { margin: 8px 0 !important; font-size: 18px !important; }
+ .experiencePeriod, .experienceApplication, .experienceEffects p { margin: 8px 0 !important; }
+ .manganeseExperienceGrid p, .manganeseExperienceGrid li { font-size: 12px !important; line-height: 1.4 !important; }
+ .manganeseExperienceGrid ul { gap: 5px !important; margin-top: 8px !important; }
+ .cooperationSteps > li { grid-template-columns: 36px minmax(0,1fr) !important; gap: 12px !important; align-items: start !important; padding: 0 !important; }
+ .cooperationSteps > li > span { width: 36px; height: 36px; font-size: 25px !important; }
+ .cooperationSteps > li > p { padding-top: 5px; font-size: 13px !important; line-height: 1.45 !important; }
+ .productProcessList > article { position: relative; display: block !important; height: auto !important; min-height: 0 !important; aspect-ratio: 0.72; overflow: hidden; }
+ .gypsumProcess .productProcessVisual { position: absolute !important; inset: 0; height: 100% !important; width: 100%; }
+ .productProcessList .productProcessCopy { position: absolute; top: auto; bottom: 8px; left: 8px; right: 8px; width: auto !important; height: auto !important; min-height: 0 !important; display: block !important; padding: 9px !important; overflow: visible !important; }
+ .productProcessList .productProcessCopy h3 { font-size: 14px !important; line-height: 1.15 !important; margin: 5px 0 !important; height: auto !important; overflow: visible !important; }
+ .productProcessList .productProcessCopy p { display: block !important; font-size: 10px !important; line-height: 1.3 !important; overflow: visible !important; -webkit-line-clamp: unset !important; }
+ .companyCapabilityGrid .capabilityCaption { height: auto !important; max-height: none !important; overflow: visible !important; }
+ .companyCapabilityGrid .capabilityCaption h3 { min-height: 0 !important; }
+ .applicationPhoto figcaption { white-space: normal !important; overflow: visible !important; }
+ .manganeseDirectionImage--flux img { transform: scale(2.5) !important; transform-origin: right 80% !important; }
+}
+
