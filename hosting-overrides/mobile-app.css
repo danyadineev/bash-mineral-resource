@@ -2463,4 +2463,9 @@
  .companyCapabilityGrid .capabilityCaption h3 { min-height: 0 !important; }
  .applicationPhoto figcaption { white-space: normal !important; overflow: visible !important; }
  .manganeseDirectionImage--flux img { transform: scale(2.5) !important; transform-origin: right 90% !important; }
+ .manganeseDirectionImage--stone { height: auto !important; min-height: 0 !important; aspect-ratio: 2.2; overflow: hidden; }
+ .manganeseDirectionImage--stone img { object-position: center 34% !important; transform: none !important; }
+ .visualGallery .capabilityArrow { display: grid !important; position: absolute !important; top: 0 !important; bottom: 0 !important; width: 32px !important; height: 100% !important; padding: 0 !important; border: 0 !important; background: transparent !important; z-index: 5 !important; opacity: 1 !important; color: #ffffff80 !important; }
+ .visualGallery .capabilityArrow--previous { left: 0 !important; right: auto !important; }
+ .visualGallery .capabilityArrow--next { right: 0 !important; left: auto !important; }
 }
