@@ -15,7 +15,7 @@
   height: 42px;
   padding: 3px 6px;
   border-radius: 8px;
-  background: #fff url("/brand/bashmineralresurs-mark-transparent.png") center / 74% auto no-repeat;
+  background: #fff url("/brand/bashmineralresurs-original.png") center / contain no-repeat;
 }
 
 .siteHeader .logo--original {
@@ -2426,7 +2426,7 @@
  .manganeseDirectionImage--flux img { object-position: center bottom; transform: scale(1.6); transform-origin: center bottom; }
 }
 @media (max-width: 767px) {
- .siteHeader .logo--original::before { background-size: 74% auto !important; background-position: center !important; }
+ .siteHeader .logo--original::before { background-size: contain !important; background-position: center !important; }
  .manganeseAdvantages .sectionHeading::after, .manganeseExperience .sectionHeading::after { display: none !important; content: none !important; }
  .manganeseAdvantageGrid, .manganeseExperienceGrid { display: grid !important; grid-template-columns: minmax(0,1fr) !important; gap: 10px !important; overflow: visible !important; margin-inline: 0 !important; padding: 0 !important; scroll-snap-type: none !important; }
  .manganeseAdvantageGrid > li { display: block !important; min-height: 0 !important; height: auto !important; padding: 14px !important; }
@@ -2463,9 +2463,14 @@
  .companyCapabilityGrid .capabilityCaption h3 { min-height: 0 !important; }
  .applicationPhoto figcaption { white-space: normal !important; overflow: visible !important; }
  .manganeseDirectionImage--flux img { transform: scale(2.5) !important; transform-origin: right 90% !important; }
- .manganeseDirectionImage--stone { height: auto !important; min-height: 0 !important; aspect-ratio: 2.2; overflow: hidden; }
- .manganeseDirectionImage--stone img { object-position: center 34% !important; transform: none !important; }
  .visualGallery .capabilityArrow { display: grid !important; position: absolute !important; top: 0 !important; bottom: 0 !important; width: 32px !important; height: 100% !important; padding: 0 !important; border: 0 !important; background: transparent !important; z-index: 5 !important; opacity: 1 !important; color: #ffffff80 !important; }
  .visualGallery .capabilityArrow--previous { left: 0 !important; right: auto !important; }
  .visualGallery .capabilityArrow--next { right: 0 !important; left: auto !important; }
+ .contactSection .contactPhones { display: grid !important; grid-template-columns: 28px minmax(0,1fr) !important; gap: 6px 12px !important; align-items: start; }
+ .contactSection .contactPhones > span { grid-column: 1 !important; grid-row: 1 / 3 !important; width: 28px !important; height: 28px !important; margin: 0 !important; }
+ .contactSection .contactPhones > small { grid-column: 2 !important; grid-row: 1 !important; }
+ .contactSection .contactPhoneNumbers { grid-column: 2 !important; grid-row: 2 !important; width: 100% !important; margin: 0 !important; gap: 6px !important; }
+ .contactSection .contactPhoneNumbers a { display: grid !important; grid-template-columns: minmax(0,1fr) !important; gap: 3px !important; min-height: 0 !important; padding: 6px 8px !important; }
+ .manganeseExperienceGrid .experienceEffects li { position: relative; padding-left: 14px !important; list-style: none !important; }
+ .manganeseExperienceGrid .experienceEffects li::before { content: "—"; position: absolute; left: 0; top: 0; color: var(--gold); }
 }

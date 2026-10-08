@@ -37,6 +37,12 @@
     const dryMixTitle = document.querySelector(".gypsumApplication--dry-mixes .applicationHeader h2");
     if (dryMixTitle && dryMixTitle.textContent.trim() !== "Для производства сухих строительных смесей") dryMixTitle.textContent = "Для производства сухих строительных смесей";
 
+    [[".gypsumApplication--cement .applicationPhoto figcaption", "Камень гипсоангидритовый"],
+      [".gypsumApplication--dry-mixes .applicationPhoto figcaption", "Камень гипсовый"]].forEach(([selector, text]) => {
+      const caption = document.querySelector(selector);
+      if (caption && caption.textContent.trim() !== text) caption.textContent = text;
+    });
+
     // Both product pages use the same concise quality-passport heading.
     document.querySelectorAll(".applicationPassport > h3").forEach((heading) => {
       if (heading.textContent.trim() !== "Паспорт качества") heading.textContent = "Паспорт качества";
