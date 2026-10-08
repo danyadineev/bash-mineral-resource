@@ -2476,6 +2476,9 @@
 }
 
 /* Final October 8 review: compact brand panel and aligned mobile contact copy. */
+@media (max-width: 767px) {
+ .manganeseDirectionImage--stone img { object-position: center 40% !important; transform: scale(2) !important; transform-origin: center 40% !important; }
+}
 .siteHeader .logo--original::before {
  width: 52px !important;
  height: 42px !important;
