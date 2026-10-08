@@ -2479,6 +2479,12 @@
 @media (max-width: 767px) {
  .manganeseDirectionImage--stone img { object-position: center 40% !important; transform: scale(2) !important; transform-origin: center 40% !important; }
  .manganeseRawStage > .manganeseRawPhoto { width: 100% !important; max-width: 100% !important; min-width: 0 !important; min-height: 0 !important; height: auto !important; aspect-ratio: 1.5; }
+ .manganeseRawStage { align-items: stretch !important; }
+ .manganeseRawStage > .manganeseRawPhoto { position: relative; aspect-ratio: auto !important; }
+ .manganeseRawStage > .manganeseRawPhoto img { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
+ .manganeseRawStage > div { display: grid; align-content: start; gap: 8px; }
+ .manganeseRawStage > div > p, .manganeseRawStage h3 { margin: 0 !important; }
+ .manganeseRawStage .manganeseRawNext { margin-top: 2px !important; gap: 8px; }
 }
 .siteHeader .logo--original::before {
  width: 52px !important;
