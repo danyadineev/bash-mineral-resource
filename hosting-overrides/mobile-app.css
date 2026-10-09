@@ -2480,6 +2480,10 @@
 .reserveFacts p { margin: 0 !important; font-size: 15px; line-height: 1.4; }
 .reserveFacts strong { color: var(--gold-soft); white-space: nowrap; }
 .productHeroCopy { padding-bottom: 100px; }
+@media (min-width: 768px) {
+ .productHero--gypsum .productHeroCopy,
+ .productHero--manganese .productHeroCopy { margin-bottom: 30px; padding-bottom: 0; }
+}
 .geologySection { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding-block: 64px; }
 .geologySection h2 { margin: 12px 0 20px; font-size: 40px; }
 .geologySection p:not(.eyebrow) { color: var(--muted); line-height: 1.65; }
