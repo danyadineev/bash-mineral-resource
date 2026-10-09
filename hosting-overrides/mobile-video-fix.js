@@ -9,6 +9,13 @@
   const contactEmail = "info@bashmineral.ru";
 
   const normalizeMobileCopy = () => {
+    document.querySelectorAll('.oreProduct h3, .oreProduct h2, .oreProduct img').forEach(element => {
+      if (element instanceof HTMLImageElement) {
+        if (element.alt !== 'Окисленная марганцовистая руда') element.alt = 'Окисленная марганцовистая руда';
+      } else if (element.textContent.trim() !== 'Окисленная марганцовистая руда') {
+        element.textContent = 'Окисленная марганцовистая руда';
+      }
+    });
     document.querySelectorAll('.companyCapabilityGrid .capabilityCard').forEach(card => {
       if (card.dataset.oct9First || !card.querySelector('img')?.src.includes('/laboratory-')) return;
       const next = card.querySelector('.capabilityArrow--next');
