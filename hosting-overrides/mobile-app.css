@@ -2488,6 +2488,8 @@
 .geologySection h2 { margin: 12px 0 20px; font-size: 40px; }
 .geologySection p:not(.eyebrow) { color: var(--muted); line-height: 1.65; }
 .geologySection img { width: 100%; height: 320px; object-fit: cover; border-radius: 14px; }
+.geologySection > a { display: block; min-width: 0; }
+.geologySection > a img { display: block; height: auto !important; object-fit: contain; }
 .so3Intro { margin: 16px 0 28px; line-height: 1.6; }
 .historySection .timeline li { height: auto !important; min-height: 0 !important; max-height: none !important; overflow: visible !important; }
 .historySection .timeline li p { display: block !important; height: auto !important; max-height: none !important; overflow: visible !important; -webkit-line-clamp: unset !important; white-space: normal !important; }
