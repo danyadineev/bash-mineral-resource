@@ -42,8 +42,8 @@
       geology.className = 'section geologySection';
       geology.innerHTML = '<div><p class="eyebrow">Месторождение</p><h2>Геология</h2><p>Горизонтальное залегание марганцовистых известняков и подстилающих их попутно разрабатываемых гипсов и гипсоангидритов и относительно небольшая мощность вскрышных пород (глины) позволяют вести разработку всех участков месторождения открытым способом.</p></div><img src="/content/sep27-manganese-mining.webp" alt="Открытая разработка карьера" loading="lazy">';
       const sectionImage = geology.querySelector('img');
-      sectionImage.src = '/content/geological-section.png';
-      sectionImage.alt = 'Типовой геологический разрез месторождения с образцами пород';
+      sectionImage.src = '/content/geological-profile.png';
+      sectionImage.alt = 'Геологический профиль по линии скважин';
       const imageLink = document.createElement('a');
       imageLink.href = sectionImage.src;
       imageLink.target = '_blank';
