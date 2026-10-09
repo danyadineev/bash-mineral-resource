@@ -9,6 +9,13 @@
   const contactEmail = "info@bashmineral.ru";
 
   const normalizeMobileCopy = () => {
+    document.querySelectorAll('.companyCapabilityGrid .capabilityCard').forEach(card => {
+      if (card.dataset.oct9First || !card.querySelector('img')?.src.includes('/laboratory-')) return;
+      const next = card.querySelector('.capabilityArrow--next');
+      if (!next) return;
+      card.dataset.oct9First = '1';
+      for (let step = 0; step < 6; step++) next.click();
+    });
     document.querySelectorAll('.productHeroCopy').forEach(copy => {
       const gypsum = copy.closest('.productHero--gypsum');
       const existing = copy.querySelector('.reserveFacts');
@@ -110,9 +117,6 @@
   };
 
   const mobileGalleryPath = (value, reorder = false) => {
-    if (reorder && typeof value === 'string' && /company-galleries\/laboratory-(01|07)(-mobile)?\.webp/.test(value)) {
-      value = value.replace(/laboratory-(01|07)/, (_, n) => `laboratory-${n === '01' ? '07' : '01'}`);
-    }
     if (!window.matchMedia("(max-width: 719px)").matches || typeof value !== "string") return value;
     try {
       const url = new URL(value, location.href);
