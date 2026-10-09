@@ -122,6 +122,9 @@
   };
 
   const mobileGalleryPath = (value, reorder = false) => {
+    if (typeof value === 'string' && /\/company-galleries\/laboratory-06(?:-mobile)?\.webp(?:\?.*)?$/.test(value)) {
+      return '/content/laboratory-sample-cropped.jpg';
+    }
     if (!window.matchMedia("(max-width: 719px)").matches || typeof value !== "string") return value;
     try {
       const url = new URL(value, location.href);
