@@ -41,6 +41,11 @@
       benefits.dataset.oct9 = '1';
       benefits.innerHTML = '<h3>Преимущество нашего продукта — высокое содержание серного ангидрида (SO₃)</h3><p class="so3Intro">В нашем камне SO₃ составляет 45–50% и выше. У большинства поставщиков на рынке этот показатель — 35–40%.</p><h3>Что это даёт цементному заводу:</h3><ul><li><p>Нужное содержание SO₃ в цементе набирается меньшим количеством добавки.</p></li><li><p>Снижаются закупки, затраты на перевозку, складирование и дозирование.</p></li><li><p>В помол попадает меньше примесей, поэтому состав цемента стабильнее.</p></li></ul>';
     }
+    const dryMixBenefits = document.querySelector('.gypsumApplication--dry-mixes .applicationBenefits');
+    if (dryMixBenefits && !dryMixBenefits.dataset.oct9White) {
+      dryMixBenefits.dataset.oct9White = '1';
+      dryMixBenefits.innerHTML = '<h3>Преимущество нашего продукта — природная белизна камня 1–2 сорта!</h3><ul><li><p>Высокая белизна — повышает эстетическую и рыночную привлекательность готовых строительных смесей.</p></li><li><p>Высокий сорт — обеспечивает улучшенные прочностные характеристики гипсового вяжущего.</p></li><li><p>Оптимальная фракция — снижает содержание посторонних примесей в готовом вяжущем.</p></li></ul>';
+    }
     // Keep the brand lockup on one line in both the header and the footer.
     document.querySelectorAll(".logoWordmark").forEach((wordmark) => {
       if (wordmark.textContent.trim() !== "БАШМИНЕРАЛРЕСУРС" && wordmark.textContent.includes("БАШМИНЕРАЛ")) {
