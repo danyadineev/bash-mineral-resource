@@ -2489,6 +2489,13 @@
 .geologySection p:not(.eyebrow) { color: var(--muted); line-height: 1.65; }
 .geologySection img { width: 100%; height: 320px; object-fit: cover; border-radius: 14px; }
 .so3Intro { margin: 16px 0 28px; line-height: 1.6; }
+.historySection .timeline li { height: auto !important; min-height: 0 !important; max-height: none !important; overflow: visible !important; }
+.historySection .timeline li p { display: block !important; height: auto !important; max-height: none !important; overflow: visible !important; -webkit-line-clamp: unset !important; white-space: normal !important; }
+@media (max-width: 767px) {
+ .historySection .timeline { display: grid !important; grid-template-columns: minmax(0,1fr) !important; gap: 12px !important; }
+ .historySection .timeline li { padding: 16px !important; }
+ .historySection .timeline li p { font-size: 13px !important; line-height: 1.5 !important; }
+}
 .gypsumApplication--cement .applicationBenefits > h3:first-child { color: var(--gold-soft); }
 .gypsumApplication--dry-mixes .applicationBenefits > h3:first-child { color: var(--gold-soft); }
 .companyCapabilityGrid .capabilityCaption { display: grid !important; grid-template-rows: 52px 42px !important; gap: 8px !important; height: 33% !important; min-height: 0 !important; max-height: none !important; }
