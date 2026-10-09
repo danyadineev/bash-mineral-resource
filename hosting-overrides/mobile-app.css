@@ -2476,6 +2476,31 @@
 }
 
 /* Final October 8 review: compact brand panel and aligned mobile contact copy. */
+.reserveFacts { display: grid; gap: 6px; margin-top: 20px; max-width: 640px; color: white; }
+.reserveFacts p { margin: 0 !important; font-size: 15px; line-height: 1.4; }
+.reserveFacts strong { color: var(--gold-soft); white-space: nowrap; }
+.productHeroCopy { padding-bottom: 100px; }
+.geologySection { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding-block: 64px; }
+.geologySection h2 { margin: 12px 0 20px; font-size: 40px; }
+.geologySection p:not(.eyebrow) { color: var(--muted); line-height: 1.65; }
+.geologySection img { width: 100%; height: 320px; object-fit: cover; border-radius: 14px; }
+.so3Intro { margin: 16px 0 28px; line-height: 1.6; }
+.companyCapabilityGrid .capabilityCaption { display: grid !important; grid-template-rows: 1fr 3.5em !important; gap: 8px !important; height: 33% !important; min-height: 0 !important; max-height: none !important; }
+.companyCapabilityGrid .capabilityCaption h3 { align-self: end; margin: 0 !important; font-size: 18px; line-height: 1.15; }
+.companyCapabilityGrid .capabilityDetails { align-self: start; font-size: 13px; line-height: 1.35; }
+.companyCapabilityGrid .capabilityDetails p { margin: 0 0 4px !important; font-size: inherit !important; }
+@media (max-width: 767px) {
+ .reserveFacts { margin-top: 14px; gap: 6px; }
+ .reserveFacts p { font-size: 11px !important; }
+ .productHeroCopy { padding-bottom: 20px !important; }
+ .geologySection { grid-template-columns: 1fr; gap: 20px; padding-block: 36px; }
+ .geologySection h2 { font-size: 28px; }
+ .geologySection p:not(.eyebrow) { font-size: 14px; }
+ .geologySection img { height: 220px; }
+ .companyCapabilityGrid .capabilityCaption { grid-template-rows: 1fr 4.3em !important; gap: 4px !important; height: 36% !important; }
+ .companyCapabilityGrid .capabilityCaption h3 { font-size: .64rem !important; line-height: 1.1 !important; }
+ .companyCapabilityGrid .capabilityDetails { font-size: .48rem !important; line-height: 1.2 !important; }
+}
 @media (max-width: 767px) {
  .manganeseDirectionImage--stone img { object-position: center 40% !important; transform: scale(2) !important; transform-origin: center 40% !important; }
  .manganeseRawStage > .manganeseRawPhoto { width: 100% !important; max-width: 100% !important; min-width: 0 !important; min-height: 0 !important; height: auto !important; aspect-ratio: 1.5; }

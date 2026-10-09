@@ -9,6 +9,31 @@
   const contactEmail = "info@bashmineral.ru";
 
   const normalizeMobileCopy = () => {
+    document.querySelectorAll('.productHeroCopy').forEach(copy => {
+      const gypsum = copy.closest('.productHero--gypsum');
+      const existing = copy.querySelector('.reserveFacts');
+      const reserveKey = gypsum ? 'gypsum' : 'manganese';
+      if (existing?.dataset.product === reserveKey) return;
+      existing?.remove();
+      const facts = document.createElement('div');
+      facts.className = 'reserveFacts';
+      facts.dataset.product = reserveKey;
+      facts.innerHTML = `<p>Балансовые запасы по категориям В+С1+С2 — <strong>${gypsum ? '11,5' : '44,2'} млн тонн</strong></p><p>Прогнозные запасы — <strong>${gypsum ? '424' : '140'} млн тонн</strong></p>`;
+      copy.append(facts);
+    });
+    const history = document.querySelector('.historySection');
+    if (history && !document.querySelector('#geology')) {
+      const geology = document.createElement('section');
+      geology.id = 'geology';
+      geology.className = 'section geologySection';
+      geology.innerHTML = '<div><p class="eyebrow">Месторождение</p><h2>Геология</h2><p>Горизонтальное залегание марганцовистых известняков и подстилающих их попутно разрабатываемых гипсов и гипсоангидритов и относительно небольшая мощность вскрышных пород (глины) позволяют вести разработку всех участков месторождения открытым способом.</p></div><img src="/content/sep27-manganese-mining.webp" alt="Открытая разработка карьера" loading="lazy">';
+      history.after(geology);
+    }
+    const benefits = document.querySelector('.gypsumApplication--cement .applicationBenefits');
+    if (benefits && !benefits.dataset.oct9) {
+      benefits.dataset.oct9 = '1';
+      benefits.innerHTML = '<h3>Преимущество нашего продукта — высокое содержание серного ангидрида (SO₃)</h3><p class="so3Intro">В нашем камне SO₃ составляет 45–50% и выше. У большинства поставщиков на рынке этот показатель — 35–40%.</p><h3>Что это даёт цементному заводу:</h3><ul><li><p>Нужное содержание SO₃ в цементе набирается меньшим количеством добавки.</p></li><li><p>Снижаются закупки, затраты на перевозку, складирование и дозирование.</p></li><li><p>В помол попадает меньше примесей, поэтому состав цемента стабильнее.</p></li></ul>';
+    }
     // Keep the brand lockup on one line in both the header and the footer.
     document.querySelectorAll(".logoWordmark").forEach((wordmark) => {
       if (wordmark.textContent.trim() !== "БАШМИНЕРАЛРЕСУРС" && wordmark.textContent.includes("БАШМИНЕРАЛ")) {
@@ -84,7 +109,10 @@
     });
   };
 
-  const mobileGalleryPath = (value) => {
+  const mobileGalleryPath = (value, reorder = false) => {
+    if (reorder && typeof value === 'string' && /company-galleries\/laboratory-(01|07)(-mobile)?\.webp/.test(value)) {
+      value = value.replace(/laboratory-(01|07)/, (_, n) => `laboratory-${n === '01' ? '07' : '01'}`);
+    }
     if (!window.matchMedia("(max-width: 719px)").matches || typeof value !== "string") return value;
     try {
       const url = new URL(value, location.href);
@@ -98,7 +126,7 @@
 
   const nativeSetAttribute = Element.prototype.setAttribute;
   Element.prototype.setAttribute = function setAttribute(name, value) {
-    if (name === "src" && this instanceof HTMLImageElement) value = mobileGalleryPath(value);
+    if (name === "src" && this instanceof HTMLImageElement) value = mobileGalleryPath(value, true);
     return nativeSetAttribute.call(this, name, value);
   };
 
@@ -109,7 +137,7 @@
       enumerable: imageSrc.enumerable,
       get: imageSrc.get,
       set(value) {
-        imageSrc.set.call(this, mobileGalleryPath(value));
+        imageSrc.set.call(this, mobileGalleryPath(value, true));
         this.decoding = "async";
       },
     });
@@ -120,7 +148,7 @@
     document.querySelectorAll("img").forEach((image) => {
       const optimized = mobileGalleryPath(image.currentSrc || image.src);
       if (optimized !== (image.currentSrc || image.src)) {
-        image.src = optimized;
+        imageSrc.set.call(image, optimized);
         image.decoding = "async";
       }
     });
@@ -143,6 +171,14 @@
   };
 
   const optimizeVideoSource = (video) => {
+    if (video.matches('video.heroMedia')) {
+      if (!video.src.endsWith('/hero-home-oct9.mp4')) {
+        video.src = '/hero-home-oct9.mp4';
+        video.load();
+        video.play().catch(() => {});
+      }
+      return;
+    }
     if (!window.matchMedia("(max-width: 719px)").matches) return;
     const currentPath = new URL(video.currentSrc || video.src, location.href).pathname;
     const optimizedSource = mobileSources.get(currentPath);
