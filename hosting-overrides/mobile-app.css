@@ -2484,7 +2484,9 @@
  .productHero--gypsum .productHeroCopy,
  .productHero--manganese .productHeroCopy { margin-bottom: 30px; padding-bottom: 0; }
 }
-.geologySection { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding-block: 64px; }
+.geologySection { display: grid; grid-template-columns: minmax(0,2.1fr) minmax(0,1fr); gap: 32px; align-items: center; padding-block: 64px; }
+.geologySection > a { order: 1; }
+.geologySection > div { order: 2; min-width: 0; }
 .geologySection h2 { margin: 12px 0 20px; font-size: 40px; }
 .geologySection p:not(.eyebrow) { color: var(--muted); line-height: 1.65; }
 .geologySection img { width: 100%; height: 320px; object-fit: cover; border-radius: 14px; }
