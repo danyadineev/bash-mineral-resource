@@ -2485,9 +2485,9 @@
 .geologySection p:not(.eyebrow) { color: var(--muted); line-height: 1.65; }
 .geologySection img { width: 100%; height: 320px; object-fit: cover; border-radius: 14px; }
 .so3Intro { margin: 16px 0 28px; line-height: 1.6; }
-.companyCapabilityGrid .capabilityCaption { display: grid !important; grid-template-rows: 1fr 3.5em !important; gap: 8px !important; height: 33% !important; min-height: 0 !important; max-height: none !important; }
-.companyCapabilityGrid .capabilityCaption h3 { align-self: end; margin: 0 !important; font-size: 18px; line-height: 1.15; }
-.companyCapabilityGrid .capabilityDetails { align-self: start; font-size: 13px; line-height: 1.35; }
+.companyCapabilityGrid .capabilityCaption { display: grid !important; grid-template-rows: 52px 42px !important; gap: 8px !important; height: 33% !important; min-height: 0 !important; max-height: none !important; }
+.companyCapabilityGrid .capabilityCaption h3 { order: 2; align-self: start; margin: 0 !important; font-size: 18px; line-height: 1.15; }
+.companyCapabilityGrid .capabilityDetails { order: 1; align-self: start; font-size: 13px; line-height: 1.35; }
 .companyCapabilityGrid .capabilityDetails p { margin: 0 0 4px !important; font-size: inherit !important; }
 @media (max-width: 767px) {
  .reserveFacts { margin-top: 14px; gap: 6px; }
@@ -2497,7 +2497,7 @@
  .geologySection h2 { font-size: 28px; }
  .geologySection p:not(.eyebrow) { font-size: 14px; }
  .geologySection img { height: 220px; }
- .companyCapabilityGrid .capabilityCaption { grid-template-rows: 1fr 4.3em !important; gap: 4px !important; height: 36% !important; }
+ .companyCapabilityGrid .capabilityCaption { grid-template-rows: 32px 34px !important; gap: 4px !important; height: 36% !important; }
  .companyCapabilityGrid .capabilityCaption h3 { font-size: .64rem !important; line-height: 1.1 !important; }
  .companyCapabilityGrid .capabilityDetails { font-size: .48rem !important; line-height: 1.2 !important; }
 }
