@@ -27,6 +27,7 @@
         host.dataset.photoIndex = String(index);
         count.textContent = `${index + 1} / 2`;
         if (dialog) {
+          dialog.dataset.photoIndex = String(index);
           dialog.querySelector('img').src = sources[index];
           dialog.querySelector('.companyLightboxFooter').textContent = `${index + 1} / 2`;
         }
