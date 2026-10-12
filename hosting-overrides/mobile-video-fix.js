@@ -19,7 +19,7 @@
       const details = document.createElement('div'); details.className = 'directionAdditionalDetails';
       const description = copy.querySelector(':scope > p:not(.manganeseDirectionTag)');
       if (flux) {
-        const grades = document.createElement('p'); grades.className = 'directionGrades'; grades.textContent = tag.textContent; details.append(grades);
+        const grades = document.createElement('p'); grades.className = 'directionGrades'; grades.textContent = 'Возможно изготовление продукта разных марок с увеличенным содержанием Mn / CaO / Mg / Fe и др.'; details.append(grades);
         tag.textContent = 'Фракции: 5–20 / 20–40 и др.';
       }
       if (description) details.append(description);
