@@ -9,6 +9,26 @@
   const contactEmail = "info@bashmineral.ru";
 
   const normalizeMobileCopy = () => {
+    document.querySelectorAll('.manganeseDirectionCopy').forEach(copy => {
+      if (copy.dataset.productDetailsUpdated) return;
+      const analysis = copy.querySelector('.manganeseAnalysis');
+      const tag = copy.querySelector('.manganeseDirectionTag');
+      if (!analysis || !tag) return;
+      copy.dataset.productDetailsUpdated = '1';
+      const flux = copy.parentElement.querySelector('.manganeseDirectionImage--flux');
+      const details = document.createElement('div'); details.className = 'directionAdditionalDetails';
+      const description = copy.querySelector(':scope > p:not(.manganeseDirectionTag)');
+      if (flux) {
+        const grades = document.createElement('p'); grades.className = 'directionGrades'; grades.textContent = tag.textContent; details.append(grades);
+        tag.textContent = 'Фракции: 5–20 / 20–40 и др.';
+      }
+      if (description) details.append(description);
+      const application = document.createElement('div'); application.className = 'directionApplication';
+      application.innerHTML = flux
+        ? '<h4>Применение</h4><ul><li>При выплавке чугуна в доменных печах</li><li>При выплавке стали</li></ul><p>Не подвержен воздействию атмосферы / влаги.</p><p>Имеет существенно выше прочность, чем обожжённая известь.</p>'
+        : '<h4>Применение</h4><p>При производстве агломерата.</p><p>Стабильное качество позволяет упростить процесс шихтовки для технологов.</p>';
+      details.append(application); analysis.after(details);
+    });
     document.querySelectorAll('.manganeseDirectionImage').forEach(host => {
       if (host.dataset.galleryReady) return;
       const image = host.querySelector('img');

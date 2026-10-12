@@ -2493,6 +2493,25 @@
 .geologySection > a { display: block; min-width: 0; }
 .geologySection > a img { display: block; height: auto !important; object-fit: contain; }
 .so3Intro { margin: 16px 0 28px; line-height: 1.6; }
+.manganeseDirectionCopy { display: grid !important; grid-template-rows: 22px 2.4em 3em auto 1fr !important; align-content: start; gap: 14px !important; }
+.manganeseDirectionCopy > h3 { margin: 0 !important; min-height: 0 !important; }
+.manganeseDirectionCopy > .manganeseDirectionTag { margin: 0 !important; min-height: 0 !important; }
+.manganeseDirectionCopy > .manganeseAnalysis { margin-top: 0 !important; align-self: start; }
+.directionAdditionalDetails { margin-top: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+.directionAdditionalDetails p, .directionAdditionalDetails li { line-height: 1.6; }
+.directionAdditionalDetails p { margin: 0 0 12px; }
+.directionGrades { color: #956100; font-weight: 700; }
+.directionApplication h4 { margin: 18px 0 12px; font-size: 18px; }
+.directionApplication ul { padding-left: 20px; margin: 0 0 14px; }
+.manganeseExperienceGrid .experienceEffects li, .manganeseExperienceGrid .experienceEffects p, .manganeseExperienceGrid .experienceApplication { line-height: 1.65 !important; }
+.manganeseExperienceGrid .experienceEffects ul { gap: 12px !important; }
+@media (max-width: 767px) {
+ .manganeseDirectionCopy { grid-template-rows: 3.7em 3.1em 3.5em auto 1fr !important; gap: 10px !important; }
+ .directionAdditionalDetails { margin-top: 8px; padding-top: 12px; }
+ .directionAdditionalDetails p, .directionAdditionalDetails li { font-size: 11px; line-height: 1.55; }
+ .directionApplication h4 { font-size: 13px; margin: 14px 0 8px; }
+ .manganeseExperienceGrid .experienceEffects ul { gap: 10px !important; }
+}
 .manganeseDirectionImage { position: relative; overflow: hidden; }
 .manganeseDirectionImage[data-photo-index="1"] img { transform: none !important; object-position: center !important; }
 .directionPhotoOpen { position: absolute; inset: 0; z-index: 2; border: 0; padding: 0; background: transparent; cursor: zoom-in; }
