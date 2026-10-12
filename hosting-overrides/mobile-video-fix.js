@@ -42,6 +42,7 @@
       const open = () => {
         dialog = document.createElement('dialog');
         dialog.className = 'companyLightbox directionPhotoDialog';
+        dialog.dataset.material = flux ? 'flux' : 'stone';
         dialog.setAttribute('aria-label', image.alt);
         const layout = document.createElement('div'); layout.className = 'companyLightboxLayout';
         const header = document.createElement('header'); header.className = 'companyLightboxHeader';
@@ -49,7 +50,9 @@
         const close = () => dialog.close();
         header.append(button('×', 'Закрыть фото', close, 'companyLightboxButton'));
         const stage = document.createElement('div'); stage.className = 'companyLightboxStage';
-        const full = document.createElement('img'); full.alt = image.alt; stage.append(full);
+        const full = document.createElement('img'); full.alt = image.alt;
+        const frame = document.createElement('div'); frame.className = 'directionPhotoFrame';
+        frame.append(full); stage.append(frame);
         stage.append(button('‹', 'Предыдущее фото', () => step(-1), 'companyLightboxPrevious'), button('›', 'Следующее фото', () => step(1), 'companyLightboxNext'));
         const footer = document.createElement('footer'); footer.className = 'companyLightboxFooter';
         layout.append(header, stage, footer); dialog.append(layout); document.body.append(dialog);
