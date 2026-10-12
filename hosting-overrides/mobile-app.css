@@ -2493,6 +2493,14 @@
 .geologySection > a { display: block; min-width: 0; }
 .geologySection > a img { display: block; height: auto !important; object-fit: contain; }
 .so3Intro { margin: 16px 0 28px; line-height: 1.6; }
+.manganeseDirectionImage { position: relative; overflow: hidden; }
+.manganeseDirectionImage[data-photo-index="1"] img { transform: none !important; object-position: center !important; }
+.directionPhotoOpen { position: absolute; inset: 0; z-index: 2; border: 0; padding: 0; background: transparent; cursor: zoom-in; }
+.directionPhotoCount { position: absolute; right: 10px; top: 10px; z-index: 3; padding: 5px 8px; border-radius: 6px; background: #10273588; color: white; font-size: 12px; pointer-events: none; }
+.directionPhotoArrow { position: absolute; top: 0; bottom: 0; width: 32px; z-index: 4; background: transparent; border: 0; color: #ffffffb3; font-size: 28px; cursor: pointer; }
+.directionPhotoArrow--previous { left: 0; }
+.directionPhotoArrow--next { right: 0; }
+.directionPhotoDialog button { font-size: 28px; }
 .heroStatement .heroLicense { display: block; margin: 14px 0 0; font-size: 14px; line-height: 1.45; color: var(--gold-soft); }
 @media (max-width: 767px) {
  .heroStatement .heroLicense { font-size: 11px !important; margin-top: 10px; }

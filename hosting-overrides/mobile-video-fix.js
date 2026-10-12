@@ -9,6 +9,62 @@
   const contactEmail = "info@bashmineral.ru";
 
   const normalizeMobileCopy = () => {
+    document.querySelectorAll('.manganeseDirectionImage').forEach(host => {
+      if (host.dataset.galleryReady) return;
+      const image = host.querySelector('img');
+      if (!image) return;
+      host.dataset.galleryReady = '1';
+      const flux = host.classList.contains('manganeseDirectionImage--flux');
+      const sources = [flux ? (matchMedia('(max-width: 767px)').matches ? '/content/manganese-flux-owner-original.jpg' : '/content/manganese-fused-flux.webp') : image.src, flux ? '/content/flux-second.jpg' : '/content/limestone-second.jpg'];
+      image.dataset.mobileMaterialFixed = '1';
+      let index = 0;
+      let dialog;
+      let touchX;
+      const count = document.createElement('span');
+      count.className = 'directionPhotoCount';
+      const update = () => {
+        image.src = sources[index];
+        host.dataset.photoIndex = String(index);
+        count.textContent = `${index + 1} / 2`;
+        if (dialog) {
+          dialog.querySelector('img').src = sources[index];
+          dialog.querySelector('.companyLightboxFooter').textContent = `${index + 1} / 2`;
+        }
+      };
+      const step = delta => { index = (index + delta + 2) % 2; update(); };
+      const button = (text, label, action, className) => {
+        const control = document.createElement('button');
+        control.type = 'button'; control.className = className;
+        control.textContent = text; control.setAttribute('aria-label', label);
+        control.addEventListener('click', action); return control;
+      };
+      const open = () => {
+        dialog = document.createElement('dialog');
+        dialog.className = 'companyLightbox directionPhotoDialog';
+        dialog.setAttribute('aria-label', image.alt);
+        const layout = document.createElement('div'); layout.className = 'companyLightboxLayout';
+        const header = document.createElement('header'); header.className = 'companyLightboxHeader';
+        const title = document.createElement('h2'); title.textContent = image.alt; header.append(title);
+        const close = () => dialog.close();
+        header.append(button('×', 'Закрыть фото', close, 'companyLightboxButton'));
+        const stage = document.createElement('div'); stage.className = 'companyLightboxStage';
+        const full = document.createElement('img'); full.alt = image.alt; stage.append(full);
+        stage.append(button('‹', 'Предыдущее фото', () => step(-1), 'companyLightboxPrevious'), button('›', 'Следующее фото', () => step(1), 'companyLightboxNext'));
+        const footer = document.createElement('footer'); footer.className = 'companyLightboxFooter';
+        layout.append(header, stage, footer); dialog.append(layout); document.body.append(dialog);
+        dialog.addEventListener('keydown', event => { if (event.key === 'ArrowRight') step(1); if (event.key === 'ArrowLeft') step(-1); });
+        dialog.addEventListener('close', () => { const old = dialog; dialog = null; old.remove(); });
+        stage.addEventListener('touchstart', event => { touchX = event.touches[0].clientX; }, {passive:true});
+        stage.addEventListener('touchend', event => { const dx = event.changedTouches[0].clientX - touchX; if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1); });
+        update(); dialog.showModal();
+      };
+      host.append(button('', 'Открыть фото: ' + image.alt, open, 'directionPhotoOpen'), count,
+        button('‹', 'Предыдущее фото', () => step(-1), 'directionPhotoArrow directionPhotoArrow--previous'),
+        button('›', 'Следующее фото', () => step(1), 'directionPhotoArrow directionPhotoArrow--next'));
+      host.addEventListener('touchstart', event => { touchX = event.touches[0].clientX; }, {passive:true});
+      host.addEventListener('touchend', event => { const dx = event.changedTouches[0].clientX - touchX; if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1); });
+      update();
+    });
     const statement = document.querySelector('.heroStatement');
     if (statement && !document.querySelector('.heroLicense')) {
       const license = document.createElement('p');
