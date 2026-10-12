@@ -9,6 +9,13 @@
   const contactEmail = "info@bashmineral.ru";
 
   const normalizeMobileCopy = () => {
+    const statement = document.querySelector('.heroStatement');
+    if (statement && !document.querySelector('.heroLicense')) {
+      const license = document.createElement('p');
+      license.className = 'heroLicense';
+      license.textContent = 'Лицензия на пользование недрами № УФА 01704 ТЭ до 2045 года';
+      statement.append(license);
+    }
     document.querySelectorAll('.oreProduct h3, .oreProduct h2, .oreProduct img').forEach(element => {
       if (element instanceof HTMLImageElement) {
         if (element.alt !== 'Окисленная марганцовистая руда') element.alt = 'Окисленная марганцовистая руда';

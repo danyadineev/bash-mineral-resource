@@ -2493,6 +2493,10 @@
 .geologySection > a { display: block; min-width: 0; }
 .geologySection > a img { display: block; height: auto !important; object-fit: contain; }
 .so3Intro { margin: 16px 0 28px; line-height: 1.6; }
+.heroStatement .heroLicense { display: block; margin: 14px 0 0; font-size: 14px; line-height: 1.45; color: var(--gold-soft); }
+@media (max-width: 767px) {
+ .heroStatement .heroLicense { font-size: 11px !important; margin-top: 10px; }
+}
 .historySection .timeline li { height: auto !important; min-height: 0 !important; max-height: none !important; overflow: visible !important; }
 .historySection .timeline li p { display: block !important; height: auto !important; max-height: none !important; overflow: visible !important; -webkit-line-clamp: unset !important; white-space: normal !important; }
 @media (max-width: 767px) {
