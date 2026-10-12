@@ -2503,7 +2503,7 @@
 .directionPhotoDialog button { font-size: 28px; }
 @media (min-width: 768px) {
  .manganeseDirectionImage { container-type: size; }
- .manganeseDirectionImage[data-photo-index="1"] img { position: absolute; top: 50%; left: 50%; width: 100cqh !important; height: 100cqw !important; max-width: none; transform: translate(-50%,-50%) rotate(-90deg) !important; object-fit: cover !important; }
+ .manganeseDirectionImage[data-photo-index="1"] img { position: absolute; top: 50%; left: 50%; width: 100cqh !important; height: 100cqw !important; max-width: none; transform: translate(-50%,-50%) rotate(-90deg) !important; transform-origin: center center !important; object-fit: cover !important; }
  .directionPhotoDialog .companyLightboxStage { container-type: size; }
  .directionPhotoDialog[data-photo-index="1"] .companyLightboxStage img { position: absolute; top: 50%; left: 50%; width: 100cqh; height: 100cqw; max-width: none; transform: translate(-50%,-50%) rotate(-90deg); object-fit: contain; }
 }
