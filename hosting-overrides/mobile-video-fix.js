@@ -7,6 +7,15 @@
 
   const prepared = new WeakSet();
   const contactEmail = "info@bashmineral.ru";
+  document.addEventListener('click', event => {
+    if (!window.matchMedia('(min-width: 768px)').matches) return;
+    const link = event.target.closest?.('a');
+    if (!link || !/Запросить (образцы|характеристики)/.test(link.textContent)) return;
+    const contacts = document.querySelector('.contactSection');
+    if (!contacts) return;
+    event.preventDefault();
+    contacts.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, true);
 
   const normalizeMobileCopy = () => {
     document.querySelectorAll('.manganeseDirectionCopy').forEach(copy => {
