@@ -10,6 +10,14 @@
 
   const normalizeMobileCopy = () => {
     document.querySelectorAll('.manganeseDirectionCopy').forEach(copy => {
+      if (!copy.parentElement.querySelector('.manganeseDirectionImage--flux')) return;
+      const values = ['55%', '16%', '5%', '17%', '3,23'];
+      copy.querySelectorAll('.compositionTable tbody tr').forEach((row, index) => {
+        const cell = row.querySelector('td:last-child');
+        if (cell && values[index] && cell.textContent !== values[index]) cell.textContent = values[index];
+      });
+    });
+    document.querySelectorAll('.manganeseDirectionCopy').forEach(copy => {
       if (copy.dataset.productDetailsUpdated) return;
       const analysis = copy.querySelector('.manganeseAnalysis');
       const tag = copy.querySelector('.manganeseDirectionTag');
