@@ -2501,7 +2501,7 @@
 .directionPhotoArrow--previous { left: 0; }
 .directionPhotoArrow--next { right: 0; }
 .directionPhotoDialog button { font-size: 28px; }
-@media (min-width: 768px) {
+@media (min-width: 0px) {
  .manganeseDirectionImage { container-type: size; }
  .manganeseDirectionImage[data-photo-index="1"] img { position: absolute; top: 50%; left: 50%; width: 100cqh !important; height: 100cqw !important; max-width: none; transform: translate(-50%,-50%) rotate(-90deg) !important; transform-origin: center center !important; object-fit: cover !important; }
  .directionPhotoDialog .companyLightboxStage { container-type: size; }
