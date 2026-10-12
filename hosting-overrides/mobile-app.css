@@ -2503,14 +2503,14 @@
 .directionGrades { color: #956100; font-weight: 700; }
 .directionApplication h4 { margin: 18px 0 12px; font-size: 18px; }
 .directionApplication ul { padding-left: 20px; margin: 0 0 14px; }
-.manganeseExperienceGrid .experienceEffects li, .manganeseExperienceGrid .experienceEffects p, .manganeseExperienceGrid .experienceApplication { line-height: 1.65 !important; }
-.manganeseExperienceGrid .experienceEffects ul { gap: 12px !important; }
+.manganeseExperienceGrid .experienceEffects li, .manganeseExperienceGrid .experienceEffects p, .manganeseExperienceGrid .experienceApplication { line-height: 1.4 !important; }
+.manganeseExperienceGrid .experienceEffects ul { gap: 6px !important; }
 @media (max-width: 767px) {
  .manganeseDirectionCopy { grid-template-rows: 3.7em 3.1em 3.5em auto 1fr !important; gap: 10px !important; }
  .directionAdditionalDetails { margin-top: 8px; padding-top: 12px; }
  .directionAdditionalDetails p, .directionAdditionalDetails li { font-size: 11px; line-height: 1.55; }
  .directionApplication h4 { font-size: 13px; margin: 14px 0 8px; }
- .manganeseExperienceGrid .experienceEffects ul { gap: 10px !important; }
+ .manganeseExperienceGrid .experienceEffects ul { gap: 6px !important; }
 }
 .manganeseDirectionImage { position: relative; overflow: hidden; }
 .manganeseDirectionImage[data-photo-index="1"] img { transform: none !important; object-position: center !important; }
